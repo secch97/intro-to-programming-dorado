@@ -1,0 +1,25 @@
+/* CSS for the body of my HTML page*/
+body {
+    margin: 55px 0 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* CSS for the section elements of my HTML page */
+section {
+    /* Space of 15px between each section and a space of 80 px between borders*/
+    margin: 15px 80px;
+    /* Justifying text on sections */
+    text-align: justify;
+}
+
+/* 
+   CSS for the unordered list with the class "horizontal-list"
+   in order to turn it into a horizontal list 
+*/
+ul.horizontal-list li {
+    /* Turning list into a horizontal list */
+    float: left;
+    list-style-type: none;
+    /* Padding between list items */
+    padding: 5px;
+}
