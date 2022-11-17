@@ -1,0 +1,97 @@
+/* CSS for the body of my HTML page*/
+body {
+    margin: 55px 0 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* CSS for the section elements of my HTML page */
+section {
+    /* Space of 15px between each section and a space of 80 px between borders*/
+    margin: 15px 80px;
+    /* Justifying text on sections */
+    text-align: justify;
+}
+
+/* 
+   CSS for the unordered list with the class "horizontal-list"
+   in order to turn it into a horizontal list 
+*/
+ul.horizontal-list li {
+    /* Turning list into a horizontal list */
+    float: left;
+    list-style-type: none;
+    /* Padding between list items */
+    padding: 5px;
+}
+
+/*
+    CSS to create a top fixed navigation bar for my website
+*/
+.topnav {
+    /* Displaying my <nav> element as flex to create space between elements */
+    display: flex;
+    justify-content: space-between;
+    /* Hiding the scroll bar when overflow happens on my navbar*/
+    overflow: hidden;
+    /* Fixing the position of my navbar to make it visible no matter the position of my page */
+    position: fixed;
+    /* Making my navbar cover all the width of the page*/
+    width: 100%;
+    /* Putting no space between the beginning of the page and the navbar */
+    top: 0;
+    /* Using royalblue color as the background color of my navbar */
+    background-color: royalblue;
+}
+
+/*
+    CSS to style each link on my navbar
+*/
+.topnav a {
+    /* Horizontally display the links */
+    float: left;
+    display: block;
+    /* Set a white color for the fonts */
+    color: white;
+    /* Center the text on each link, set a 17px size and set decoration to none */
+    text-align: center;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: bold;
+    /* Padding each link */
+    padding: 14px 20px;
+}
+
+/*
+    CSS to highlight active links on my navbar
+*/
+.topnav a.active {
+    font-weight: bold;
+    background-color: white;
+    color: darkgoldenrod;
+}
+
+/*
+    CSS to style each time the mouse hovers over a link
+*/
+.topnav a:hover {
+    background-color: white;
+    color: royalblue;
+}
+
+/*
+    CSS to justify content between elements inside the flex display: 
+    - .logo: to the left.
+    - .center: to the center
+    - .icon: to the right
+*/
+.topnav .logo{
+    justify-content: left;
+}
+
+.topnav .center{
+    justify-content: center;
+}
+
+.topnav .icon{
+    justify-content: right;
+}
