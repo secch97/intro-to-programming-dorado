@@ -27,7 +27,7 @@ ul.horizontal-list li {
 /*
     CSS to create a top fixed navigation bar for my website
 */
-.topnav {
+#topNav {
     /* Displaying my <nav> element as flex to create space between elements */
     display: flex;
     justify-content: space-between;
@@ -46,7 +46,7 @@ ul.horizontal-list li {
 /*
     CSS to style each link on my navbar
 */
-.topnav a {
+#topNav a {
     /* Horizontally display the links */
     float: left;
     display: block;
@@ -64,7 +64,7 @@ ul.horizontal-list li {
 /*
     CSS to highlight active links on my navbar
 */
-.topnav a.active {
+#topNav a.active {
     font-weight: bold;
     background-color: white;
     color: darkgoldenrod;
@@ -73,7 +73,7 @@ ul.horizontal-list li {
 /*
     CSS to style each time the mouse hovers over a link
 */
-.topnav a:hover {
+#topNav a:hover {
     background-color: white;
     color: royalblue;
 }
@@ -84,14 +84,14 @@ ul.horizontal-list li {
     - .center: to the center
     - .icon: to the right
 */
-.topnav .logo{
+#topNav .logo{
     justify-content: left;
 }
 
-.topnav .center{
+#topNav .center{
     justify-content: center;
 }
 
-.topnav .icon{
+#topNav .icon{
     justify-content: right;
 }
