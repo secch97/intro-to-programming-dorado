@@ -1,16 +1,30 @@
 /* CSS for the body of my HTML page*/
 body {
+    /* Top margin */
     margin: 55px 0 0;
+    /* Min height to display on my html body */
+    min-height: 100vh;
     font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
 }
 
 /* CSS for the section elements of my HTML page */
 section {
-    /* Space of 15px between each section and a space of 80 px between borders*/
-    margin: 15px 80px;
     /* Justifying text on sections */
     text-align: justify;
 }
+
+main {
+    flex-grow: 1;
+    /* Setting the width of main content 90% of the current viewport*/
+    width: 90vw;
+    /* Setting the max width of the main content as 1024px*/
+    max-width: 1024px;
+    /* Centering the main content relative to the viewport*/
+    margin: 0 auto;
+}
+
 
 /* 
    CSS for the unordered list with the class "horizontal-list"
@@ -49,7 +63,6 @@ ul.horizontal-list li {
 #topNav a {
     /* Horizontally display the links */
     float: left;
-    display: block;
     /* Set a white color for the fonts */
     color: white;
     /* Center the text on each link, set a 17px size and set decoration to none */
@@ -84,14 +97,45 @@ ul.horizontal-list li {
     - .center: to the center
     - .icon: to the right
 */
-#topNav .logo{
+#topNav .logo {
     justify-content: left;
 }
 
-#topNav .center{
+#topNav .center {
     justify-content: center;
 }
 
-#topNav .icon{
+#topNav .icon {
     justify-content: right;
+}
+
+/*
+    CSS to create a bottom navigation bar for my website
+*/
+#footerNav {
+    /* Displaying my <nav> element as flex to create space between elements */
+    display: flex;
+    justify-content: space-between;
+    /* Hiding the scroll bar when overflow happens on my navbar*/
+    overflow: hidden;
+    /* Making my navbar cover all the width of the page*/
+    width: 100%;
+    /* Using royalblue color as the background color of my navbar */
+    background-color: whitesmoke;
+}
+
+/*
+    CSS to generally style a footer element
+*/
+#footerNav .footer-element {
+    /* Horizontally display the links */
+    float: left;
+    /* Center the text on each link, set a 17px size and set decoration to none */
+    text-align: center;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: bold;
+    color: royalblue;
+    /* Padding each link */
+    padding: 0 20px;
 }
