@@ -18,3 +18,26 @@ copyright.innerHTML = `© Saul Castillo | ${thisYear}`;
 
 //7. Append the copyright paragraph into the footerNav element.
 footerNav.appendChild(copyright);
+
+//8. Create a skills array
+const skills = ["HTML", "CSS", "Javascript", "GitHub"]
+const skillsIcons = ["fa-brands fa-html5", "fa-brands fa-css3", "fa-brands fa-js", "fa-brands fa-github"]
+//9. Select skills section by id
+const skillsSection = document.querySelector("section#skills");
+console.log(skillsSection);
+//10. Query the ul element within the skills section
+const skillsList = skillsSection.querySelector(".horizontal-list");
+console.log(skillsList);
+//11. Create a for loop to iterate through my skills:
+for (let i=0; i < skills.length; i++){
+    //12. Create a skill element
+    const skill = document.createElement("li");
+    //13. Create a <a> element
+    const anchorTag = document.createElement("a");
+    //13. Set the anchor element inner text to <i> fontawesome tag plus the current skills[i] element
+    anchorTag.innerHTML = `<i class="${skillsIcons[i]}"></i> ${skills[i]}`;
+    //14. Append the anchor tag to the skill <li> element
+    skill.appendChild(anchorTag);
+    //14. Append the skill element to the skill list
+    skillsList.appendChild(skill);
+}
