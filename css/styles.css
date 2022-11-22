@@ -8,7 +8,9 @@ body {
     margin: 5vh 0 0;
     /* Min height to display on my html body */
     min-height: 100vh;
+    /* Fonts */
     font-family: Arial, Helvetica, sans-serif;
+    /*Display*/
     display: flex;
     flex-direction: column;
 }
@@ -19,14 +21,14 @@ section {
     text-align: justify;
 }
 
-
+/* CSS for the main element of my HTML page */
 main {
     flex-grow: 1;
-    /* Setting the width of main content 90% of the current viewport*/
 }
 
 /* CSS for container divs for page content*/
 .container {
+    /* Setting width of .container elements */
     width: 90vw;
     /* Setting the max width of the main content as 1024px*/
     max-width: 1024px;
@@ -36,6 +38,7 @@ main {
 
 /* CSS for container divs for navigation bars */
 .nav-container {
+    /* Display */
     display: flex;
     justify-content: space-between;
 }
@@ -122,7 +125,9 @@ main {
     CSS to highlight active links on my navbar
 */
 #topNav a.active {
+    /* Fonts */
     font-weight: bold;
+    /* Colors */
     background-color: white;
     color: darkgoldenrod;
 }
@@ -131,6 +136,7 @@ main {
     CSS to style each time the mouse hovers over a link
 */
 #topNav a:hover {
+    /* Colors */
     background-color: white;
     color: royalblue;
 }
@@ -173,9 +179,12 @@ main {
     float: left;
     /* Center the text on each link, set a 17px size and set decoration to none */
     text-align: center;
+    /* Text */
     text-decoration: none;
+    /* Fonts */
     font-size: 17px;
     font-weight: bold;
+    /* Colors */
     color: royalblue;
     /* Padding each link */
     padding: 0 20px;
