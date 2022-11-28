@@ -1,36 +1,96 @@
 /* CSS for the body of my HTML page*/
+html {
+    scroll-padding-top: 40px;
+}
+
 body {
-    margin: 55px 0 0;
+    /* Top margin */
+    margin: 5vh 0 0;
+    /* Min height to display on my html body */
+    min-height: 100vh;
+    /* Fonts */
     font-family: Arial, Helvetica, sans-serif;
+    /*Display*/
+    display: flex;
+    flex-direction: column;
 }
 
 /* CSS for the section elements of my HTML page */
 section {
-    /* Space of 15px between each section and a space of 80 px between borders*/
-    margin: 15px 80px;
     /* Justifying text on sections */
     text-align: justify;
+}
+
+/* CSS for the main element of my HTML page */
+main {
+    flex-grow: 1;
+}
+
+/* CSS for container divs for page content*/
+.container {
+    /* Setting width of .container elements */
+    width: 90vw;
+    /* Setting the max width of the main content as 1024px*/
+    max-width: 1024px;
+    /* Centering the main content relative to the viewport*/
+    margin: 0 auto;
+}
+
+/* CSS for container divs for navigation bars */
+.nav-container {
+    /* Display */
+    display: flex;
+    justify-content: space-between;
 }
 
 /* 
    CSS for the unordered list with the class "horizontal-list"
    in order to turn it into a horizontal list 
 */
-ul.horizontal-list li {
+.horizontal-list li {
+    overflow: hidden;
     /* Turning list into a horizontal list */
-    float: left;
-    list-style-type: none;
-    /* Padding between list items */
+    display: inline-block;
+    /* Fonts */
+    font-weight: bold;
+    font-style: normal;
+    /* Borders */
+    border: 3px solid royalblue;
+    border-radius: 20px;
+    /* Margins between list items*/
+    margin-right: 10px;
+    /* Color */
+    background-color: royalblue;
+    color: white;
+}
+
+.horizontal-list li a {
+    /* Displaying a tags as inline-blocks */
+    display: inline-block;
+    /* Colors */
+    color: white;
+    /* Text */
+    text-decoration: none;
+    text-align: center;
+    /* Padding */
     padding: 5px;
+    /* Width */
+    width: 100px;
+}
+
+.horizontal-list li a:hover {
+    /*Colors*/
+    background-color: white;
+    border-color: royalblue;
+    color: royalblue;
+    /*Padding*/
+    padding: 10px;
 }
 
 /*
     CSS to create a top fixed navigation bar for my website
 */
-.topnav {
-    /* Displaying my <nav> element as flex to create space between elements */
-    display: flex;
-    justify-content: space-between;
+#topNav {
     /* Hiding the scroll bar when overflow happens on my navbar*/
     overflow: hidden;
     /* Fixing the position of my navbar to make it visible no matter the position of my page */
@@ -46,7 +106,7 @@ ul.horizontal-list li {
 /*
     CSS to style each link on my navbar
 */
-.topnav a {
+#topNav a {
     /* Horizontally display the links */
     float: left;
     display: block;
@@ -58,14 +118,16 @@ ul.horizontal-list li {
     font-size: 17px;
     font-weight: bold;
     /* Padding each link */
-    padding: 14px 20px;
+    padding: 12px 20px;
 }
 
 /*
     CSS to highlight active links on my navbar
 */
-.topnav a.active {
+#topNav a.active {
+    /* Fonts */
     font-weight: bold;
+    /* Colors */
     background-color: white;
     color: darkgoldenrod;
 }
@@ -73,7 +135,8 @@ ul.horizontal-list li {
 /*
     CSS to style each time the mouse hovers over a link
 */
-.topnav a:hover {
+#topNav a:hover {
+    /* Colors */
     background-color: white;
     color: royalblue;
 }
@@ -84,14 +147,45 @@ ul.horizontal-list li {
     - .center: to the center
     - .icon: to the right
 */
-.topnav .logo{
+#topNav .logo {
     justify-content: left;
 }
 
-.topnav .center{
+#topNav .center {
     justify-content: center;
 }
 
-.topnav .icon{
+#topNav .icon {
     justify-content: right;
+}
+
+/*
+    CSS to create a bottom navigation bar for my website
+*/
+#footerNav {
+    /* Hiding the scroll bar when overflow happens on my navbar*/
+    overflow: hidden;
+    /* Making my navbar cover all the width of the page*/
+    width: 100%;
+    /* Using royalblue color as the background color of my navbar */
+    background-color: whitesmoke;
+}
+
+/*
+    CSS to generally style a footer element
+*/
+#footerNav .footer-element {
+    /* Horizontally display the links */
+    float: left;
+    /* Center the text on each link, set a 17px size and set decoration to none */
+    text-align: center;
+    /* Text */
+    text-decoration: none;
+    /* Fonts */
+    font-size: 17px;
+    font-weight: bold;
+    /* Colors */
+    color: royalblue;
+    /* Padding each link */
+    padding: 0 20px;
 }
