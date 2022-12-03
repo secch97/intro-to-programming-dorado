@@ -55,16 +55,20 @@ function setActive(e) {
   //Add active class to current link:
   this.classList.add("active");
 }
-//1. Showing skills section
-showSkills();
 
-//2. Showing copyright footer
-showCopyright();
+document.addEventListener("DOMContentLoaded", () => {
+  //1. Showing skills section
+  showSkills();
 
-//3. Getting navigation link elements
-//3.1 Querying every navigation link:
-const navigationLinks = document.querySelectorAll("header nav div.center a");
-//3.2 Setting up a click event listener for every navigation link:
-navigationLinks.forEach((link) => {
-  link.addEventListener("click", setActive);
-});
+  //2. Showing copyright footer
+  showCopyright();
+
+  //3. Getting navigation link elements
+  //3.1 Querying every navigation link:
+  const navigationLinks = document.querySelectorAll("header nav div.center a");
+  //3.2 Setting up a click event listener for every navigation link:
+  navigationLinks.forEach((link) => {
+    link.addEventListener("click", setActive);
+  });
+})
+
