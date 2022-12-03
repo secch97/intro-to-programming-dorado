@@ -148,6 +148,8 @@ main {
     /* Colors */
     background-color: white;
     color: royalblue;
+    /* Animation */
+    transition: ease-in-out 0.2s;
 }
 
 /*
