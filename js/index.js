@@ -93,7 +93,7 @@ function handleMessageForm(e){
   //Append the newMessage to the messageList
   messageList.appendChild(newMessage);
   //Reset the form after submit
-  messageForm.reset();
+  e.target.reset();
 }
 
 document.addEventListener("DOMContentLoaded", () => {
