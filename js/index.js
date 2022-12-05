@@ -56,6 +56,20 @@ function setActive(e) {
   this.classList.add("active");
 }
 
+const messageForm = document.querySelector("#messageForm");
+messageForm.addEventListener("submit", (e) => {
+  //Prevent default
+  e.preventDefault();
+  //Retrieve form's controls values
+  const name = e.target.name.value;
+  const email = e.target.email.value;
+  const message = e.target.message.value;
+  //Log the form's controls values
+  console.log(`Name: ${name} | email: ${email} | message: ${message}`);
+  //Reset the form after submit
+  messageForm.reset();
+});
+
 document.addEventListener("DOMContentLoaded", () => {
   //1. Showing skills section
   showSkills();
