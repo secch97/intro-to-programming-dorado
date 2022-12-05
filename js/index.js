@@ -56,8 +56,14 @@ function setActive(e) {
   this.classList.add("active");
 }
 
-const messageForm = document.querySelector("#messageForm");
-messageForm.addEventListener("submit", (e) => {
+function removeMessage(e){
+    //Find the button's parent element using DOM:
+    const entry = e.target.parentElement;
+    //Remove the entry element from the DOM:
+    entry.remove();
+}
+
+function handleMessageForm(e){
   //Prevent default
   e.preventDefault();
   //Retrieve form's controls values
@@ -65,10 +71,30 @@ messageForm.addEventListener("submit", (e) => {
   const email = e.target.email.value;
   const message = e.target.message.value;
   //Log the form's controls values
-  console.log(`Name: ${name} | email: ${email} | message: ${message}`);
+  console.log(`Name: ${name} | Email: ${email} | message: ${message}`);
+  //Selecting messages section
+  const messageSection = document.querySelector("#messages");
+  //Selecting the message list inside the message section
+  const messageList = messageSection.querySelector("ul");
+  //Create a new list item
+  const newMessage = document.createElement("li"); 
+  //Set the innerHTML of the newMessage element
+  newMessage.innerHTML = `<a href="mailto:${email}">${name}</a>
+  <span>${message}</span>`;
+  //Create a new button "Remove"
+  const removeButton = document.createElement("button");
+  //Set attributes to the button
+  removeButton.innerText = "Remove";
+  removeButton.setAttribute("type", "button");
+  //Append the removeButton to the newMessage element
+  newMessage.appendChild(removeButton);
+  //Add an event listener to the button
+  removeButton.addEventListener("click", removeMessage);
+  //Append the newMessage to the messageList
+  messageList.appendChild(newMessage);
   //Reset the form after submit
   messageForm.reset();
-});
+}
 
 document.addEventListener("DOMContentLoaded", () => {
   //1. Showing skills section
@@ -84,5 +110,9 @@ document.addEventListener("DOMContentLoaded", () => {
   navigationLinks.forEach((link) => {
     link.addEventListener("click", setActive);
   });
+
+  //4. Handle message form
+  const messageForm = document.querySelector("#messageForm");
+  messageForm.addEventListener("submit", handleMessageForm);
 })
 
