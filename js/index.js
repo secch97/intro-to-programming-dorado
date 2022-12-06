@@ -65,6 +65,13 @@ function removeMessage(e){
     setMessagesVisibility();
 }
 
+function editMessage(e){
+  //Getting the message elements:
+  const name = document.getAttribute("data-name");
+  const email = document.getAttribute("data-email");
+  const message = document.getAttribute("data-message") ;
+}
+
 function handleMessageForm(e){
   //Prevent default
   e.preventDefault();
@@ -85,13 +92,22 @@ function handleMessageForm(e){
   <span>${message}</span>`;
   //Create a new button "Remove"
   const removeButton = document.createElement("button");
-  //Set attributes to the button
+  //Create a new button "Edit"
+  const editButton = document.createElement("button");
+  //Set attributes to the "remove" button
   removeButton.innerText = "Remove";
   removeButton.setAttribute("type", "button");
-  //Append the removeButton to the newMessage element
-  newMessage.appendChild(removeButton);
-  //Add an event listener to the button
+  //Set attributes to the "edit" button
+  editButton.innerText = "Edit";
+  editButton.setAttribute("type", "button");
+  editButton.setAttribute("data-name", name);
+  editButton.setAttribute("data-email", email);
+  editButton.setAttribute("data-message", message);
+  //Append the buttons to the newMessage element
+  newMessage.append(removeButton, editButton);
+  //Add an event listener to the buttons
   removeButton.addEventListener("click", removeMessage);
+  editButton.addEventListener("click", editMessage);
   //Append the newMessage to the messageList
   messageList.appendChild(newMessage);
   //Reset the form after submit
