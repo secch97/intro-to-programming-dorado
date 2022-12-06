@@ -61,6 +61,8 @@ function removeMessage(e){
     const entry = e.target.parentElement;
     //Remove the entry element from the DOM:
     entry.remove();
+    //Set the messages section visibility:
+    setMessagesVisibility();
 }
 
 function handleMessageForm(e){
@@ -94,6 +96,33 @@ function handleMessageForm(e){
   messageList.appendChild(newMessage);
   //Reset the form after submit
   e.target.reset();
+  //Set visibility of messages section
+  setMessagesVisibility();
+}
+
+function checkNumberOfMessages(){
+  //Selecting the messages section
+  const messageSection = document.querySelector("#messages");
+  //Selecting the message list inside the message section
+  const messageList = messageSection.querySelector("ul");
+  //Check number of messages available:
+  const messageCount = messageList.childElementCount;
+  //Return number of messages
+  return messageCount;
+}
+
+function setMessagesVisibility(){
+  //Selecting the messages section
+  const messageSection = document.querySelector("#messages");
+  //Getting the number of messages available
+  const messageCount = checkNumberOfMessages();  
+  //Setting the visibility of the message section depending of the number of messages:
+  if (messageCount === 0){
+    messageSection.classList.add("hidden");
+  }
+  else{
+    messageSection.classList.remove("hidden");
+  }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -114,5 +143,9 @@ document.addEventListener("DOMContentLoaded", () => {
   //4. Handle message form
   const messageForm = document.querySelector("#messageForm");
   messageForm.addEventListener("submit", handleMessageForm);
+
+  //5. Hide the "Messages Form" when the list of messages is empty.
+  //5.1 Set messages list visibility depending of number of messages:
+  setMessagesVisibility();
 })
 

@@ -198,3 +198,8 @@ main {
     /* Padding element */
     padding: 0 20px;
 }
+
+.hidden {
+    /* Display */
+    display:none;
+}
