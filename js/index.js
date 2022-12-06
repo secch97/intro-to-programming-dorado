@@ -67,9 +67,19 @@ function removeMessage(e){
 
 function editMessage(e){
   //Getting the message elements:
-  const name = document.getAttribute("data-name");
-  const email = document.getAttribute("data-email");
-  const message = document.getAttribute("data-message") ;
+  const name = e.target.getAttribute("data-name");
+  const email = e.target.getAttribute("data-email");
+  const message = e.target.getAttribute("data-message");
+  console.log(name);
+  //Getting the modal elements
+  const modalContainer = document.querySelector(".modal-container");
+  const closeButton = document.querySelector("#closeButton");
+  //Show the edit modal
+  modalContainer.classList.add("show");
+  //Add event listener to close button
+  closeButton.addEventListener("click", () => {
+    modalContainer.classList.remove("show");
+  })
 }
 
 function handleMessageForm(e){
@@ -100,6 +110,7 @@ function handleMessageForm(e){
   //Set attributes to the "edit" button
   editButton.innerText = "Edit";
   editButton.setAttribute("type", "button");
+  editButton.setAttribute("id", "editButton");
   editButton.setAttribute("data-name", name);
   editButton.setAttribute("data-email", email);
   editButton.setAttribute("data-message", message);

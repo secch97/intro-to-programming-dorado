@@ -1,4 +1,9 @@
-/* CSS for the body of my HTML page*/
+/* 
+==================================
+=           ELEMENTS CSS         =
+==================================
+*/
+
 html {
     scroll-padding-top: 40px;
 }
@@ -25,7 +30,11 @@ section {
 main {
     flex-grow: 1;
 }
-
+/* 
+==================================
+=          CLASSES CSS           =
+==================================
+*/
 /* CSS for container divs for page content*/
 .container {
     /* Setting width of .container elements */
@@ -47,7 +56,6 @@ main {
     display: flex;
     justify-content: space-between;
 }
-
 /* 
    CSS for the unordered list with the class "horizontal-list"
    in order to turn it into a horizontal list 
@@ -84,18 +92,31 @@ main {
     width: 100px;
     min-width: 100px;
     /*Grow*/    
-    transition: all .2s ease-in-out;
+    
 }
 
+.horizontal-list li:hover,
 .horizontal-list li:hover > *{
     /*Colors*/
     background-color: white;
     border-color: royalblue;
     color: royalblue;
     /*Transform*/
+    transition: all 0.3s ease;
     transform: scale(1.05);
 }
 
+.hidden {
+    /* Display */
+    display:none;
+}
+
+
+/* 
+==================================
+=           TOPNAV CSS           =
+==================================
+*/
 /*
     CSS to create a top fixed navigation bar for my website
 */
@@ -168,7 +189,11 @@ main {
 #topNav .icon {
     justify-content: right;
 }
-
+/* 
+==================================
+=           FOOTER CSS           =
+==================================
+*/
 /*
     CSS to create a footer navigation bar for my website
 */
@@ -199,7 +224,62 @@ main {
     padding: 0 20px;
 }
 
-.hidden {
+
+
+/* 
+==================================
+=           MODAL CSS            =
+==================================
+*/
+.modal-container{
+    /* Visibility */
+    visibility: hidden;   
+    opacity: 0; 
+    /*Displays*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*Position*/
+    position: fixed;
+    top: 0;
+    left: 0;
+    /* Dimensions */
+    width: 100%;
+    height: 100%;
+    /* Colors */
+    background-color: rgba(0,0,0,0.3);
+    /* Transition */    
+    transition: visibility 0.3s ease, opacity 0.3s ease;
+
+}
+
+.modal{
+    /* Dimensions */
+    width: 600px;
+    max-width: 70%;
+    /* Border */
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    /* Padding */
+    padding: 30px 50px;
+    /* Colors */
+    background-color: whitesmoke;
+    /* Text */
+    text-align:center;
+}
+
+.modal h1{
+    /* Margins */
+    margin: 0;
+}
+
+.modal p{
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+.modal-container.show {
     /* Display */
-    display:none;
+    visibility: visible;
+    opacity: 1;
 }
