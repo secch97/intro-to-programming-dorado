@@ -205,8 +205,25 @@
             <!-- ============================--> 
             <section class="modal-container" id="modal-container">
                 <div class="modal">
-                    <h1>Modals are cool</h1>
-                    <p> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere cumque autem, hic perspiciatis tenetur quibusdam molestias nam, nisi sequi ratione laboriosam quo architecto in voluptates facilis explicabo porro commodi. Aperiam.</p>
+                    <form id="editMessageForm" name="editMessageForm">
+                        <div class="form-control">
+                            <label for="editName">Name: </label>
+                            <input type="text" id="editName" name="editName" required>
+                        </div>
+                        <div class="form-control">
+                            <label for="editEmail">Email: </label>
+                            <input type="email" id="editEmail" name="editEmail" required>
+                        </div>
+                        <div class="form-control">
+                            <label for="editMessage">Message: </label>
+                            <textarea id="editMessage" name="editMessage" required>
+    
+                            </textarea>
+                        </div>
+                        <div class="form-control">
+                            <button type="submit" id="editSubmit">Update message</button>
+                        </div>
+                    </form>
                     <button id="closeButton">Close</button>
                 </div>
             </section>

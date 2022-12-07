@@ -255,8 +255,8 @@ main {
 
 .modal{
     /* Dimensions */
-    width: 600px;
-    max-width: 70%;
+    width: 400px;
+    max-width: 50%;
     /* Border */
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);

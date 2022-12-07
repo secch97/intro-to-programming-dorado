@@ -1,3 +1,6 @@
+//GLOBAL VARIABLES
+let messageId = 1;
+
 function showCopyright() {
   //1. Create a date object
   let today = new Date();
@@ -65,21 +68,48 @@ function removeMessage(e){
     setMessagesVisibility();
 }
 
+function showModal(e){
+   //Get the modal container
+   const modalContainer = document.querySelector(".modal-container");
+   //Close the modal container
+   modalContainer.classList.add("show"); 
+}
+
+function closeModal(e){
+  //Get the modal container
+  const modalContainer = document.querySelector(".modal-container");
+  //Close the modal container
+  modalContainer.classList.remove("show");
+}
+
 function editMessage(e){
   //Getting the message elements:
+  const messageId = e.target.getAttribute("data-messageId");
   const name = e.target.getAttribute("data-name");
   const email = e.target.getAttribute("data-email");
   const message = e.target.getAttribute("data-message");
-  console.log(name);
+  console.log(`${messageId} + ${name} + ${email} + ${message} `);
   //Getting the modal elements
   const modalContainer = document.querySelector(".modal-container");
-  const closeButton = document.querySelector("#closeButton");
+  const editMessageForm = modalContainer.querySelector("#editMessageForm");
+  const closeButton = modalContainer.querySelector("#closeButton");
   //Show the edit modal
-  modalContainer.classList.add("show");
+  showModal();
+  //Reset the edit modal form elements
+  editMessageForm.reset();
+  //Get the edit form modal HTML elements
+  const editName = editMessageForm.querySelector("#editName");
+  const editEmail = editMessageForm.querySelector("#editEmail");
+  const editMessage = editMessageForm.querySelector("#editMessage");
+  //Set the values of the edit form modal to the to-edit message values
+  editName.value = name;
+  editEmail.value = email;
+  editMessage.value = message;
   //Add event listener to close button
-  closeButton.addEventListener("click", () => {
-    modalContainer.classList.remove("show");
-  })
+  closeButton.addEventListener("click", closeModal);
+  //Assign message id to editSubmit button
+  const editSubmitButton = editMessageForm.querySelector("#editSubmit");
+  editSubmitButton.setAttribute("data-messageId", messageId);
 }
 
 function handleMessageForm(e){
@@ -98,8 +128,8 @@ function handleMessageForm(e){
   //Create a new list item
   const newMessage = document.createElement("li"); 
   //Set the innerHTML of the newMessage element
-  newMessage.innerHTML = `<a href="mailto:${email}">${name}</a>
-  <span>${message}</span>`;
+  newMessage.innerHTML = `<input type="hidden" value="${messageId}"><a href="mailto:${email}">${name}</a>
+  <textarea>${message}</textarea>`;
   //Create a new button "Remove"
   const removeButton = document.createElement("button");
   //Create a new button "Edit"
@@ -111,9 +141,10 @@ function handleMessageForm(e){
   editButton.innerText = "Edit";
   editButton.setAttribute("type", "button");
   editButton.setAttribute("id", "editButton");
+  editButton.setAttribute("data-messageId", messageId);
   editButton.setAttribute("data-name", name);
   editButton.setAttribute("data-email", email);
-  editButton.setAttribute("data-message", message);
+  editButton.setAttribute("data-message", message.trim());
   //Append the buttons to the newMessage element
   newMessage.append(removeButton, editButton);
   //Add an event listener to the buttons
@@ -123,8 +154,40 @@ function handleMessageForm(e){
   messageList.appendChild(newMessage);
   //Reset the form after submit
   e.target.reset();
+  //Increase the message counter by one
+  messageId++;
   //Set visibility of messages section
   setMessagesVisibility();
+}
+
+function handleEditMessageForm(e){
+  //Prevent default
+  e.preventDefault();
+  //Retrieve edit form's control values
+  const messageId = e.target.editSubmit.getAttribute("data-messageId");
+  const editName = e.target.editName.value;
+  const editEmail = e.target.editEmail.value;
+  const editMessage = e.target.editMessage.value.trim();  
+  console.log(`New message: ${messageId} + ${editName} + ${editEmail} + ${editMessage}`);
+  //Get the List Item element with messageId equals to edit form messageId
+  const messageSection = document.querySelector("#messages");
+  const messageList = messageSection.querySelector("ul");
+  const messages = messageList.children;
+  for(let listItem of messages){
+    console.log(listItem);
+    if(listItem.children[0].value === messageId){
+      listItem.children[1].setAttribute("href", `mailto:${editEmail}`);
+      listItem.children[1].innerText=editName;
+      listItem.children[2].innerText=editMessage;
+      listItem.children[4].setAttribute("data-name", editName);
+      listItem.children[4].setAttribute("data-email", editEmail);
+      listItem.children[4].setAttribute("data-message", editMessage);
+      e.target.reset();
+      closeModal();
+      break;
+    }
+  }
+
 }
 
 function checkNumberOfMessages(){
@@ -174,5 +237,9 @@ document.addEventListener("DOMContentLoaded", () => {
   //5. Hide the "Messages Form" when the list of messages is empty.
   //5.1 Set messages list visibility depending of number of messages:
   setMessagesVisibility();
+
+  //6. Handle edit message form
+  const editMessageForm = document.querySelector("#editMessageForm");
+  editMessageForm.addEventListener("submit", handleEditMessageForm);
 })
 
