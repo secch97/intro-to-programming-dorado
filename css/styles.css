@@ -179,15 +179,21 @@ main {
     - .icon: to the right
 */
 #topNav .logo {
-    text-align: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #topNav .center {
+    display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 #topNav .icon {
-    justify-content: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 /* 
 ==================================
