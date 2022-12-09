@@ -87,7 +87,7 @@ function editMessage(e){
   const messageId = e.target.getAttribute("data-messageId");
   const name = e.target.getAttribute("data-name");
   const email = e.target.getAttribute("data-email");
-  const message = e.target.getAttribute("data-message");
+  const message = e.target.getAttribute("data-message").trim();
   console.log(`${messageId} + ${name} + ${email} + ${message} `);
   //Getting the modal elements
   const modalContainer = document.querySelector(".modal-container");
@@ -118,7 +118,7 @@ function handleMessageForm(e){
   //Retrieve form's controls values
   const name = e.target.name.value;
   const email = e.target.email.value;
-  const message = e.target.message.value;
+  const message = e.target.message.value.trim();
   //Log the form's controls values
   console.log(`Name: ${name} | Email: ${email} | message: ${message}`);
   //Selecting messages section
@@ -128,8 +128,7 @@ function handleMessageForm(e){
   //Create a new list item
   const newMessage = document.createElement("li"); 
   //Set the innerHTML of the newMessage element
-  newMessage.innerHTML = `<input type="hidden" value="${messageId}"><a href="mailto:${email}">${name}</a>
-  <textarea>${message}</textarea>`;
+  newMessage.innerHTML = `<input type="hidden" value="${messageId}"><a href="mailto:${email}">${name}</a> <span class="line-white-space">${message}</span> `;
   //Create a new button "Remove"
   const removeButton = document.createElement("button");
   //Create a new button "Edit"

@@ -111,6 +111,10 @@ main {
     display:none;
 }
 
+.line-white-space{
+    white-space: pre-line;
+}
+
 
 /* 
 ==================================
@@ -194,6 +198,14 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+/* 
+==================================
+=           MESSAGES CSS         =
+==================================
+*/
+#messages #listOfMessages {
+    list-style-type: none;
 }
 /* 
 ==================================
