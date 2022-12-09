@@ -43,12 +43,26 @@
                 <a href="/"> SAUL CASTILLO </a>
             </div>
             <div class="center">
-                <a id="aboutMeLink" href="#about"><i class="fa-solid fa-address-card"></i> About me</a>
-                <a id="techExperienceLink" href="#tech-experience"><i class="fa-solid fa-clipboard-list"></i>
-                    Experience</a>
-                <a id="skillsLink" href="#skills"><i class="fa-solid fa-brain"></i>
-                    Skills</a>
-                <a id="connectLink" href="#connect"><i class="fa-solid fa-link"></i> Connect</a>
+                <a id="aboutMeLink" href="#about">
+                    <i class="fa-solid fa-address-card"></i>
+                    About me
+                </a>
+                <a id="techExperienceLink" href="#techExperience">
+                    <i class="fa-solid fa-clipboard-list"></i>
+                    Experience
+                </a>
+                <a id="skillsLink" href="#skills">
+                    <i class="fa-solid fa-brain"></i>
+                    Skills
+                </a>
+                <a id="connectLink" href="#connect">
+                    <i class="fa-solid fa-link"></i>
+                    Connect
+                </a>
+                <a id="messageLink" href="#leaveMessage">
+                    <i class="fa-solid fa-message"></i>
+                    Message
+                </a>
             </div>
             <div class="icon">
                 <a id="icon" href="javascript:void(0);"><i class="fa-solid fa-bars"></i></a>
@@ -57,6 +71,9 @@
     </header>
     <main>
         <div class="container">
+            <!-- ============================-->
+            <!-- =     SECTION: ABOUT       =-->
+            <!-- ============================-->  
             <section id="about">
                 <h1>Hello! &#128075; I'm Saul</h1>
                 <h2>About me:</h2>
@@ -77,9 +94,11 @@
                     diverse low-income backgrounds.
                 </p>
             </section>
-
-            <section id="tech-experience">
-                <h2>Tech Experience:</h2>
+            <!-- ============================-->
+            <!-- =    SECTION: TECH EXP     =-->
+            <!-- ============================-->  
+            <section id="techExperience">
+                <h2>Tech experience:</h2>
                 <ul>
                     <li>
                         Database Modeling and Design Tutor:
@@ -107,40 +126,112 @@
                     </li>
                 </ul>
             </section>
-
-
+            <!-- ============================-->
+            <!-- =     SECTION: SKILLS      =-->
+            <!-- ============================-->  
             <section id="skills">
                 <h2>Skills:</h2>
-                <ul class="horizontal-list">
-                </ul>
+                <div class="inner-container">
+                    <ul class="horizontal-list">
+                    </ul>
+                </div>
             </section>
-
+            <!-- ============================-->
+            <!-- =     SECTION: CONNECT     =-->
+            <!-- ============================-->            
             <section id="connect">
                 <h2>Connect:</h2>
-                <p>
-                <ul class="horizontal-list">
-                    <address>
-                        <li>
-                            <a href="mailto:secch97@gmail.com"><i class="fa-solid fa-envelope"></i>
-                                E-mail</a>
-                        </li>
-                        <li>
-                            <a href="https://github.com/secch97"> <i class="fa-brands fa-github"></i>
-                                GitHub</a>
-                        </li>
-                        <li>
-                            <a href="https://twitter.com/MrRobot_97"> <i class="fa-brands fa-twitter"></i>
-                                Twitter</a>
-                        </li>
-                    </address>
+                <div class="inner-container">
+                    <ul class="horizontal-list">
+                        <address>
+                            <li>
+                                <a href="mailto:secch97@gmail.com">
+                                    <i class="fa-solid fa-envelope"></i>
+                                    E-mail
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/secch97">
+                                    <i class="fa-brands fa-github"></i>
+                                    GitHub
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://twitter.com/MrRobot_97">
+                                    <i class="fa-brands fa-twitter"></i>
+                                    Twitter
+                                </a>
+                            </li>
+                        </address>
+                    </ul>
+                </div>
+            </section>
+            <!-- ============================-->
+            <!-- =    SECTION: LEAVE MSG    =-->
+            <!-- ============================-->
+            <section id="leaveMessage">
+                <h2>Leave a message:</h2>
+                <form id="messageForm" name="messageForm">
+                    <div class="form-control">
+                        <label for="name">Name: </label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-control">
+                        <label for="email">Email: </label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-control">
+                        <label for="message">Message: </label>
+                        <textarea id="message" name="message" required>
+
+                        </textarea>
+                    </div>
+                    <div class="form-control">
+                        <button type="submit" id="submit">Submit</button>
+                    </div>
+                </form>
+            </section> 
+            <!-- ============================-->
+            <!-- =    SECTION: MESSAGES     =-->
+            <!-- ============================--> 
+            <section id="messages">
+                <h2>Messages: </h2>
+                <ul id="listOfMessages">
+
                 </ul>
-                </p>
+            </section>
+            <!-- ============================-->
+            <!-- =    SECTION: EDIT MODAL   =-->
+            <!-- ============================--> 
+            <section class="modal-container" id="modal-container">
+                <div class="modal">
+                    <form id="editMessageForm" name="editMessageForm">
+                        <div class="form-control">
+                            <label for="editName">Name: </label>
+                            <input type="text" id="editName" name="editName" required>
+                        </div>
+                        <div class="form-control">
+                            <label for="editEmail">Email: </label>
+                            <input type="email" id="editEmail" name="editEmail" required>
+                        </div>
+                        <div class="form-control">
+                            <label for="editMessage">Message: </label>
+                            <textarea id="editMessage" name="editMessage" required>
+    
+                            </textarea>
+                        </div>
+                        <div class="form-control">
+                            <button type="submit" id="editSubmit">Update message</button>
+                        </div>
+                    </form>
+                    <button id="closeButton">Close</button>
+                </div>
             </section>
         </div>
     </main>
 
     <footer>
-        <nav id="footerNav" class="nav-container">
+        <nav id="footerNav">
         </nav>
         <!--=================================================================== 
             =                            JS ASSETS                            = 

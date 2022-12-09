@@ -1,3 +1,6 @@
+//GLOBAL VARIABLES
+let messageId = 1;
+
 function showCopyright() {
   //1. Create a date object
   let today = new Date();
@@ -55,16 +58,188 @@ function setActive(e) {
   //Add active class to current link:
   this.classList.add("active");
 }
-//1. Showing skills section
-showSkills();
 
-//2. Showing copyright footer
-showCopyright();
+function removeMessage(e){
+    //Find the button's parent element using DOM:
+    const entry = e.target.parentElement;
+    //Remove the entry element from the DOM:
+    entry.remove();
+    //Set the messages section visibility:
+    setMessagesVisibility();
+}
 
-//3. Getting navigation link elements
-//3.1 Querying every navigation link:
-const navigationLinks = document.querySelectorAll("header nav div.center a");
-//3.2 Setting up a click event listener for every navigation link:
-navigationLinks.forEach((link) => {
-  link.addEventListener("click", setActive);
-});
+function showModal(e){
+   //Get the modal container
+   const modalContainer = document.querySelector(".modal-container");
+   //Close the modal container
+   modalContainer.classList.add("show"); 
+}
+
+function closeModal(e){
+  //Get the modal container
+  const modalContainer = document.querySelector(".modal-container");
+  //Close the modal container
+  modalContainer.classList.remove("show");
+}
+
+function editMessage(e){
+  //Getting the message elements:
+  const messageId = e.target.getAttribute("data-messageId");
+  const name = e.target.getAttribute("data-name");
+  const email = e.target.getAttribute("data-email");
+  const message = e.target.getAttribute("data-message");
+  console.log(`${messageId} + ${name} + ${email} + ${message} `);
+  //Getting the modal elements
+  const modalContainer = document.querySelector(".modal-container");
+  const editMessageForm = modalContainer.querySelector("#editMessageForm");
+  const closeButton = modalContainer.querySelector("#closeButton");
+  //Show the edit modal
+  showModal();
+  //Reset the edit modal form elements
+  editMessageForm.reset();
+  //Get the edit form modal HTML elements
+  const editName = editMessageForm.querySelector("#editName");
+  const editEmail = editMessageForm.querySelector("#editEmail");
+  const editMessage = editMessageForm.querySelector("#editMessage");
+  //Set the values of the edit form modal to the to-edit message values
+  editName.value = name;
+  editEmail.value = email;
+  editMessage.value = message;
+  //Add event listener to close button
+  closeButton.addEventListener("click", closeModal);
+  //Assign message id to editSubmit button
+  const editSubmitButton = editMessageForm.querySelector("#editSubmit");
+  editSubmitButton.setAttribute("data-messageId", messageId);
+}
+
+function handleMessageForm(e){
+  //Prevent default
+  e.preventDefault();
+  //Retrieve form's controls values
+  const name = e.target.name.value;
+  const email = e.target.email.value;
+  const message = e.target.message.value;
+  //Log the form's controls values
+  console.log(`Name: ${name} | Email: ${email} | message: ${message}`);
+  //Selecting messages section
+  const messageSection = document.querySelector("#messages");
+  //Selecting the message list inside the message section
+  const messageList = messageSection.querySelector("ul");
+  //Create a new list item
+  const newMessage = document.createElement("li"); 
+  //Set the innerHTML of the newMessage element
+  newMessage.innerHTML = `<input type="hidden" value="${messageId}"><a href="mailto:${email}">${name}</a>
+  <textarea>${message}</textarea>`;
+  //Create a new button "Remove"
+  const removeButton = document.createElement("button");
+  //Create a new button "Edit"
+  const editButton = document.createElement("button");
+  //Set attributes to the "remove" button
+  removeButton.innerText = "Remove";
+  removeButton.setAttribute("type", "button");
+  //Set attributes to the "edit" button
+  editButton.innerText = "Edit";
+  editButton.setAttribute("type", "button");
+  editButton.setAttribute("id", "editButton");
+  editButton.setAttribute("data-messageId", messageId);
+  editButton.setAttribute("data-name", name);
+  editButton.setAttribute("data-email", email);
+  editButton.setAttribute("data-message", message.trim());
+  //Append the buttons to the newMessage element
+  newMessage.append(removeButton, editButton);
+  //Add an event listener to the buttons
+  removeButton.addEventListener("click", removeMessage);
+  editButton.addEventListener("click", editMessage);
+  //Append the newMessage to the messageList
+  messageList.appendChild(newMessage);
+  //Reset the form after submit
+  e.target.reset();
+  //Increase the message counter by one
+  messageId++;
+  //Set visibility of messages section
+  setMessagesVisibility();
+}
+
+function handleEditMessageForm(e){
+  //Prevent default
+  e.preventDefault();
+  //Retrieve edit form's control values
+  const messageId = e.target.editSubmit.getAttribute("data-messageId");
+  const editName = e.target.editName.value;
+  const editEmail = e.target.editEmail.value;
+  const editMessage = e.target.editMessage.value.trim();  
+  console.log(`New message: ${messageId} + ${editName} + ${editEmail} + ${editMessage}`);
+  //Get the List Item element with messageId equals to edit form messageId
+  const messageSection = document.querySelector("#messages");
+  const messageList = messageSection.querySelector("ul");
+  const messages = messageList.children;
+  for(let listItem of messages){
+    console.log(listItem);
+    if(listItem.children[0].value === messageId){
+      listItem.children[1].setAttribute("href", `mailto:${editEmail}`);
+      listItem.children[1].innerText=editName;
+      listItem.children[2].innerText=editMessage;
+      listItem.children[4].setAttribute("data-name", editName);
+      listItem.children[4].setAttribute("data-email", editEmail);
+      listItem.children[4].setAttribute("data-message", editMessage);
+      e.target.reset();
+      closeModal();
+      break;
+    }
+  }
+
+}
+
+function checkNumberOfMessages(){
+  //Selecting the messages section
+  const messageSection = document.querySelector("#messages");
+  //Selecting the message list inside the message section
+  const messageList = messageSection.querySelector("ul");
+  //Check number of messages available:
+  const messageCount = messageList.childElementCount;
+  //Return number of messages
+  return messageCount;
+}
+
+function setMessagesVisibility(){
+  //Selecting the messages section
+  const messageSection = document.querySelector("#messages");
+  //Getting the number of messages available
+  const messageCount = checkNumberOfMessages();  
+  //Setting the visibility of the message section depending of the number of messages:
+  if (messageCount === 0){
+    messageSection.classList.add("hidden");
+  }
+  else{
+    messageSection.classList.remove("hidden");
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  //1. Showing skills section
+  showSkills();
+
+  //2. Showing copyright footer
+  showCopyright();
+
+  //3. Getting navigation link elements
+  //3.1 Querying every navigation link:
+  const navigationLinks = document.querySelectorAll("header nav div.center a");
+  //3.2 Setting up a click event listener for every navigation link:
+  navigationLinks.forEach((link) => {
+    link.addEventListener("click", setActive);
+  });
+
+  //4. Handle message form
+  const messageForm = document.querySelector("#messageForm");
+  messageForm.addEventListener("submit", handleMessageForm);
+
+  //5. Hide the "Messages Form" when the list of messages is empty.
+  //5.1 Set messages list visibility depending of number of messages:
+  setMessagesVisibility();
+
+  //6. Handle edit message form
+  const editMessageForm = document.querySelector("#editMessageForm");
+  editMessageForm.addEventListener("submit", handleEditMessageForm);
+})
+
