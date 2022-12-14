@@ -18,6 +18,8 @@ body {
     /*Display*/
     display: flex;
     flex-direction: column;
+    /*Background Color*/
+    background-color: whitesmoke;
 }
 
 /* CSS for the section elements of my HTML page */
@@ -30,6 +32,13 @@ section {
 main {
     flex-grow: 1;
 }
+
+h1,
+h2{
+    /* Color */
+    color: #333;
+}
+
 /* 
 ==================================
 =          CLASSES CSS           =
@@ -115,6 +124,16 @@ main {
     white-space: pre-line;
 }
 
+.important-fact,
+.experience-position{
+    color:#153084;
+    font-weight: bold;
+}
+
+.experience-workplace{
+    color: black;
+    font-weight: normal;
+}
 
 /* 
 ==================================
@@ -125,6 +144,9 @@ main {
     CSS to create a top fixed navigation bar for my website
 */
 #topNav {
+    /* Display */
+    display: flex;
+    justify-content: space-between;
     /* Hiding the scroll bar when overflow happens on my navbar*/
     overflow: hidden;
     /* Fixing the position of my navbar to make it visible no matter the position of my page */
@@ -135,6 +157,8 @@ main {
     top: 0;
     /* Using royalblue color as the background color of my navbar */
     background-color: royalblue;
+    /* Border */
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
 }
 
 /*
@@ -152,6 +176,9 @@ main {
     font-weight: bold;
     /* Padding each link */
     padding: 12px 20px;
+    /* Border */
+    border-top: 4px solid royalblue;
+
 }
 
 /*
@@ -163,6 +190,8 @@ main {
     /* Colors */
     background-color: white;
     color: darkgoldenrod;
+    /* Border */
+    border-top: 4px solid darkgoldenrod;
 }
 
 /*
@@ -172,6 +201,8 @@ main {
     /* Colors */
     background-color: white;
     color: royalblue;
+    /* Border */
+    border-top: 4px solid darkgoldenrod;
     /* Animation */
     transition: ease-in-out 0.2s;
 }
@@ -195,6 +226,7 @@ main {
 }
 
 #topNav .icon {
+    visibility: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -224,7 +256,9 @@ main {
     /* Making my footer navbar cover all the width of the page*/
     width: 100%;
     /* Using royalblue color as the background color of my navbar */
-    background-color: whitesmoke;
+    background-color: white;
+    /*Borders*/
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3);
 }
 
 /*
