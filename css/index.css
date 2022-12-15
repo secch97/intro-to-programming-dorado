@@ -1,5 +1,29 @@
 /* 
 ==================================
+=           FONT FACES           =
+==================================
+*/
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('Montserrat-Bold.woff2') format('woff2'),
+        url('Montserrat-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('Montserrat-Regular.woff2') format('woff2'),
+        url('Montserrat-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* 
+==================================
 =           ELEMENTS CSS         =
 ==================================
 */
@@ -9,12 +33,14 @@ html {
 }
 
 body {
+    /* Font */
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
     /* Top margin */
     margin: 5vh 0 0;
     /* Min height to display on my html body */
     min-height: 100vh;
     /* Fonts */
-    font-family: Arial, Helvetica, sans-serif;
     /*Display*/
     display: flex;
     flex-direction: column;
