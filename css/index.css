@@ -22,6 +22,14 @@
     font-display: swap;
 }
 
+@font-face {
+    font-family: 'Montserrat';
+    src: url('Montserrat-LightItalic.woff2') format('woff2'),
+        url('Montserrat-LightItalic.woff') format('woff');
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
 /* 
 ==================================
 =           ELEMENTS CSS         =
@@ -37,7 +45,7 @@ body {
     font-family: 'Montserrat', sans-serif;
     font-size: 15px;
     /* Top margin */
-    margin: 5vh 0 0;
+    margin: 7vh 0 0;
     /* Min height to display on my html body */
     min-height: 100vh;
     /* Fonts */
@@ -52,6 +60,10 @@ body {
 section {
     /* Justifying text on sections */
     text-align: justify;
+    /* Spacing */
+    padding: 0.4em;
+    margin: 0.4em;
+
 }
 
 /* CSS for the main element of my HTML page */
@@ -63,6 +75,9 @@ h1,
 h2{
     /* Color */
     color: #333;
+    /* Fonts */
+    font-size: 1.7em;
+    font-weight: bold+;
 }
 
 /* 
@@ -82,7 +97,7 @@ h2{
 
 .inner-container{
     width: 100%;
-    height: 5em;
+    height: auto;
 }
 
 /* CSS for container divs for navigation bars */
@@ -91,10 +106,25 @@ h2{
     display: flex;
     justify-content: space-between;
 }
+
+.heading-container{
+    /*Display*/
+    display: flex;
+    justify-content: center;
+    /*Text Decoration*/
+    text-decoration: underline 3px solid royalblue;
+}
+
 /* 
    CSS for the unordered list with the class "horizontal-list"
    in order to turn it into a horizontal list 
 */
+.horizontal-list{
+    /*Display*/
+    display:flex;
+    justify-content: center;
+}
+
 .horizontal-list li {
     overflow: hidden;
     /* Turning list into a horizontal list */
@@ -110,6 +140,8 @@ h2{
     /* Color */
     background-color: royalblue;
     color: white;    
+    /* Width */
+    min-width: 110px;
 
 }
 
@@ -146,20 +178,59 @@ h2{
     display:none;
 }
 
+.heading-welcome{
+    /*Display*/
+    display: flex;
+    justify-content: center;
+}
+
 .line-white-space{
     white-space: pre-line;
 }
 
-.important-fact,
-.experience-position{
+.important-fact{
     color:#153084;
     font-weight: bold;
 }
 
-.experience-workplace{
-    color: black;
-    font-weight: normal;
+.emphasis-fact{
+    /* Font */
+    font-weight: 300;
 }
+
+.experience-position{
+    /* Display */
+    display: flex;
+    justify-content: space-between;
+    /* Bullet points */
+    list-style-type: none;
+    /* Spacing */
+    padding: 15px;
+    /* Border */
+    border-top: 4px solid royalblue;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+    /* Colors */
+    background-color: royalblue;
+    color: white;
+    /* Font */
+    font-weight: bold;
+}
+
+.experience-position:hover{
+    /* Colors */
+    background-color: white;
+    color: royalblue;
+    /* Border */
+    border-top: 4px solid darkgoldenrod;
+    /* Animation */
+    transition: ease-in-out 0.2s;
+}
+
+.experience-position:not(:last-child){
+    margin-bottom: 20px;
+}
+
 
 /* 
 ==================================

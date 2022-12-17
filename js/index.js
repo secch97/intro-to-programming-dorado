@@ -25,7 +25,7 @@ function showSkills() {
     "fa-brands fa-html5",
     "fa-brands fa-css3",
     "fa-brands fa-js",
-    "fa-brands fa-github",
+    "fa-brands fa-github"
   ];
   //2. Select skills section by id
   const skillsSection = document.querySelector("section#skills");

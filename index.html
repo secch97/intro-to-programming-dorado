@@ -34,8 +34,9 @@
     <link href="./assets/fontawesome/css/solid.css" rel="stylesheet">
     <link href="./assets/fontawesome/css/brands.css" rel="stylesheet">
     <!--2 GOOGLE FONT -->
-    <link rel="preload" href="Montserrat-Regular.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="Montserrat-Bold.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="./fonts/Montserrat-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="./fonts/Montserrat-Bold.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="./fonts/Montserrat-LightItalic.woff2" as="font" type="font/woff2" crossorigin>
 </head>
 
 <body>
@@ -77,8 +78,8 @@
             <!-- =     SECTION: ABOUT       =-->
             <!-- ============================-->  
             <section id="about">
-                <h1>Hello! &#128075; I'm Saul</h1>
-                <h2>About me:</h2>
+                <h1 class="heading-welcome">Hello! &#128075; I'm Saul</h1>
+                <h2 class="heading-container">About Me:</h2>
                 <p>
                     I'm a person really passionate about computers
                     since an early age and an in-training Web Developer. I graduated from <span class="important-fact">Universidad Don Bosco</span> in El
@@ -100,31 +101,39 @@
             <!-- =    SECTION: TECH EXP     =-->
             <!-- ============================-->  
             <section id="techExperience">
-                <h2>Tech experience:</h2>
+                <h2 class="heading-container">Tech Experience:</h2>
                 <ul>
                     <li class="experience-position">
-                        Database Modeling and Design Tutor:
-                        <ul>
-                            <li class="experience-workplace">Universidad Don Bosco | El Salvador | 2021</li>
-                        </ul>
+                        <span>
+                            Database Modeling and Design Tutor — Universidad Don Bosco | El Salvador 
+                        </span>
+                        <span>
+                            <em class="emphasis-fact">Jul 2020 - Dec 2021</em>
+                        </span>
                     </li>
                     <li class="experience-position">
-                        IT Associate:
-                        <ul>
-                            <li class="experience-workplace">FUNTER Teleton Merliot | El Salvador | 2020</li>
-                        </ul>
+                        <span>
+                            IT Associate — FUNTER | El Salvador
+                        </span>
+                        <span>
+                            <em class="emphasis-fact">Feb 2020 - Jun 2020</em>
+                        </span>
                     </li>
                     <li class="experience-position">
-                        IT Associate:
-                        <ul>
-                            <li class="experience-workplace">ISSS General Hospital | El Salvador | 2019-2020</li>
-                        </ul>
+                        <span>
+                            IT Associate — ISSS General Hospital | El Salvador
+                        </span>
+                        <span>
+                            <em class="emphasis-fact">Jun 2019 - Jan 2020</em>
+                        </span>
                     </li>
                     <li class="experience-position">
-                        Structured Progamming Tutor:
-                        <ul>
-                            <li class="experience-workplace">Universidad Don Bosco | El Salvador | 2017-2019</li>
-                        </ul>
+                        <span>
+                            Structured Programming Tutor — Universidad Don Bosco | El Salvador
+                        </span>
+                        <span>
+                            <em class="emphasis-fact">Jan 2017 - May 2019</em>
+                        </span>
                     </li>
                 </ul>
             </section>
@@ -132,7 +141,7 @@
             <!-- =     SECTION: SKILLS      =-->
             <!-- ============================-->  
             <section id="skills">
-                <h2>Skills:</h2>
+                <h2 class="heading-container">Skills:</h2>
                 <div class="inner-container">
                     <ul class="horizontal-list">
                     </ul>
@@ -142,37 +151,37 @@
             <!-- =     SECTION: CONNECT     =-->
             <!-- ============================-->            
             <section id="connect">
-                <h2>Connect:</h2>
+                <h2 class="heading-container">Connect:</h2>
                 <div class="inner-container">
-                    <ul class="horizontal-list">
-                        <address>
-                            <li>
-                                <a href="mailto:secch97@gmail.com">
-                                    <i class="fa-solid fa-envelope"></i>
-                                    Mail
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://github.com/secch97">
-                                    <i class="fa-brands fa-github"></i>
-                                    GitHub
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://twitter.com/MrRobot_97">
-                                    <i class="fa-brands fa-twitter"></i>
-                                    Twitter
-                                </a>
-                            </li>
-                        </address>
-                    </ul>
+                    <address>
+                        <ul class="horizontal-list">
+                                <li>
+                                    <a href="mailto:secch97@gmail.com">
+                                        <i class="fa-solid fa-envelope"></i>
+                                        Mail
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://github.com/secch97">
+                                        <i class="fa-brands fa-github"></i>
+                                        GitHub
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://twitter.com/MrRobot_97">
+                                        <i class="fa-brands fa-twitter"></i>
+                                        Twitter
+                                    </a>
+                                </li>
+                        </ul>
+                    </address>
                 </div>
             </section>
             <!-- ============================-->
             <!-- =    SECTION: LEAVE MSG    =-->
             <!-- ============================-->
             <section id="leaveMessage">
-                <h2>Leave a message:</h2>
+                <h2 class="heading-container">Leave a Message:</h2>
                 <form id="messageForm" name="messageForm">
                     <div class="form-control">
                         <label for="name">Name: </label>
@@ -197,7 +206,7 @@
             <!-- =    SECTION: MESSAGES     =-->
             <!-- ============================--> 
             <section id="messages">
-                <h2>Messages: </h2>
+                <h2 class="heading-container">Messages: </h2>
                 <ul id="listOfMessages">
 
                 </ul>
