@@ -133,8 +133,9 @@ h2{
     font-weight: bold;
     font-style: normal;
     /* Borders */
-    border: 3px solid royalblue;
+    border-top: 3px solid royalblue;
     border-radius: 20px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
     /* Margins between list items*/
     margin-right: 10px;
     /* Color */
@@ -164,9 +165,11 @@ h2{
 
 .horizontal-list li:hover,
 .horizontal-list li:hover > *{
+    /*Borders*/
+    border-color: goldenrod;
+
     /*Colors*/
     background-color: white;
-    border-color: royalblue;
     color: royalblue;
     /*Transform*/
     transition: all 0.2s ease-in-out;
