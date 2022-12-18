@@ -388,6 +388,88 @@ input:-webkit-autofill:active  {
     transform: scale(1.05);
 }
 
+.comment{
+    /* Spacing */
+    padding: 15px;
+    /* Margin */
+    margin: 20px;
+    /* Border */
+    border-top: 4px solid royalblue;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+    /* Colors */
+    background-color: royalblue;
+    color: white;
+    /* Font */
+    font-weight: bold;
+}
+
+.comment-flex{
+    /*Display*/
+    display: flex;
+    justify-content: space-between;
+}
+
+.comment-anchor{
+    /*Text decoration*/
+    text-decoration: none;
+    /* Color */
+    color: white;
+}
+
+.comment-span{
+    /*Display*/
+    display: block;
+    /*Font*/
+    font-weight: normal;
+}
+
+.comment-span.date{
+    /*Font*/
+    font-weight: 300;
+    font-style: italic;
+}
+
+.comment-button-container{
+    /*Display*/
+    display: flex;
+    justify-content: right;
+}
+
+.comment-button{
+    /* Appearance */
+    appearance: none;
+    /* Width */
+    width: 110px;
+    /*Padding*/
+    padding: 5px;
+    /*Margin*/
+    margin: 5px 5px 5px 0px;
+    /* Font */
+    font-family: inherit;
+    font-weight: bold;
+    /* Borders */
+    border:3px solid white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+    /* Colors */
+    background-color: white;
+    color: royalblue;
+}
+
+.comment-button:hover{
+    /* Borders */
+    border-top:3px solid goldenrod;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+    /* Colors */
+    background-color: white;
+    color: royalblue;  
+    /* Transform */
+    transition: all 0.2s ease-in-out;
+    transform: scale(1.05);
+}
+
 
 
 /* 

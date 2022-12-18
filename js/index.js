@@ -61,7 +61,7 @@ function setActive(e) {
 
 function removeMessage(e){
     //Find the button's parent element using DOM:
-    const entry = e.target.parentElement;
+    const entry = (e.target.parentElement).parentElement;
     //Remove the entry element from the DOM:
     entry.remove();
     //Set the messages section visibility:
@@ -112,6 +112,20 @@ function editMessage(e){
   editSubmitButton.setAttribute("data-messageId", messageId);
 }
 
+function getMessageDate(){
+  //Get message date:
+  const messageDate = new Date();
+  console.log(messageDate);
+  const messageDateYear = messageDate.getFullYear();
+  const messageDateMonth = messageDate.getMonth() + 1;
+  const messageDateDay = messageDate.getDate();
+  const messageDateHour = messageDate.getHours();
+  const messageDateMinute = messageDate.getMinutes();
+  const messageDateSecond = messageDate.getSeconds();
+  const messageDateString = `${messageDateYear}/${messageDateMonth}/${messageDateDay} - ${messageDateHour}:${messageDateMinute}:${messageDateSecond}`
+  return messageDateString;
+}
+
 function handleMessageForm(e){
   //Prevent default
   e.preventDefault();
@@ -119,20 +133,29 @@ function handleMessageForm(e){
   const name = e.target.name.value;
   const email = e.target.email.value;
   const message = e.target.message.value.trim();
-  //Log the form's controls values
-  console.log(`Name: ${name} | Email: ${email} | message: ${message}`);
+  //Get message date
+  const messageDateString = getMessageDate();
   //Selecting messages section
   const messageSection = document.querySelector("#messages");
   //Selecting the message list inside the message section
   const messageList = messageSection.querySelector("ul");
   //Create a new list item
   const newMessage = document.createElement("li"); 
+  //Create a message div
+  const messageDiv = document.createElement("div");
+  messageDiv.classList.add("comment");
   //Set the innerHTML of the newMessage element
-  newMessage.innerHTML = `<input type="hidden" value="${messageId}"><a href="mailto:${email}">${name}</a> <span class="line-white-space">${message}</span> `;
+  messageDiv.innerHTML = `<input type="hidden" value="${messageId}"><div class="comment-flex"><a href="mailto:${email}" class="comment-anchor">${name}</a><span class="comment-span date"> ${messageDateString}</span></div><span class="line-white-space comment-span">${message}</span>`;
+  //Create a message button div
+  const messageButtonDiv = document.createElement("div");
+  messageButtonDiv.classList.add("comment-button-container");
   //Create a new button "Remove"
   const removeButton = document.createElement("button");
   //Create a new button "Edit"
   const editButton = document.createElement("button");
+  //Add class to the buttons
+  removeButton.classList.add("comment-button");
+  editButton.classList.add("comment-button");
   //Set attributes to the "remove" button
   removeButton.innerText = "Remove";
   removeButton.setAttribute("type", "button");
@@ -144,11 +167,15 @@ function handleMessageForm(e){
   editButton.setAttribute("data-name", name);
   editButton.setAttribute("data-email", email);
   editButton.setAttribute("data-message", message.trim());
-  //Append the buttons to the newMessage element
-  newMessage.append(removeButton, editButton);
+  //Append the buttons to the messageButtonDiv
+  messageButtonDiv.append(editButton, removeButton);
+  //Append the messageButtonDiv to the newMessage element
+  messageDiv.appendChild(messageButtonDiv);
   //Add an event listener to the buttons
   removeButton.addEventListener("click", removeMessage);
   editButton.addEventListener("click", editMessage);
+  //Append the messageDiv to newMessage list item
+  newMessage.appendChild(messageDiv);
   //Append the newMessage to the messageList
   messageList.appendChild(newMessage);
   //Reset the form after submit
@@ -171,16 +198,17 @@ function handleEditMessageForm(e){
   //Get the List Item element with messageId equals to edit form messageId
   const messageSection = document.querySelector("#messages");
   const messageList = messageSection.querySelector("ul");
-  const messages = messageList.children;
+  const messages = (messageList.children);
   for(let listItem of messages){
     console.log(listItem);
-    if(listItem.children[0].value === messageId){
-      listItem.children[1].setAttribute("href", `mailto:${editEmail}`);
-      listItem.children[1].innerText=editName;
-      listItem.children[2].innerText=editMessage;
-      listItem.children[4].setAttribute("data-name", editName);
-      listItem.children[4].setAttribute("data-email", editEmail);
-      listItem.children[4].setAttribute("data-message", editMessage);
+    if(listItem.firstElementChild.children[0].value === messageId){
+      listItem.firstElementChild.children[1].children[0].setAttribute("href", `mailto:${editEmail}`);
+      listItem.firstElementChild.children[1].children[0].innerText=editName;
+      listItem.firstElementChild.children[1].children[1].innerText=getMessageDate();
+      listItem.firstElementChild.children[2].innerText=editMessage;
+      listItem.firstElementChild.children[3].children[0].setAttribute("data-name", editName);
+      listItem.firstElementChild.children[3].children[0].setAttribute("data-email", editEmail);
+      listItem.firstElementChild.children[3].children[0].setAttribute("data-message", editMessage);
       e.target.reset();
       closeModal();
       break;
