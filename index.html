@@ -181,26 +181,31 @@
             <!-- =    SECTION: LEAVE MSG    =-->
             <!-- ============================-->
             <section id="leaveMessage">
-                <h2 class="heading-container">Leave a Message:</h2>
-                <form id="messageForm" name="messageForm">
-                    <div class="form-control">
-                        <label for="name">Name: </label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-control">
-                        <label for="email">Email: </label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-control">
-                        <label for="message">Message: </label>
-                        <textarea id="message" name="message" required>
-
-                        </textarea>
-                    </div>
-                    <div class="form-control">
-                        <button type="submit" id="submit">Submit</button>
-                    </div>
+                <h2 class="heading-container">Leave a Message:</h2>               
+                <div class="form">
+                    <form id="messageForm" name="messageForm">
+                        <div class="flex-controls">
+                            <div class="form-control flex">
+                                <label for="name" class="form-label">Name: </label>
+                                <input type="text" class="form-input" id="name" name="name" required>
+                            </div>
+                            <div class="form-control flex">
+                                <label for="email" class="form-label">Email: </label>
+                                <input type="email" class="form-input" id="email" name="email" required>
+                            </div>
+                        </div>
+                        <div class="block-controls">
+                            <div class="form-control block">
+                                <label for="message" class="form-label">Message: </label>
+                                <textarea id="message" class="form-textarea" name="message" required>
+                                </textarea>
+                            </div>
+                            <div class="form-control block">
+                                <button type="submit" class="form-button" id="submit">Submit</button>
+                            </div>
+                        </div>
                 </form>
+            </div>
             </section> 
             <!-- ============================-->
             <!-- =    SECTION: MESSAGES     =-->

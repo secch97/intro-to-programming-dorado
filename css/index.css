@@ -3,6 +3,11 @@
 =           FONT FACES           =
 ==================================
 */
+*,
+*::before,
+*::after{
+    box-sizing: border-box;
+}
 
 @font-face {
     font-family: 'Montserrat';
@@ -157,8 +162,8 @@ h2{
     /* Padding */
     padding: 5px;
     /* Width */
-    width: 100px;
-    min-width: 100px;
+    width: 110px;
+    min-width: 110px;
     /*Grow*/    
     
 }
@@ -233,6 +238,156 @@ h2{
 .experience-position:not(:last-child){
     margin-bottom: 20px;
 }
+
+.form{
+    /* Display */
+    display: block;
+    /* Centering form */
+    text-align: center;
+}
+
+form {    
+    width: 70%;
+    margin: 0 auto;
+    /* Display */
+    display: inline-block;
+    /* Margin */
+    margin: 0 auto;
+    /*Text align*/
+    text-align: left;
+    /* Borders */
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+    /* Colors */
+    background-color: royalblue;
+    color: white;
+
+}
+
+.flex-controls{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.form-label{
+    display: block;
+}
+
+.form-control.flex{
+    /* Padding */
+    padding: 5px;
+    /* Margin */
+    margin: 5px;
+    /* Width*/
+    width: 100%;
+}
+
+/* Change the white to any color ;) */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active  {
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+    -webkit-text-fill-color: royalblue !important;
+
+}
+
+.form-input{
+    /* Appearance */
+    appearance: none;
+    /* Dimensions */
+    width: 100%;
+    /* Font */
+    font-family: inherit;
+    font-weight:normal;
+    /* Borders */
+    border:3px solid white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+    /*Text decoration*/
+    text-decoration: none;
+}
+
+.form-input:focus{
+    /* Remove default black border when focused*/
+    outline: 0px;
+    /* Borders */
+    border: 3px solid goldenrod;
+}
+
+.block-controls{
+    /*Display*/
+    display: block;
+}
+
+.form-control.block{
+    /* Padding */
+    padding: 5px;
+    /* Margin */
+    margin: 5px;
+}
+
+.form-textarea{
+    /* Appearance */
+    appearance: none;
+    /* Dimensions */
+    width: 100%;
+    height: 100px;
+    /* Resize property*/
+    resize: none;
+    /* Font */
+    font-family: inherit;
+    font-weight:normal;
+    /* Color */
+    color: royalblue;
+    /* Borders */
+    border:3px solid white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+    /*Text decoration*/
+    text-decoration: none;
+}
+
+.form-textarea:focus{
+    outline: 0px;
+    /* Borders */
+    border: 3px solid goldenrod;
+}
+
+.form-button{
+    /*Display*/
+    display: block;
+    /* Appearance */
+    appearance: none;
+    /* Width */
+    width: 110px;
+    /* Margin */
+    margin: 0 auto;
+    /* Font */
+    font-family: inherit;
+    font-weight: bold;
+    /* Borders */
+    border:3px solid white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+    /* Colors */
+    background-color: white;
+    color: royalblue;
+}
+
+.form-button:hover{
+    /* Borders */
+    border-top:3px solid goldenrod;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+    /* Colors */
+    background-color: white;
+    color: royalblue;  
+    /* Transform */
+    transition: all 0.2s ease-in-out;
+    transform: scale(1.05);
+}
+
 
 
 /* 
