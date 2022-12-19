@@ -11,8 +11,8 @@
 
 @font-face {
     font-family: 'Montserrat';
-    src: url('Montserrat-Bold.woff2') format('woff2'),
-        url('Montserrat-Bold.woff') format('woff');
+    src: url('../fonts/Montserrat-Bold.woff2') format('woff2'),
+        url('../fonts/Montserrat-Bold.woff') format('woff');
     font-weight: bold;
     font-style: normal;
     font-display: swap;
@@ -20,8 +20,8 @@
 
 @font-face {
     font-family: 'Montserrat';
-    src: url('Montserrat-Regular.woff2') format('woff2'),
-        url('Montserrat-Regular.woff') format('woff');
+    src: url('../fonts/Montserrat-Regular.woff2') format('woff2'),
+        url('../fonts/Montserrat-Regular.woff') format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -29,8 +29,8 @@
 
 @font-face {
     font-family: 'Montserrat';
-    src: url('Montserrat-LightItalic.woff2') format('woff2'),
-        url('Montserrat-LightItalic.woff') format('woff');
+    src: url('../fonts/Montserrat-LightItalic.woff2') format('woff2'),
+        url('../fonts/Montserrat-LightItalic.woff') format('woff');
     font-weight: 300;
     font-style: italic;
     font-display: swap;
@@ -239,7 +239,7 @@ h2{
     margin-bottom: 20px;
 }
 
-.form{
+.form{    
     /* Display */
     display: block;
     /* Centering form */
@@ -248,9 +248,8 @@ h2{
 
 form {    
     width: 70%;
-    margin: 0 auto;
     /* Display */
-    display: inline-block;
+    display: block;
     /* Margin */
     margin: 0 auto;
     /*Text align*/
@@ -261,7 +260,12 @@ form {
     /* Colors */
     background-color: royalblue;
     color: white;
+}
 
+form#editMessageForm{    
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: auto;
 }
 
 .flex-controls{
@@ -375,9 +379,53 @@ input:-webkit-autofill:active  {
     color: royalblue;
 }
 
+.form-button#editSubmit{
+    width: 150px;
+}
+
 .form-button:hover{
     /* Borders */
     border-top:3px solid goldenrod;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+    /* Colors */
+    background-color: white;
+    color: royalblue;  
+    /* Transform */
+    transition: all 0.2s ease-in-out;
+    transform: scale(1.05);
+}
+
+.close-button{
+    /*Display*/
+    display: block;
+    /* Appearance */
+    appearance: none;
+    /* Width */
+    width: 110px;
+    /* Margin */
+    margin-top: 25px;
+    margin-bottom: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    /* Font */
+    font-family: inherit;
+    font-weight: bold;
+    /* Borders */
+    border:3px solid royalblue;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+    /* Colors */
+    background-color: royalblue;
+    color: white;
+}
+
+.close-button:hover{
+    /* Borders */
+    border-top:3px solid goldenrod;
+    border-bottom: 3px solid white;
+    border-left: 3px solid white;
+    border-right: 3px solid white;
     border-radius: 10px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
     /* Colors */
@@ -630,8 +678,11 @@ input:-webkit-autofill:active  {
     justify-content: center;
     /*Position*/
     position: fixed;
-    top: 0;
-    left: 0;
+    top: 0px;
+    left: 0px;
+    /*Spacing*/
+    padding: 0px;
+    margin: 0px;
     /* Dimensions */
     width: 100%;
     height: 100%;
@@ -643,9 +694,20 @@ input:-webkit-autofill:active  {
 }
 
 .modal{
+    /*Overflox*/
+    overflow:auto;
+    /*Display*/
+    display: block;
     /* Dimensions */
-    width: 400px;
-    max-width: 50%;
+    width: 50%;
+    height: 70%;
+    max-height: 435px;
+    max-width: 600px;
+    min-width: 300px;
+    /*Position*/
+    bottom: 0;
+    left: 0;
+    margin: auto;
     /* Border */
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
@@ -653,18 +715,12 @@ input:-webkit-autofill:active  {
     padding: 30px 50px;
     /* Colors */
     background-color: whitesmoke;
-    /* Text */
-    text-align:center;
 }
+
 
 .modal h1{
     /* Margins */
     margin: 0;
-}
-
-.modal p{
-    font-size: 14px;
-    opacity: 0.7;
 }
 
 .modal-container.show {
