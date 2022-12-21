@@ -1,0 +1,730 @@
+/* 
+==================================
+=           FONT FACES           =
+==================================
+*/
+*,
+*::before,
+*::after{
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-Bold.woff2') format('woff2'),
+        url('../fonts/Montserrat-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-Regular.woff2') format('woff2'),
+        url('../fonts/Montserrat-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-LightItalic.woff2') format('woff2'),
+        url('../fonts/Montserrat-LightItalic.woff') format('woff');
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
+/* 
+==================================
+=           ELEMENTS CSS         =
+==================================
+*/
+
+html {
+    scroll-padding-top: 40px;
+}
+
+body {
+    /* Font */
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    /* Top margin */
+    margin: 7vh 0 0;
+    /* Min height to display on my html body */
+    min-height: 100vh;
+    /* Fonts */
+    /*Display*/
+    display: flex;
+    flex-direction: column;
+    /*Background Color*/
+    background-color: whitesmoke;
+}
+
+/* CSS for the section elements of my HTML page */
+section {
+    /* Justifying text on sections */
+    text-align: justify;
+    /* Spacing */
+    padding: 0.4em;
+    margin: 0.4em;
+
+}
+
+/* CSS for the main element of my HTML page */
+main {
+    flex-grow: 1;
+}
+
+h1,
+h2{
+    /* Color */
+    color: #333;
+    /* Fonts */
+    font-size: 1.7em;
+    font-weight: bold;
+}
+
+/* 
+==================================
+=          CLASSES CSS           =
+==================================
+*/
+/* CSS for container divs for page content*/
+.container {
+    /* Setting width of .container elements */
+    width: 90vw;
+    /* Setting the max width of the main content as 1024px*/
+    max-width: 1024px;
+    /* Centering the main content relative to the viewport*/
+    margin: 0 auto;
+}
+
+.inner-container{
+    width: 100%;
+    height: auto;
+}
+
+/* CSS for container divs for navigation bars */
+.nav-container {
+    /* Display */
+    display: flex;
+    justify-content: space-between;
+}
+
+.heading-container{
+    /*Display*/
+    display: flex;
+    justify-content: center;
+    /*Text Decoration*/
+    text-decoration: underline 3px solid royalblue;
+}
+
+/* 
+   CSS for the unordered list with the class "horizontal-list"
+   in order to turn it into a horizontal list 
+*/
+.horizontal-list{
+    /*Display*/
+    display:flex;
+    justify-content: center;
+}
+
+.horizontal-list li {
+    overflow: hidden;
+    /* Turning list into a horizontal list */
+    display: inline-block;
+    /* Fonts */
+    font-weight: bold;
+    font-style: normal;
+    /* Borders */
+    border-top: 3px solid royalblue;
+    border-radius: 20px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+    /* Margins between list items*/
+    margin-right: 10px;
+    /* Color */
+    background-color: royalblue;
+    color: white;    
+    /* Width */
+    min-width: 110px;
+
+}
+
+.horizontal-list li a {
+    /* Displaying a tags as inline-blocks */
+    display: inline-block;
+    /* Colors */
+    color: white;
+    /* Text */
+    text-decoration: none;
+    text-align: center;
+    /* Padding */
+    padding: 5px;
+    /* Width */
+    width: 110px;
+    min-width: 110px;
+    /*Grow*/    
+    
+}
+
+.horizontal-list li:hover,
+.horizontal-list li:hover > *{
+    /*Borders*/
+    border-color: goldenrod;
+
+    /*Colors*/
+    background-color: white;
+    color: royalblue;
+    /*Transform*/
+    transition: all 0.2s ease-in-out;
+    transform: scale(1.05);
+}
+
+.hidden {
+    /* Display */
+    display:none;
+}
+
+.heading-welcome{
+    /*Display*/
+    display: flex;
+    justify-content: center;
+}
+
+.line-white-space{
+    white-space: pre-line;
+}
+
+.important-fact{
+    color:#153084;
+    font-weight: bold;
+}
+
+.emphasis-fact{
+    /* Font */
+    font-weight: 300;
+}
+
+.experience-position{
+    /* Display */
+    display: flex;
+    justify-content: space-between;
+    /* Bullet points */
+    list-style-type: none;
+    /* Spacing */
+    padding: 15px;
+    /* Border */
+    border-top: 4px solid royalblue;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+    /* Colors */
+    background-color: royalblue;
+    color: white;
+    /* Font */
+    font-weight: bold;
+}
+
+.experience-position:hover{
+    /* Colors */
+    background-color: white;
+    color: royalblue;
+    /* Border */
+    border-top: 4px solid darkgoldenrod;
+    /* Animation */
+    transition: ease-in-out 0.2s;
+}
+
+.experience-position:not(:last-child){
+    margin-bottom: 20px;
+}
+
+.form{    
+    /* Display */
+    display: block;
+    /* Centering form */
+    text-align: center;
+}
+
+form {    
+    width: 70%;
+    /* Display */
+    display: block;
+    /* Margin */
+    margin: 0 auto;
+    /*Text align*/
+    text-align: left;
+    /* Borders */
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+    /* Colors */
+    background-color: royalblue;
+    color: white;
+}
+
+form#editMessageForm{    
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: auto;
+}
+
+.flex-controls{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.form-label{
+    display: block;
+}
+
+.form-control.flex{
+    /* Padding */
+    padding: 5px;
+    /* Margin */
+    margin: 5px;
+    /* Width*/
+    width: 100%;
+}
+
+/* Change the white to any color ;) */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active  {
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+    -webkit-text-fill-color: royalblue !important;
+
+}
+
+.form-input{
+    /* Appearance */
+    appearance: none;
+    /* Dimensions */
+    width: 100%;
+    /* Font */
+    font-family: inherit;
+    font-weight:normal;
+    /* Borders */
+    border:3px solid white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+    /*Text decoration*/
+    text-decoration: none;
+}
+
+.form-input:focus{
+    /* Remove default black border when focused*/
+    outline: 0px;
+    /* Borders */
+    border: 3px solid goldenrod;
+}
+
+.block-controls{
+    /*Display*/
+    display: block;
+}
+
+.form-control.block{
+    /* Padding */
+    padding: 5px;
+    /* Margin */
+    margin: 5px;
+}
+
+.form-textarea{
+    /* Appearance */
+    appearance: none;
+    /* Dimensions */
+    width: 100%;
+    height: 100px;
+    /* Resize property*/
+    resize: none;
+    /* Font */
+    font-family: inherit;
+    font-weight:normal;
+    /* Color */
+    color: royalblue;
+    /* Borders */
+    border:3px solid white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+    /*Text decoration*/
+    text-decoration: none;
+}
+
+.form-textarea:focus{
+    outline: 0px;
+    /* Borders */
+    border: 3px solid goldenrod;
+}
+
+.form-button{
+    /*Display*/
+    display: block;
+    /* Appearance */
+    appearance: none;
+    /* Width */
+    width: 110px;
+    /* Margin */
+    margin: 0 auto;
+    /* Font */
+    font-family: inherit;
+    font-weight: bold;
+    /* Borders */
+    border:3px solid white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+    /* Colors */
+    background-color: white;
+    color: royalblue;
+}
+
+.form-button#editSubmit{
+    width: 150px;
+}
+
+.form-button:hover{
+    /* Borders */
+    border-top:3px solid goldenrod;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+    /* Colors */
+    background-color: white;
+    color: royalblue;  
+    /* Transform */
+    transition: all 0.2s ease-in-out;
+    transform: scale(1.05);
+}
+
+.close-button{
+    /*Display*/
+    display: block;
+    /* Appearance */
+    appearance: none;
+    /* Width */
+    width: 110px;
+    /* Margin */
+    margin-top: 25px;
+    margin-bottom: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    /* Font */
+    font-family: inherit;
+    font-weight: bold;
+    /* Borders */
+    border:3px solid royalblue;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+    /* Colors */
+    background-color: royalblue;
+    color: white;
+}
+
+.close-button:hover{
+    /* Borders */
+    border-top:3px solid goldenrod;
+    border-bottom: 3px solid white;
+    border-left: 3px solid white;
+    border-right: 3px solid white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+    /* Colors */
+    background-color: white;
+    color: royalblue;  
+    /* Transform */
+    transition: all 0.2s ease-in-out;
+    transform: scale(1.05);
+}
+
+.comment{
+    /* Spacing */
+    padding: 15px;
+    /* Margin */
+    margin: 20px;
+    /* Border */
+    border-top: 4px solid royalblue;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+    /* Colors */
+    background-color: royalblue;
+    color: white;
+    /* Font */
+    font-weight: bold;
+}
+
+.comment-flex{
+    /*Display*/
+    display: flex;
+    justify-content: space-between;
+}
+
+.comment-anchor{
+    /*Text decoration*/
+    text-decoration: none;
+    /* Color */
+    color: white;
+}
+
+.comment-span{
+    /*Display*/
+    display: block;
+    /*Font*/
+    font-weight: normal;
+}
+
+.comment-span.date{
+    /*Font*/
+    font-weight: 300;
+    font-style: italic;
+}
+
+.comment-button-container{
+    /*Display*/
+    display: flex;
+    justify-content: right;
+}
+
+.comment-button{
+    /* Appearance */
+    appearance: none;
+    /* Width */
+    width: 110px;
+    /*Padding*/
+    padding: 5px;
+    /*Margin*/
+    margin: 5px 5px 5px 0px;
+    /* Font */
+    font-family: inherit;
+    font-weight: bold;
+    /* Borders */
+    border:3px solid white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+    /* Colors */
+    background-color: white;
+    color: royalblue;
+}
+
+.comment-button:hover{
+    /* Borders */
+    border-top:3px solid goldenrod;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+    /* Colors */
+    background-color: white;
+    color: royalblue;  
+    /* Transform */
+    transition: all 0.2s ease-in-out;
+    transform: scale(1.05);
+}
+
+
+
+/* 
+==================================
+=           TOPNAV CSS           =
+==================================
+*/
+/*
+    CSS to create a top fixed navigation bar for my website
+*/
+#topNav {
+    /* Display */
+    display: flex;
+    justify-content: space-between;
+    /* Hiding the scroll bar when overflow happens on my navbar*/
+    overflow: hidden;
+    /* Fixing the position of my navbar to make it visible no matter the position of my page */
+    position: fixed;
+    /* Making my navbar cover all the width of the page*/
+    width: 100%;
+    /* Putting no space between the beginning of the page and the navbar */
+    top: 0;
+    /* Using royalblue color as the background color of my navbar */
+    background-color: royalblue;
+    /* Border */
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+}
+
+/*
+    CSS to style each link on my navbar
+*/
+#topNav a {
+    /* Horizontally display the links */
+    display: inline-block;
+    /* Set a white color for the fonts */
+    color: white;
+    /* Center the text on each link, set a 17px size and set decoration to none */
+    text-align: center;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: bold;
+    /* Padding each link */
+    padding: 12px 20px;
+    /* Border */
+    border-top: 4px solid royalblue;
+
+}
+
+/*
+    CSS to highlight active links on my navbar
+*/
+#topNav a.active {
+    /* Fonts */
+    font-weight: bold;
+    /* Colors */
+    background-color: white;
+    color: darkgoldenrod;
+    /* Border */
+    border-top: 4px solid darkgoldenrod;
+}
+
+/*
+    CSS to style each time the mouse hovers over a link
+*/
+#topNav a:hover {
+    /* Colors */
+    background-color: white;
+    color: royalblue;
+    /* Border */
+    border-top: 4px solid darkgoldenrod;
+    /* Animation */
+    transition: ease-in-out 0.2s;
+}
+
+/*
+    CSS to justify content between elements inside the flex display: 
+    - .logo: to the left.
+    - .center: to the center
+    - .icon: to the right
+*/
+#topNav .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#topNav .center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#topNav .icon {
+    visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* 
+==================================
+=           MESSAGES CSS         =
+==================================
+*/
+#messages #listOfMessages {
+    list-style-type: none;
+}
+/* 
+==================================
+=           FOOTER CSS           =
+==================================
+*/
+/*
+    CSS to create a footer navigation bar for my website
+*/
+#footerNav {
+    /* Display */
+    display: flex;
+    justify-content: center;
+    /* Hiding the scroll bar when overflow happens on my footer navbar*/
+    overflow: hidden;
+    /* Making my footer navbar cover all the width of the page*/
+    width: 100%;
+    /* Using royalblue color as the background color of my navbar */
+    background-color: white;
+    /*Borders*/
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3);
+}
+
+/*
+    CSS to generally style a footer element
+*/
+#footerNav .footer-element {
+    /* Text */
+    text-decoration: none;
+    /* Fonts */
+    font-size: 17px;
+    font-weight: bold;
+    /* Colors */
+    color: royalblue;
+    /* Padding element */
+    padding: 0 20px;
+}
+
+
+
+/* 
+==================================
+=           MODAL CSS            =
+==================================
+*/
+.modal-container{
+    /* Visibility */
+    visibility: hidden;   
+    opacity: 0; 
+    /*Displays*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*Position*/
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    /*Spacing*/
+    padding: 0px;
+    margin: 0px;
+    /* Dimensions */
+    width: 100%;
+    height: 100%;
+    /* Colors */
+    background-color: rgba(0,0,0,0.3);
+    /* Transition */    
+    transition: visibility 0.3s ease, opacity 0.3s ease;
+
+}
+
+.modal{
+    /*Overflox*/
+    overflow:auto;
+    /*Display*/
+    display: block;
+    /* Dimensions */
+    width: 50%;
+    height: 70%;
+    max-height: 435px;
+    max-width: 600px;
+    min-width: 300px;
+    /*Position*/
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    /* Border */
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    /* Padding */
+    padding: 30px 50px;
+    /* Colors */
+    background-color: whitesmoke;
+}
+
+
+.modal h1{
+    /* Margins */
+    margin: 0;
+}
+
+.modal-container.show {
+    /* Display */
+    visibility: visible;
+    opacity: 1;
+}
