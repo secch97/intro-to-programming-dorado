@@ -145,7 +145,7 @@ function handleMessageForm(e){
   const messageDiv = document.createElement("div");
   messageDiv.classList.add("comment");
   //Set the innerHTML of the newMessage element
-  messageDiv.innerHTML = `<input type="hidden" value="${messageId}"><div class="comment-flex"><a href="mailto:${email}" class="comment-anchor">${name}</a><span class="comment-span date"> ${messageDateString}</span></div><span class="line-white-space comment-span">${message}</span>`;
+  messageDiv.innerHTML = `<input type="hidden" value="${messageId}"><div class="flex-header"><a href="mailto:${email}" class="comment-anchor">${name}</a><span class="comment-span date"> ${messageDateString}</span></div><span class="line-white-space comment-span">${message}</span>`;
   //Create a message button div
   const messageButtonDiv = document.createElement("div");
   messageButtonDiv.classList.add("comment-button-container");

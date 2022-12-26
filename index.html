@@ -185,22 +185,24 @@
                 <div class="form">
                     <form id="messageForm" name="messageForm">
                         <div class="flex-controls">
-                            <div class="form-control flex">
+                            <div class="flex-control">
                                 <label for="name" class="form-label">Name: </label>
                                 <input type="text" class="form-input" id="name" name="name" required>
                             </div>
-                            <div class="form-control flex">
+                            <div class="flex-control">
                                 <label for="email" class="form-label">Email: </label>
                                 <input type="email" class="form-input" id="email" name="email" required>
                             </div>
                         </div>
-                        <div class="block-controls">
-                            <div class="form-control block">
+                        <div class="flex-controls">
+                            <div class="flex-control">
                                 <label for="message" class="form-label">Message: </label>
                                 <textarea id="message" class="form-textarea" name="message" required>
                                 </textarea>
                             </div>
-                            <div class="form-control block">
+                        </div>
+                        <div class="flex-controls">
+                            <div class="flex-control">
                                 <button type="submit" class="form-button" id="submit">Submit</button>
                             </div>
                         </div>
@@ -222,26 +224,28 @@
             <section class="modal-container" id="modal-container">
                 <div class="modal">
                     <h1>Update message:</h1>
-                    <div class="form">
+                    <div class="form edit">
                         <form id="editMessageForm" name="editMessageForm">
-                            <div class="block-controls">
-                                <div class="form-control block">
+                            <div class="flex-controls">
+                                <div class="flex-control">
                                     <label for="editName" class="form-label">Name: </label>
                                     <input type="text" class="form-input" id="editName" name="editName" required>
                                 </div>
-                                <div class="form-control block">
+                                <div class="flex-control">
                                     <label for="editEmail" class="form-label">Email: </label>
                                     <input type="email" class="form-input" id="editEmail" name="editEmail" required>
                                 </div>
                             </div>
-                            <div class="block-controls">
-                                <div class="form-control block">
+                            <div class="flex-controls">
+                                <div class="flex-control">
                                     <label for="editMessage" class="form-label">Message: </label>
                                     <textarea class="form-textarea" id="editMessage" name="editMessage" required>
             
                                     </textarea>
                                 </div>
-                                <div class="form-control block">
+                            </div>
+                            <div class="flex-controls">
+                                <div class="flex-control">
                                     <button type="submit" class="form-button" id="editSubmit">Update message</button>
                                 </div>
                             </div>
