@@ -68,12 +68,14 @@ section {
     /* Spacing */
     padding: 0.4em;
     margin: 0.4em;
-
+    /*Sizing*/
+    max-width: 1200px;
+    width: 90vw;
 }
 
 /* CSS for the main element of my HTML page */
 main {
-    flex-grow: 1;
+    flex: 1;
 }
 
 h1,
@@ -92,24 +94,17 @@ h2{
 */
 /* CSS for container divs for page content*/
 .container {
+    /*Display*/
+    display: flex;
+    align-items: center;
+    flex-direction: column;
     /* Setting width of .container elements */
-    width: 90vw;
     /* Setting the max width of the main content as 1024px*/
-    max-width: 1024px;
-    /* Centering the main content relative to the viewport*/
-    margin: 0 auto;
 }
 
 .inner-container{
     width: 100%;
     height: auto;
-}
-
-/* CSS for container divs for navigation bars */
-.nav-container {
-    /* Display */
-    display: flex;
-    justify-content: space-between;
 }
 
 .heading-container{
@@ -205,6 +200,10 @@ h2{
     /* Font */
     font-weight: 300;
 }
+.experience{
+    /*Sizing*/
+    padding-left: 0px;
+}
 
 .experience-position{
     /* Display */
@@ -244,6 +243,9 @@ h2{
     display: block;
     /* Centering form */
     text-align: center;
+    /*Sizing*/
+    margin-top: 25px;
+    margin-bottom: 25px;
 }
 
 form {    
@@ -310,6 +312,8 @@ input:-webkit-autofill:active  {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
     /*Text decoration*/
     text-decoration: none;
+    /*Color*/
+    color: royalblue;
 }
 
 .form-input:focus{
@@ -366,7 +370,7 @@ input:-webkit-autofill:active  {
     /* Width */
     width: 110px;
     /* Margin */
-    margin: 0 auto;
+    margin: 5px auto;
     /* Font */
     font-family: inherit;
     font-weight: bold;
@@ -538,6 +542,7 @@ input:-webkit-autofill:active  {
     position: fixed;
     /* Making my navbar cover all the width of the page*/
     width: 100%;
+    height: 50px;
     /* Putting no space between the beginning of the page and the navbar */
     top: 0;
     /* Using royalblue color as the background color of my navbar */
@@ -549,7 +554,7 @@ input:-webkit-autofill:active  {
 /*
     CSS to style each link on my navbar
 */
-#topNav a {
+#topNav a.nav-item {
     /* Horizontally display the links */
     display: inline-block;
     /* Set a white color for the fonts */
@@ -563,7 +568,18 @@ input:-webkit-autofill:active  {
     padding: 12px 20px;
     /* Border */
     border-top: 4px solid royalblue;
+}
 
+#topNav a.nav-logo{
+    /*Padding*/
+    padding: 0px 20px;
+    border-top: 4px solid royalblue;
+}
+
+#topNav a.nav-logo img{
+    /*Sizing*/
+    width: 200px;
+    height: auto;
 }
 
 /*
@@ -582,7 +598,7 @@ input:-webkit-autofill:active  {
 /*
     CSS to style each time the mouse hovers over a link
 */
-#topNav a:hover {
+#topNav a.nav-item:hover {
     /* Colors */
     background-color: white;
     color: royalblue;
@@ -592,12 +608,7 @@ input:-webkit-autofill:active  {
     transition: ease-in-out 0.2s;
 }
 
-/*
-    CSS to justify content between elements inside the flex display: 
-    - .logo: to the left.
-    - .center: to the center
-    - .icon: to the right
-*/
+
 #topNav .logo {
     display: flex;
     justify-content: center;
@@ -680,24 +691,29 @@ input:-webkit-autofill:active  {
     position: fixed;
     top: 0px;
     left: 0px;
+    right: 0px;
+    bottom: 0px;
     /*Spacing*/
     padding: 0px;
     margin: 0px;
     /* Dimensions */
+    max-width: 100%;
     width: 100%;
     height: 100%;
     /* Colors */
     background-color: rgba(0,0,0,0.3);
     /* Transition */    
     transition: visibility 0.3s ease, opacity 0.3s ease;
-
 }
 
 .modal{
+    /*Display*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     /*Overflox*/
     overflow:auto;
-    /*Display*/
-    display: block;
     /* Dimensions */
     width: 50%;
     height: 70%;
@@ -717,10 +733,16 @@ input:-webkit-autofill:active  {
     background-color: whitesmoke;
 }
 
+.modal .form{
+    /*Sizing*/
+    width: 100%;
+}
+
 
 .modal h1{
     /* Margins */
-    margin: 0;
+    margin-top: 50px;
+    margin-bottom: 0px
 }
 
 .modal-container.show {

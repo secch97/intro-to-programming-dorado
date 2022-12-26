@@ -61,7 +61,7 @@ function setActive(e) {
 
 function removeMessage(e){
     //Find the button's parent element using DOM:
-    const entry = (e.target.parentElement).parentElement;
+    const entry = (e.target.parentElement).parentElement.parentElement;
     //Remove the entry element from the DOM:
     entry.remove();
     //Set the messages section visibility:
