@@ -546,7 +546,13 @@ input:-webkit-autofill:active  {
 /*
     CSS to create a top fixed navigation bar for my website
 */
-#topNav {
+.nav-container {
+    /*Display*/
+    display: flex;
+    justify-content: center;
+}
+
+.nav {
     /* Display */
     display: flex;
     justify-content: space-between;
@@ -563,6 +569,27 @@ input:-webkit-autofill:active  {
     background-color: royalblue;
     /* Border */
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+}
+
+.nav-logo-container{
+    /*Display*/
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.nav-item-container{
+    /*Display*/
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-button-container{
+    /*Display*/
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }
 
 /*
@@ -623,23 +650,13 @@ input:-webkit-autofill:active  {
 }
 
 
-#topNav .logo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#topNav .center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 #topNav .icon {
-    visibility: hidden;
+    /*Display Container*/
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-end;
+    /* Flex item */
+    /* Visibility*/
+    visibility:visible;
 }
 /* 
 ==================================
