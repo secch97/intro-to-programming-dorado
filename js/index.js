@@ -251,7 +251,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   //3. Getting navigation link elements
   //3.1 Querying every navigation link:
-  const navigationLinks = document.querySelectorAll("header nav div.center a");
+  const navigationLinks = document.querySelectorAll("header .nav-container .nav a.nav-item");
   //3.2 Setting up a click event listener for every navigation link:
   navigationLinks.forEach((link) => {
     link.addEventListener("click", setActive);

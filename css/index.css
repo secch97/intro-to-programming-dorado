@@ -553,6 +553,7 @@ input:-webkit-autofill:active  {
 }
 
 .nav {
+    flex:auto;
     /* Display */
     display: flex;
     justify-content: space-between;
@@ -583,6 +584,8 @@ input:-webkit-autofill:active  {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    /*Flex item*/
+    flex:1;
 }
 
 .nav-button-container{
@@ -592,12 +595,17 @@ input:-webkit-autofill:active  {
     align-items: center;
 }
 
+.nav-button-container a.nav-item.hamburguer{
+    /*Visibility*/
+    visibility:hidden;
+}
+
 /*
     CSS to style each link on my navbar
 */
 #topNav a.nav-item {
-    /* Horizontally display the links */
-    display: inline-block;
+    /*Display*/
+    flex: 1;
     /* Set a white color for the fonts */
     color: white;
     /* Center the text on each link, set a 17px size and set decoration to none */
@@ -647,16 +655,6 @@ input:-webkit-autofill:active  {
     border-top: 4px solid darkgoldenrod;
     /* Animation */
     transition: ease-in-out 0.2s;
-}
-
-
-#topNav .icon {
-    /*Display Container*/
-    display: flex;
-    justify-content: flex-end;
-    /* Flex item */
-    /* Visibility*/
-    visibility:visible;
 }
 /* 
 ==================================
@@ -781,4 +779,79 @@ input:-webkit-autofill:active  {
     /* Display */
     visibility: visible;
     opacity: 1;
+}
+
+/* 
+==================================
+=          MEDIA QUERIES         =
+==================================
+*/
+
+/* TABLETS */
+@media (max-width: 1080px){
+    /* Navigation Bar */
+    .nav-container .nav .nav-item-container .nav-item span{
+        display: none;
+    }
+
+    #topNav .nav-item-container,
+    #topNav .nav-item-container a{
+        flex: 1;
+    }
+}
+
+/* Smartphones */
+@media (max-width: 875px){
+    section#techExperience ul.experience li.experience-position{
+        /*Display*/
+        flex-direction: column;
+    }
+
+    section#leaveMessage div.form form#messageForm div.flex-controls{
+        /*Display*/
+        flex-direction: column;
+    }
+
+    section#leaveMessage div.form form#messageForm div.flex-controls div.flex-control{
+        /*Sizing*/
+        margin: auto;
+    }
+
+    section#modal-container div.modal div.form.edit form#editMessageForm div.flex-controls{
+        /*Display*/
+        flex-direction: column;
+    }
+
+    section#modal-container div.modal div.form.edit form#editMessageForm div.flex-controls div.flex-control{
+        /*Sizing*/
+        margin: auto;
+    }
+}
+
+@media (max-width: 768px){
+    #topNav .nav-item-container{
+        /*Display*/
+        display: none;
+    }
+
+    .nav-button-container a.nav-item.hamburguer{
+        visibility: visible;
+    }
+
+    .nav{
+        /*Display*/
+        justify-content: center;
+    }
+
+    .nav .nav-button-container{
+        /*Display*/
+        justify-self: flex-end;
+    }
+}
+
+@media (max-width: 425px){
+    section#messages ul#listOfMessages li div.comment div.flex-header{
+        /*Display*/
+        flex-direction: column;
+    }
 }
