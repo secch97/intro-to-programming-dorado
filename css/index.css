@@ -577,6 +577,7 @@ input:-webkit-autofill:active  {
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    flex: 0 1 auto;
 }
 
 .nav-item-container{
@@ -585,19 +586,13 @@ input:-webkit-autofill:active  {
     justify-content: space-between;
     align-items: center;
     /*Flex item*/
-    flex:1;
+    flex: 1;
 }
 
 .nav-button-container{
     /*Display*/
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-}
+    display: none;
 
-.nav-button-container a.nav-item.hamburguer{
-    /*Visibility*/
-    visibility:hidden;
 }
 
 /*
@@ -674,14 +669,20 @@ input:-webkit-autofill:active  {
 /*
     CSS to create a footer navigation bar for my website
 */
-#footerNav {
+.footerNav-container{
+    /*Display*/
+    display: flex;
+    justify-content: center;
+}
+
+.footerNav {
     /* Display */
     display: flex;
     justify-content: center;
     /* Hiding the scroll bar when overflow happens on my footer navbar*/
     overflow: hidden;
     /* Making my footer navbar cover all the width of the page*/
-    width: 100vw;
+    width: 100%;
     /* Using royalblue color as the background color of my navbar */
     background-color: white;
     /*Borders*/
@@ -691,7 +692,7 @@ input:-webkit-autofill:active  {
 /*
     CSS to generally style a footer element
 */
-#footerNav .footer-element {
+.footerNav .footer-element {
     /* Text */
     text-decoration: none;
     /* Fonts */
@@ -788,20 +789,42 @@ input:-webkit-autofill:active  {
 */
 
 /* TABLETS */
-@media (max-width: 1080px){
+/* MAXIMUM TABLET WIDTH OF 1024PX*/
+@media (max-width: 1024px){
     /* Navigation Bar */
     .nav-container .nav .nav-item-container .nav-item span{
         display: none;
     }
-
-    #topNav .nav-item-container,
-    #topNav .nav-item-container a{
-        flex: 1;
-    }
 }
 
 /* Smartphones */
-@media (max-width: 875px){
+/* MAXIMUM WIDTH OF SMARTPHONES OF 540PX*/
+@media (max-width: 540px){
+    .nav{
+        /*Display*/
+        justify-content: center;
+        flex: 1;
+    }
+
+    #topNav .nav-logo-container{
+        flex: 1;
+    }
+
+    #topNav .nav-item-container{
+        /*Display*/
+        display: none;
+        flex: 1;
+    }
+
+    .nav-button-container{
+        /*Display*/
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        /*Flex item*/
+        flex: 0 1 auto;
+    }
+
     section#techExperience ul.experience li.experience-position{
         /*Display*/
         flex-direction: column;
@@ -817,6 +840,11 @@ input:-webkit-autofill:active  {
         margin: auto;
     }
 
+    section#messages ul#listOfMessages li div.comment div.flex-header{
+        /*Display*/
+        flex-direction: column;
+    }
+
     section#modal-container div.modal div.form.edit form#editMessageForm div.flex-controls{
         /*Display*/
         flex-direction: column;
@@ -828,30 +856,16 @@ input:-webkit-autofill:active  {
     }
 }
 
-@media (max-width: 768px){
-    #topNav .nav-item-container{
+@media (max-width: 295px){
+    #topNav .nav-logo-container{
         /*Display*/
         display: none;
     }
 
-    .nav-button-container a.nav-item.hamburguer{
-        visibility: visible;
-    }
-
-    .nav{
-        /*Display*/
-        justify-content: center;
-    }
-
-    .nav .nav-button-container{
-        /*Display*/
-        justify-self: flex-end;
+    .nav-button-container{
+        /*Flex item*/
+        flex: 1 1 auto;
     }
 }
 
-@media (max-width: 425px){
-    section#messages ul#listOfMessages li div.comment div.flex-header{
-        /*Display*/
-        flex-direction: column;
-    }
-}
+
