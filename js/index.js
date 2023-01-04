@@ -82,7 +82,6 @@ function setActive(e) {
   } while ((sibling = sibling.nextElementSibling));
   if(this.className==="nav-item hamburguer"){
     activeLinkCounter++;
-    console.log(activeLinkCounter);
     if(activeLinkCounter<2){
       this.classList.add("active");
     }
@@ -92,6 +91,7 @@ function setActive(e) {
     }
   }
   else{
+    activeLinkCounter--;
     this.classList.add("active");
   }
 }
