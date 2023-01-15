@@ -102,8 +102,6 @@ h2{
     display: flex;
     align-items: center;
     flex-direction: column;
-    /* Setting width of .container elements */
-    /* Setting the max width of the main content as 1024px*/
 }
 
 .inner-container{
@@ -111,10 +109,9 @@ h2{
     height: auto;
 }
 
-.heading-container{
-    /*Display*/
-    display: flex;
-    justify-content: center;
+.header{
+    /* Layout */
+    text-align: center;
     /*Text Decoration*/
     text-decoration: underline 3px solid royalblue;
 }
@@ -187,10 +184,9 @@ h2{
     display:none;
 }
 
-.heading-welcome{
-    /*Display*/
-    display: flex;
-    justify-content: center;
+.welcome-header{
+    /*Layout*/
+    text-align: center;
 }
 
 .line-white-space{
