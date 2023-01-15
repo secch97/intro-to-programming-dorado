@@ -125,6 +125,8 @@ h2{
     display:flex;
     justify-content: center;
     flex-wrap: wrap;
+    /*Layout*/
+    padding: 0;
 }
 
 .horizontal-list li {
