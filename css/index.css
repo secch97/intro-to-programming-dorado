@@ -40,7 +40,11 @@
 =           ELEMENTS CSS         =
 ==================================
 */
-
+html,
+body{
+    max-width: 100%;
+    overflow-x: hidden;
+}
 html {
     scroll-padding-top: 40px;
 }
@@ -68,12 +72,14 @@ section {
     /* Spacing */
     padding: 0.4em;
     margin: 0.4em;
-
+    /*Sizing*/
+    max-width: 1200px;
+    width: 90vw;
 }
 
 /* CSS for the main element of my HTML page */
 main {
-    flex-grow: 1;
+    flex: 1;
 }
 
 h1,
@@ -92,12 +98,10 @@ h2{
 */
 /* CSS for container divs for page content*/
 .container {
-    /* Setting width of .container elements */
-    width: 90vw;
-    /* Setting the max width of the main content as 1024px*/
-    max-width: 1024px;
-    /* Centering the main content relative to the viewport*/
-    margin: 0 auto;
+    /*Display*/
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 .inner-container{
@@ -105,17 +109,9 @@ h2{
     height: auto;
 }
 
-/* CSS for container divs for navigation bars */
-.nav-container {
-    /* Display */
-    display: flex;
-    justify-content: space-between;
-}
-
-.heading-container{
-    /*Display*/
-    display: flex;
-    justify-content: center;
+.header{
+    /* Layout */
+    text-align: center;
     /*Text Decoration*/
     text-decoration: underline 3px solid royalblue;
 }
@@ -128,6 +124,7 @@ h2{
     /*Display*/
     display:flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .horizontal-list li {
@@ -143,6 +140,7 @@ h2{
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
     /* Margins between list items*/
     margin-right: 10px;
+    margin-bottom: 10px;
     /* Color */
     background-color: royalblue;
     color: white;    
@@ -186,10 +184,9 @@ h2{
     display:none;
 }
 
-.heading-welcome{
-    /*Display*/
-    display: flex;
-    justify-content: center;
+.welcome-header{
+    /*Layout*/
+    text-align: center;
 }
 
 .line-white-space{
@@ -204,6 +201,10 @@ h2{
 .emphasis-fact{
     /* Font */
     font-weight: 300;
+}
+.experience{
+    /*Sizing*/
+    padding-left: 0px;
 }
 
 .experience-position{
@@ -241,15 +242,30 @@ h2{
 
 .form{    
     /* Display */
-    display: block;
+    display: flex;
+    justify-content: center;
     /* Centering form */
     text-align: center;
+    /*Sizing*/
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+.form.edit{
+    /*Display*/
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 form {    
-    width: 70%;
+    /* Sizing */
+    width: 700px;
     /* Display */
-    display: block;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    flex: initial;
     /* Margin */
     margin: 0 auto;
     /*Text align*/
@@ -270,14 +286,18 @@ form#editMessageForm{
 
 .flex-controls{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
 }
 
 .form-label{
     display: block;
 }
 
-.form-control.flex{
+.flex-control{
+    /*Display*/
+    display: flex;
+    flex-direction: column;
+    flex: 1;
     /* Padding */
     padding: 5px;
     /* Margin */
@@ -310,6 +330,8 @@ input:-webkit-autofill:active  {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
     /*Text decoration*/
     text-decoration: none;
+    /*Color*/
+    color: royalblue;
 }
 
 .form-input:focus{
@@ -319,17 +341,6 @@ input:-webkit-autofill:active  {
     border: 3px solid goldenrod;
 }
 
-.block-controls{
-    /*Display*/
-    display: block;
-}
-
-.form-control.block{
-    /* Padding */
-    padding: 5px;
-    /* Margin */
-    margin: 5px;
-}
 
 .form-textarea{
     /* Appearance */
@@ -366,7 +377,7 @@ input:-webkit-autofill:active  {
     /* Width */
     width: 110px;
     /* Margin */
-    margin: 0 auto;
+    margin: 5px auto;
     /* Font */
     font-family: inherit;
     font-weight: bold;
@@ -437,6 +448,9 @@ input:-webkit-autofill:active  {
 }
 
 .comment{
+    /*Display*/
+    display: flex;
+    flex-direction:column;
     /* Spacing */
     padding: 15px;
     /* Margin */
@@ -452,13 +466,14 @@ input:-webkit-autofill:active  {
     font-weight: bold;
 }
 
-.comment-flex{
+.flex-header{
     /*Display*/
     display: flex;
     justify-content: space-between;
 }
 
 .comment-anchor{
+    flex: none;
     /*Text decoration*/
     text-decoration: none;
     /* Color */
@@ -466,8 +481,7 @@ input:-webkit-autofill:active  {
 }
 
 .comment-span{
-    /*Display*/
-    display: block;
+    flex: none;
     /*Font*/
     font-weight: normal;
 }
@@ -528,7 +542,14 @@ input:-webkit-autofill:active  {
 /*
     CSS to create a top fixed navigation bar for my website
 */
-#topNav {
+.nav-container {
+    /*Display*/
+    display: flex;
+    justify-content: center;
+}
+
+.nav {
+    flex:auto;
     /* Display */
     display: flex;
     justify-content: space-between;
@@ -538,6 +559,7 @@ input:-webkit-autofill:active  {
     position: fixed;
     /* Making my navbar cover all the width of the page*/
     width: 100%;
+    height: auto;
     /* Putting no space between the beginning of the page and the navbar */
     top: 0;
     /* Using royalblue color as the background color of my navbar */
@@ -546,12 +568,34 @@ input:-webkit-autofill:active  {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
 }
 
+.nav-logo-container{
+    /*Display*/
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 0 1 auto;
+}
+
+.nav-item-container{
+    /*Display*/
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /*Flex item*/
+    flex: 1;
+}
+
+.nav-button-container{
+    /*Display*/
+    display: none;
+}
+
 /*
     CSS to style each link on my navbar
 */
-#topNav a {
-    /* Horizontally display the links */
-    display: inline-block;
+#topNav a.nav-item {
+    /*Display*/
+    flex: 1;
     /* Set a white color for the fonts */
     color: white;
     /* Center the text on each link, set a 17px size and set decoration to none */
@@ -563,7 +607,18 @@ input:-webkit-autofill:active  {
     padding: 12px 20px;
     /* Border */
     border-top: 4px solid royalblue;
+}
 
+#topNav a.nav-logo{
+    /*Padding*/
+    padding: 0px 20px;
+    border-top: 4px solid royalblue;
+}
+
+#topNav a.nav-logo img{
+    /*Sizing*/
+    width: 165px;
+    height: auto;
 }
 
 /*
@@ -582,7 +637,7 @@ input:-webkit-autofill:active  {
 /*
     CSS to style each time the mouse hovers over a link
 */
-#topNav a:hover {
+#topNav a.nav-item:hover {
     /* Colors */
     background-color: white;
     color: royalblue;
@@ -591,31 +646,6 @@ input:-webkit-autofill:active  {
     /* Animation */
     transition: ease-in-out 0.2s;
 }
-
-/*
-    CSS to justify content between elements inside the flex display: 
-    - .logo: to the left.
-    - .center: to the center
-    - .icon: to the right
-*/
-#topNav .logo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#topNav .center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#topNav .icon {
-    visibility: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 /* 
 ==================================
 =           MESSAGES CSS         =
@@ -623,6 +653,8 @@ input:-webkit-autofill:active  {
 */
 #messages #listOfMessages {
     list-style-type: none;
+    /*Padding*/
+    padding-left: 0px;
 }
 /* 
 ==================================
@@ -632,7 +664,13 @@ input:-webkit-autofill:active  {
 /*
     CSS to create a footer navigation bar for my website
 */
-#footerNav {
+.footerNav-container{
+    /*Display*/
+    display: flex;
+    justify-content: center;
+}
+
+.footerNav {
     /* Display */
     display: flex;
     justify-content: center;
@@ -649,7 +687,7 @@ input:-webkit-autofill:active  {
 /*
     CSS to generally style a footer element
 */
-#footerNav .footer-element {
+.footerNav .footer-element {
     /* Text */
     text-decoration: none;
     /* Fonts */
@@ -680,24 +718,29 @@ input:-webkit-autofill:active  {
     position: fixed;
     top: 0px;
     left: 0px;
+    right: 0px;
+    bottom: 0px;
     /*Spacing*/
     padding: 0px;
     margin: 0px;
     /* Dimensions */
+    max-width: 100%;
     width: 100%;
     height: 100%;
     /* Colors */
     background-color: rgba(0,0,0,0.3);
     /* Transition */    
     transition: visibility 0.3s ease, opacity 0.3s ease;
-
 }
 
 .modal{
-    /*Overflox*/
-    overflow:auto;
     /*Display*/
-    display: block;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /*Overflow*/
+    overflow:auto;
     /* Dimensions */
     width: 50%;
     height: 70%;
@@ -707,7 +750,6 @@ input:-webkit-autofill:active  {
     /*Position*/
     bottom: 0;
     left: 0;
-    margin: auto;
     /* Border */
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
@@ -717,10 +759,16 @@ input:-webkit-autofill:active  {
     background-color: whitesmoke;
 }
 
+.modal .form{
+    /*Sizing*/
+    width: 100%;
+}
+
 
 .modal h1{
     /* Margins */
-    margin: 0;
+    margin-top: 2px;
+    margin-bottom: 0px
 }
 
 .modal-container.show {
@@ -728,3 +776,148 @@ input:-webkit-autofill:active  {
     visibility: visible;
     opacity: 1;
 }
+
+/* 
+==================================
+=          MEDIA QUERIES         =
+==================================
+*/
+
+/* TABLETS */
+/* MAXIMUM TABLET WIDTH OF 1024PX*/
+@media (max-width: 1024px){
+    /* Navigation Bar */
+    .nav-container .nav .nav-item-container .nav-item span{
+        display: none;
+    }
+}
+
+@media (max-width: 870px){
+    section#techExperience ul.experience li.experience-position{
+        /*Display*/
+        flex-direction: column;
+    }
+}
+
+
+
+/* Smartphones */
+/* MAXIMUM WIDTH OF SMARTPHONES OF 540PX*/
+@media (max-width: 540px){
+    .nav{
+        /*Display*/
+        justify-content: center;
+        flex: 1;
+    }
+
+    #topNav .nav-logo-container{
+        flex: 1;
+    }
+
+    #topNav .nav-item-container{
+        /*Display*/
+        display: none;
+        flex: 1;
+    }
+
+    .nav-button-container{
+        /*Display*/
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        /*Flex item*/
+        flex: 0 1 auto;
+    }
+
+    /* Once hamburguer menu is clicked */
+    .nav.responsive-nav{
+        display:block;
+    }
+
+    .nav.responsive-nav .nav-button-container,
+    .nav.responsive-nav .nav-button-container .nav-item{
+        display: block;
+        position: absolute;
+        right: 0px;
+        top: 0px;
+    }
+
+    #topNav.responsive-nav .nav-item-container{
+        display: block;     
+    }
+
+
+    #topNav.responsive-nav .nav-item-container .nav-item{
+        /*Display*/
+        display: block;        
+        animation: fade_in_show 0.5s
+    }
+
+     /* Navigation Bar */
+     #topNav.responsive-nav .nav-item-container .nav-item span{
+        display: block;
+    }
+
+    @keyframes fade_in_show {
+        0% {
+             opacity: 0;
+             transform: scale(0)
+        }
+   
+        100% {
+             opacity: 1;
+             transform: scale(1)
+        }
+   }
+
+    .nav.responsive-nav .nav-logo-container,
+    .nav-responsive-nav .nav-logo-container .nav-logo{
+        display: block;
+        border-top: 4px solid royalblue;
+    }
+
+    section#leaveMessage div.form form#messageForm div.flex-controls{
+        /*Display*/
+        flex-direction: column;
+    }
+
+    section#leaveMessage div.form form#messageForm div.flex-controls div.flex-control{
+        /*Sizing*/
+        margin: auto;
+    }
+
+    section#messages ul#listOfMessages li div.comment div.flex-header{
+        /*Display*/
+        flex-direction: column;
+    }
+
+    section#modal-container div.modal div.form.edit form#editMessageForm div.flex-controls{
+        /*Display*/
+        flex-direction: column;
+    }
+
+    section#modal-container div.modal div.form.edit form#editMessageForm div.flex-controls div.flex-control{
+        /*Sizing*/
+        margin: auto;
+    }
+}
+
+@media (max-width: 295px){
+    #topNav .nav-logo-container{
+        /*Display*/
+        display: none;
+    }
+
+    .nav-button-container{
+        /*Flex item*/
+        flex: 1 1 auto;
+    }
+
+    .nav.responsive-nav .nav-button-container,
+    .nav.responsive-nav .nav-button-container .nav-item{
+        display: block;
+        position: static;
+    }
+}
+
+

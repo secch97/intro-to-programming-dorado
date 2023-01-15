@@ -24,53 +24,57 @@
     <!--=================================================================== 
     =                        SELF MADE ASSETS                         = 
     =================================================================== -->
-    <link href="./css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="icon" type="image/x-icon" href="./images/icon.ico">
+
 
     <!--=================================================================== 
     =                        EXTERNAL ASSETS                          = 
     =================================================================== -->
     <!-- 1. FONT-AWESOME -->
-    <link href="./assets/fontawesome/css/fontawesome.css" rel="stylesheet">
-    <link href="./assets/fontawesome/css/solid.css" rel="stylesheet">
-    <link href="./assets/fontawesome/css/brands.css" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/fontawesome/css/fontawesome.css">
+    <link rel="stylesheet" href="./assets/fontawesome/css/solid.css">
+    <link rel="stylesheet" href="./assets/fontawesome/css/brands.css">
     <!--2 GOOGLE FONT -->
-    <link rel="preload" href="./fonts/Montserrat-Regular.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="./fonts/Montserrat-Bold.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="./fonts/Montserrat-LightItalic.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="./fonts/Montserrat-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="./fonts/Montserrat-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="./fonts/Montserrat-LightItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
 </head>
 
 <body>
     <header>
-        <nav id="topNav" class="nav-container">
-            <div class="logo">
-                <a href="/"> SAUL CASTILLO </a>
-            </div>
-            <div class="center">
-                <a id="aboutMeLink" href="#about">
-                    <i class="fa-solid fa-address-card"></i>
-                    About me
-                </a>
-                <a id="techExperienceLink" href="#techExperience">
-                    <i class="fa-solid fa-clipboard-list"></i>
-                    Experience
-                </a>
-                <a id="skillsLink" href="#skills">
-                    <i class="fa-solid fa-brain"></i>
-                    Skills
-                </a>
-                <a id="connectLink" href="#connect">
-                    <i class="fa-solid fa-link"></i>
-                    Connect
-                </a>
-                <a id="messageLink" href="#leaveMessage">
-                    <i class="fa-solid fa-message"></i>
-                    Message
-                </a>
-            </div>
-            <div class="icon">
-                <a id="icon" href="javascript:void(0);"><i class="fa-solid fa-bars"></i></a>
-            </div>
-        </nav>
+        <div class="nav-container">
+            <nav id="topNav" class="nav">
+                <div class="nav-logo-container">
+                    <a class="nav-logo" href="/"><img src="./images/logo.jpg"></a>
+                </div>
+                <div class="nav-item-container">
+                    <a id="aboutMeLink" class="nav-item" title="About Me" href="#about">
+                        <i class="fa-solid fa-address-card"></i>
+                        <span>About Me</span>
+                    </a>
+                    <a id="techExperienceLink" class="nav-item" title="Experience" href="#techExperience">
+                        <i class="fa-solid fa-clipboard-list"></i>
+                        <span>Experience</span>                      
+                    </a>
+                    <a id="skillsLink" class="nav-item" title="Skills" href="#skills">
+                        <i class="fa-solid fa-brain"></i>
+                        <span>Skills</span>  
+                    </a>
+                    <a id="connectLink" class="nav-item" title="Connect" href="#connect">
+                        <i class="fa-solid fa-link"></i>
+                        <span>Connect</span>
+                    </a>
+                    <a id="messageLink" class="nav-item" title="Message" href="#leaveMessage">
+                        <i class="fa-solid fa-message"></i>
+                        <span>Message</span> 
+                    </a>
+                </div>
+                <div class="nav-button-container">
+                    <a id="icon" class="nav-item hamburguer" href="javascript:void(0);"><i class="fa-solid fa-bars"></i></a>
+                </div>  
+            </nav>
+        </div>
     </header>
     <main>
         <div class="container">
@@ -78,8 +82,8 @@
             <!-- =     SECTION: ABOUT       =-->
             <!-- ============================-->  
             <section id="about">
-                <h1 class="heading-welcome">Hello! &#128075; I'm Saul</h1>
-                <h2 class="heading-container">About Me:</h2>
+                <h1 class="welcome-header">Hello! &#128075; I'm Saul</h1>
+                <h2 class="header">About Me:</h2>
                 <p>
                     I'm a person really passionate about computers
                     since an early age and an in-training Web Developer. I graduated from <span class="important-fact">Universidad Don Bosco</span> in El
@@ -101,8 +105,8 @@
             <!-- =    SECTION: TECH EXP     =-->
             <!-- ============================-->  
             <section id="techExperience">
-                <h2 class="heading-container">Tech Experience:</h2>
-                <ul>
+                <h2 class="header">Tech Experience:</h2>
+                <ul class="experience">
                     <li class="experience-position">
                         <span>
                             Database Modeling and Design Tutor — Universidad Don Bosco | El Salvador 
@@ -141,7 +145,7 @@
             <!-- =     SECTION: SKILLS      =-->
             <!-- ============================-->  
             <section id="skills">
-                <h2 class="heading-container">Skills:</h2>
+                <h2 class="header">Skills:</h2>
                 <div class="inner-container">
                     <ul class="horizontal-list">
                     </ul>
@@ -151,7 +155,7 @@
             <!-- =     SECTION: CONNECT     =-->
             <!-- ============================-->            
             <section id="connect">
-                <h2 class="heading-container">Connect:</h2>
+                <h2 class="header">Connect:</h2>
                 <div class="inner-container">
                     <address>
                         <ul class="horizontal-list">
@@ -181,26 +185,28 @@
             <!-- =    SECTION: LEAVE MSG    =-->
             <!-- ============================-->
             <section id="leaveMessage">
-                <h2 class="heading-container">Leave a Message:</h2>               
+                <h2 class="header">Leave a Message:</h2>               
                 <div class="form">
                     <form id="messageForm" name="messageForm">
                         <div class="flex-controls">
-                            <div class="form-control flex">
+                            <div class="flex-control">
                                 <label for="name" class="form-label">Name: </label>
                                 <input type="text" class="form-input" id="name" name="name" required>
                             </div>
-                            <div class="form-control flex">
+                            <div class="flex-control">
                                 <label for="email" class="form-label">Email: </label>
                                 <input type="email" class="form-input" id="email" name="email" required>
                             </div>
                         </div>
-                        <div class="block-controls">
-                            <div class="form-control block">
+                        <div class="flex-controls">
+                            <div class="flex-control">
                                 <label for="message" class="form-label">Message: </label>
                                 <textarea id="message" class="form-textarea" name="message" required>
                                 </textarea>
                             </div>
-                            <div class="form-control block">
+                        </div>
+                        <div class="flex-controls">
+                            <div class="flex-control">
                                 <button type="submit" class="form-button" id="submit">Submit</button>
                             </div>
                         </div>
@@ -211,7 +217,7 @@
             <!-- =    SECTION: MESSAGES     =-->
             <!-- ============================--> 
             <section id="messages">
-                <h2 class="heading-container">Messages: </h2>
+                <h2 class="header">Messages: </h2>
                 <ul id="listOfMessages">
 
                 </ul>
@@ -221,27 +227,29 @@
             <!-- ============================--> 
             <section class="modal-container" id="modal-container">
                 <div class="modal">
-                    <h1>Update message:</h1>
-                    <div class="form">
+                    <h1 class="header">Update message:</h1>
+                    <div class="form edit">
                         <form id="editMessageForm" name="editMessageForm">
-                            <div class="block-controls">
-                                <div class="form-control block">
+                            <div class="flex-controls">
+                                <div class="flex-control">
                                     <label for="editName" class="form-label">Name: </label>
                                     <input type="text" class="form-input" id="editName" name="editName" required>
                                 </div>
-                                <div class="form-control block">
+                                <div class="flex-control">
                                     <label for="editEmail" class="form-label">Email: </label>
                                     <input type="email" class="form-input" id="editEmail" name="editEmail" required>
                                 </div>
                             </div>
-                            <div class="block-controls">
-                                <div class="form-control block">
+                            <div class="flex-controls">
+                                <div class="flex-control">
                                     <label for="editMessage" class="form-label">Message: </label>
                                     <textarea class="form-textarea" id="editMessage" name="editMessage" required>
             
                                     </textarea>
                                 </div>
-                                <div class="form-control block">
+                            </div>
+                            <div class="flex-controls">
+                                <div class="flex-control">
                                     <button type="submit" class="form-button" id="editSubmit">Update message</button>
                                 </div>
                             </div>
@@ -254,8 +262,10 @@
     </main>
 
     <footer>
-        <nav id="footerNav">
-        </nav>
+        <div class="footerNav-container">
+            <nav id="footerNav" class="footerNav">
+            </nav>
+        </div>
         <!--=================================================================== 
             =                            JS ASSETS                            = 
             =================================================================== 
@@ -265,7 +275,7 @@
         <!--=================================================================== 
             =                          SELF MADE JS                           = 
             =================================================================== -->
-        <script src="./js/index.js" type="text/javascript"></script>
+        <script type="text/javascript" src="./js/index.js"></script>
     </footer>
 </body>
 

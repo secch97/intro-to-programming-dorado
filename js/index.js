@@ -1,5 +1,18 @@
 //GLOBAL VARIABLES
 let messageId = 1;
+let activeLinkCounter = 0;
+
+function turnNavBarResponsive(e){
+  //1. Getting the nav bar:
+  const navBar = document.querySelector(".nav");
+  if(navBar.className === "nav"){
+    navBar.classList.add("responsive-nav");
+  }
+  else{
+    navBar.classList.remove("responsive-nav");
+  }
+}
+
 
 function showCopyright() {
   //1. Create a date object
@@ -7,13 +20,13 @@ function showCopyright() {
   //2. Retrieve the current year:
   let thisYear = today.getFullYear();
   //3. Selecting footerNav from my DOM:
-  const footerNav = document.querySelector("footer #footerNav");
+  const footerNav = document.querySelector(".footerNav");
   //4. Create a new paragraph element:
   const copyright = document.createElement("p");
   //5. Add a class to the new paragraph element
   copyright.classList.add("footer-element");
   //6. Write my name and current year to the copyright paragraph element:
-  copyright.innerHTML = `© Saul Castillo | ${thisYear}`;
+  copyright.innerText = `© Saul Castillo | ${thisYear}`;
   //7. Append the copyright paragraph into the footerNav element.
   footerNav.appendChild(copyright);
 }
@@ -47,21 +60,45 @@ function showSkills() {
 }
 
 function setActive(e) {
-  //Create an array of siblings
-  let siblings = [];
   //Get first child of parent node
   let sibling = this.parentElement.firstElementChild;
   //Iterate through siblings to remove active class
   do {
-    sibling.classList.remove("active");
+    //Responsive menu code
+    //If a link in the responsive menu is clicked, then close the responsive menu.
+    if(this.className==="nav-item" && this.parentElement.parentElement.className==="nav responsive-nav"){
+      //Get the responsive nav bar.
+      const responsiveNavBar = this.parentElement.parentElement;
+      //Hide menu opened by responsive nav bar
+      responsiveNavBar.classList.remove("responsive-nav");
+      //Remove active class from hamburguer menu
+      const hamburguerMenu = document.querySelector(".nav-item.hamburguer");
+      sibling.classList.remove("active");
+      hamburguerMenu.classList.remove("active");
+    }
+    else{
+      sibling.classList.remove("active");
+    }
   } while ((sibling = sibling.nextElementSibling));
-  //Add active class to current link:
-  this.classList.add("active");
+  if(this.className==="nav-item hamburguer"){
+    activeLinkCounter++;
+    if(activeLinkCounter<2){
+      this.classList.add("active");
+    }
+    else{
+      this.classList.remove("active");
+      activeLinkCounter=0;
+    }
+  }
+  else{
+    activeLinkCounter--;
+    this.classList.add("active");
+  }
 }
 
 function removeMessage(e){
     //Find the button's parent element using DOM:
-    const entry = (e.target.parentElement).parentElement;
+    const entry = (e.target.parentElement).parentElement.parentElement;
     //Remove the entry element from the DOM:
     entry.remove();
     //Set the messages section visibility:
@@ -145,7 +182,7 @@ function handleMessageForm(e){
   const messageDiv = document.createElement("div");
   messageDiv.classList.add("comment");
   //Set the innerHTML of the newMessage element
-  messageDiv.innerHTML = `<input type="hidden" value="${messageId}"><div class="comment-flex"><a href="mailto:${email}" class="comment-anchor">${name}</a><span class="comment-span date"> ${messageDateString}</span></div><span class="line-white-space comment-span">${message}</span>`;
+  messageDiv.innerHTML = `<input type="hidden" value="${messageId}"><div class="flex-header"><a href="mailto:${email}" class="comment-anchor">${name}</a><span class="comment-span date"> ${messageDateString}</span></div><span class="line-white-space comment-span">${message}</span>`;
   //Create a message button div
   const messageButtonDiv = document.createElement("div");
   messageButtonDiv.classList.add("comment-button-container");
@@ -243,29 +280,35 @@ function setMessagesVisibility(){
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  //1. Showing skills section
+
+  //1. Responsive Nav Bar:
+  //1.1 Adding click event on hamburguer icon (responsive menu)
+  const responsiveMenu = document.querySelector(".nav-item.hamburguer");
+  responsiveMenu.addEventListener("click", turnNavBarResponsive);
+
+  //2. Showing skills section
   showSkills();
 
-  //2. Showing copyright footer
+  //3. Showing copyright footer
   showCopyright();
 
-  //3. Getting navigation link elements
-  //3.1 Querying every navigation link:
-  const navigationLinks = document.querySelectorAll("header nav div.center a");
-  //3.2 Setting up a click event listener for every navigation link:
+  //4. Getting navigation link elements
+  //4.1 Querying every navigation link:
+  const navigationLinks = document.querySelectorAll("header .nav-container .nav a.nav-item");
+  //4.2 Setting up a click event listener for every navigation link:
   navigationLinks.forEach((link) => {
     link.addEventListener("click", setActive);
   });
 
-  //4. Handle message form
+  //5. Handle message form
   const messageForm = document.querySelector("#messageForm");
   messageForm.addEventListener("submit", handleMessageForm);
 
-  //5. Hide the "Messages Form" when the list of messages is empty.
-  //5.1 Set messages list visibility depending of number of messages:
+  //6. Hide the "Messages Form" when the list of messages is empty.
+  //6.1 Set messages list visibility depending of number of messages:
   setMessagesVisibility();
 
-  //6. Handle edit message form
+  //7. Handle edit message form
   const editMessageForm = document.querySelector("#editMessageForm");
   editMessageForm.addEventListener("submit", handleEditMessageForm);
 })
