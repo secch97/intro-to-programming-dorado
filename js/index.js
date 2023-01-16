@@ -1,6 +1,37 @@
 //GLOBAL VARIABLES
 let messageId = 1;
 let activeLinkCounter = 0;
+//XMLHttpRequest Class
+class apiRequest {
+  //Private fields
+  #request = "";
+  #method = "";
+  #url = "";
+
+  //Constructor
+  constructor(method, url){
+    this.#method = method;
+    this.#url = url;
+  }
+
+  //Methods
+  /**
+   * @param {XMLHttpRequest} request
+   */
+  set setRequest(request){
+    //1. Creating a new XMLHttpRequest object.
+    this.#request = request;
+    //2. Opening a XMLHttRequest request
+    this.#request.open(`${this.#method}`, `${this.#url}`);
+    //3. Send the request to the server
+    this.#request.send();    
+  }
+
+  get getRequest(){
+    return this.#request;
+  }
+}
+
 
 function turnNavBarResponsive(e){
   //1. Getting the nav bar:
@@ -289,26 +320,41 @@ document.addEventListener("DOMContentLoaded", () => {
   //2. Showing skills section
   showSkills();
 
-  //3. Showing copyright footer
+  //3. Showing projects section
+  //3.1 Creating the request object:
+  let apiRequestObject = new apiRequest("GET", "https://api.github.com/users/secch97/repos");
+  //3.2 Setting the request object:
+  apiRequestObject.setRequest = new XMLHttpRequest();
+  //3.3 Getting the request object:
+  let projectsRequest = apiRequestObject.getRequest;
+  projectsRequest.onreadystatechange = function() {
+    if(this.readyState === 4 && this.status === 200)
+    {
+      //Begin showing
+      console.log(JSON.parse(projectsRequest.responseText));
+    }
+  }
+
+  //4. Showing copyright footer
   showCopyright();
 
-  //4. Getting navigation link elements
-  //4.1 Querying every navigation link:
+  //5. Getting navigation link elements
+  //5.1 Querying every navigation link:
   const navigationLinks = document.querySelectorAll("header .nav-container .nav a.nav-item");
-  //4.2 Setting up a click event listener for every navigation link:
+  //5.2 Setting up a click event listener for every navigation link:
   navigationLinks.forEach((link) => {
     link.addEventListener("click", setActive);
   });
 
-  //5. Handle message form
+  //6. Handle message form
   const messageForm = document.querySelector("#messageForm");
   messageForm.addEventListener("submit", handleMessageForm);
 
-  //6. Hide the "Messages Form" when the list of messages is empty.
-  //6.1 Set messages list visibility depending of number of messages:
+  //7. Hide the "Messages Form" when the list of messages is empty.
+  //7.1 Set messages list visibility depending of number of messages:
   setMessagesVisibility();
 
-  //7. Handle edit message form
+  //8. Handle edit message form
   const editMessageForm = document.querySelector("#editMessageForm");
   editMessageForm.addEventListener("submit", handleEditMessageForm);
 })
