@@ -127,9 +127,11 @@ h2{
     flex-wrap: wrap;
     /*Layout*/
     padding: 0;
+    list-style-type: none;
 }
 
-.horizontal-list li {
+.horizontal-list li.skill-item,
+.horizontal-list li.connect-item {
     overflow: hidden;
     /* Turning list into a horizontal list */
     display: inline-block;
@@ -151,7 +153,8 @@ h2{
 
 }
 
-.horizontal-list li a {
+.horizontal-list li.skill-item a,
+.horizontal-list li.connect-item a {
     /* Displaying a tags as inline-blocks */
     display: inline-block;
     /* Colors */
@@ -168,8 +171,10 @@ h2{
     
 }
 
-.horizontal-list li:hover,
-.horizontal-list li:hover > *{
+.horizontal-list li.skill-item:hover,
+.horizontal-list li.skill-item:hover > *,
+.horizontal-list li.connect-item:hover,
+.horizontal-list li.connect-item:hover > *{
     /*Borders*/
     border-color: goldenrod;
 
@@ -213,8 +218,6 @@ h2{
     /* Display */
     display: flex;
     justify-content: space-between;
-    /* Bullet points */
-    list-style-type: none;
     /* Spacing */
     padding: 15px;
     /* Border */
@@ -240,6 +243,24 @@ h2{
 
 .experience-position:not(:last-child){
     margin-bottom: 20px;
+}
+
+.project-card{
+    /*Display*/
+    display: flex;
+    justify-content: space-between;
+    /*Layout*/
+    padding: 15px;
+    border-top: 4px solid royalblue;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+    /* Colors */
+    background-color: royalblue;
+    color: white;
+    /* Font */
+    font-weight: bold;
 }
 
 .form{    

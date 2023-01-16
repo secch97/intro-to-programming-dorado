@@ -78,6 +78,7 @@ function showSkills() {
   for (let i = 0; i < skills.length; i++) {
     //5. Create a skill element
     const skill = document.createElement("li");
+    skill.classList.add("skill-item");
     //6. Create a <a> element
     const anchorTag = document.createElement("a");
     //7. Set the anchor element inner text to <i> fontawesome tag plus the current skills[i] element
@@ -92,10 +93,28 @@ function showSkills() {
 function handleProjectsData(e) {
   let projectsRequest = e.target;
   if (projectsRequest.readyState === 4 && projectsRequest.status === 200){
-    console.log(JSON.parse(projectsRequest.responseText));
+    renderProjectsData(projectsRequest);
   }
   else{
     console.error("Failed to load JSON data from the given URL");
+  }
+}
+
+function renderProjectsData(projectsRequest){
+  let projectsRequestJSON = JSON.parse(projectsRequest.responseText);
+  //1. Selecting the projects section by ID:
+  const projectSection = document.getElementById("projects");
+  //2. Query the projectSection (instead of the entire document) to find the <ul> element:
+  const projectList = projectSection.querySelector("ul");
+  //3 Iterate over my repositories array
+  for (repository of projectsRequestJSON){
+    //4. Create a new list item (li) element and store it.
+    let project = document.createElement("li");
+    project.classList.add("project-card");
+    //5. Set the inner text of your project variable to the current Array element's name property.
+    project.innerText = repository.name;
+    //6. Append the project element to the projectList element
+    projectList.appendChild(project);
   }
 }
 
@@ -330,8 +349,10 @@ document.addEventListener("DOMContentLoaded", () => {
   showSkills();
 
   //3. Showing projects section
+  let method = "GET";
+  let url = "https://api.github.com/users/secch97/repos";
   //3.1 Creating the request object:
-  let apiRequestObject = new apiRequest("GET", "https://api.github.com/users/secch97/repos");
+  let apiRequestObject = new apiRequest(method, url);
   //3.2 Setting the request object:
   apiRequestObject.setRequest = new XMLHttpRequest();
   //3.3 Getting the request object:
