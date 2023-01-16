@@ -23,13 +23,12 @@ class apiRequest {
     this.#request = request;
     //2. Opening a XMLHttRequest request
     this.#request.open(`${this.#method}`, `${this.#url}`);
-    //3. Send the request to the server
-    this.#request.send();    
   }
 
   get getRequest(){
     return this.#request;
   }
+
 }
 
 
@@ -87,6 +86,16 @@ function showSkills() {
     skill.appendChild(anchorTag);
     //9. Append the skill element to the skill list
     skillsList.appendChild(skill);
+  }
+}
+
+function handleProjectsData(e) {
+  let projectsRequest = e.target;
+  if (projectsRequest.readyState === 4 && projectsRequest.status === 200){
+    console.log(JSON.parse(projectsRequest.responseText));
+  }
+  else{
+    console.error("Failed to load JSON data from the given URL");
   }
 }
 
@@ -327,13 +336,11 @@ document.addEventListener("DOMContentLoaded", () => {
   apiRequestObject.setRequest = new XMLHttpRequest();
   //3.3 Getting the request object:
   let projectsRequest = apiRequestObject.getRequest;
-  projectsRequest.onreadystatechange = function() {
-    if(this.readyState === 4 && this.status === 200)
-    {
-      //Begin showing
-      console.log(JSON.parse(projectsRequest.responseText));
-    }
-  }
+  //3.4 Sending the request:
+  projectsRequest.send();
+  //3.5 Adding load event to request. Once loaded, run the handleProjectsData function:
+  projectsRequest.addEventListener("load", handleProjectsData);
+
 
   //4. Showing copyright footer
   showCopyright();
