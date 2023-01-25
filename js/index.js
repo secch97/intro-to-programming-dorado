@@ -168,7 +168,7 @@ function renderProjectsData(projectsRequest){
       //Setting up project's image
       projectImageContainer.classList.add("project-image-container");
       projectImage.classList.add("project-image")
-      projectImage.setAttribute("src", `../images/${projectImages[arrayCounter]}`);
+      projectImage.setAttribute("src", `./images/${projectImages[arrayCounter]}`);
 
       //Setting up project's description
       projectDescriptionContainer.classList.add("project-description-container");
