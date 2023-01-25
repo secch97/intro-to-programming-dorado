@@ -906,7 +906,7 @@ input:-webkit-autofill:active  {
 
 /* TABLETS */
 /* MAXIMUM TABLET WIDTH OF 1024PX*/
-@media (max-width: 1024px){
+@media (max-width: 1150px){
     /* Navigation Bar */
     .nav-container .nav .nav-item-container .nav-item span{
         display: none;
