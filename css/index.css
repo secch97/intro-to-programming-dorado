@@ -11,29 +11,29 @@
 
 @font-face {
     font-family: 'Montserrat';
-    src: url('../fonts/Montserrat-Bold.woff2') format('woff2'),
-        url('../fonts/Montserrat-Bold.woff') format('woff');
     font-weight: bold;
     font-style: normal;
     font-display: swap;
+    src: url('../fonts/Montserrat-Bold.woff2') format('woff2'),
+    url('../fonts/Montserrat-Bold.woff') format('woff');
 }
 
 @font-face {
     font-family: 'Montserrat';
-    src: url('../fonts/Montserrat-Regular.woff2') format('woff2'),
-        url('../fonts/Montserrat-Regular.woff') format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
+    src: url('../fonts/Montserrat-Regular.woff2') format('woff2'),
+    url('../fonts/Montserrat-Regular.woff') format('woff');
 }
 
 @font-face {
     font-family: 'Montserrat';
-    src: url('../fonts/Montserrat-LightItalic.woff2') format('woff2'),
-        url('../fonts/Montserrat-LightItalic.woff') format('woff');
     font-weight: 300;
     font-style: italic;
     font-display: swap;
+    src: url('../fonts/Montserrat-LightItalic.woff2') format('woff2'),
+    url('../fonts/Montserrat-LightItalic.woff') format('woff');
 }
 /* 
 ==================================
@@ -125,9 +125,13 @@ h2{
     display:flex;
     justify-content: center;
     flex-wrap: wrap;
+    /*Layout*/
+    padding: 0;
+    list-style-type: none;
 }
 
-.horizontal-list li {
+.horizontal-list li.skill-item,
+.horizontal-list li.connect-item {
     overflow: hidden;
     /* Turning list into a horizontal list */
     display: inline-block;
@@ -146,10 +150,30 @@ h2{
     color: white;    
     /* Width */
     min-width: 110px;
-
 }
 
-.horizontal-list li a {
+.horizontal-list li.tool-item{
+    overflow: hidden;
+    /* Turning list into a horizontal list */
+    display: inline-block;
+    /* Fonts */
+    font-weight: bold;
+    font-style: normal;
+    /* Borders */
+    border-radius: 20px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+    /* Margins between list items*/
+    margin-right: 10px;
+    margin-bottom: 10px;
+    /* Color */
+    background-color: white;
+    color: royalblue;    
+    /* Width */
+    min-width: 110px;
+}
+
+.horizontal-list li.skill-item a,
+.horizontal-list li.connect-item a {
     /* Displaying a tags as inline-blocks */
     display: inline-block;
     /* Colors */
@@ -162,12 +186,31 @@ h2{
     /* Width */
     width: 110px;
     min-width: 110px;
-    /*Grow*/    
-    
 }
 
-.horizontal-list li:hover,
-.horizontal-list li:hover > *{
+.horizontal-list li.tool-item span{
+    /* Displaying a tags as inline-blocks */
+    display: inline-block;
+    /* Colors */
+    color: royalblue;
+    /* Text */
+    text-decoration: none;
+    text-align: center;
+    /* Padding */
+    padding: 5px;
+    /* Width */
+    width: 110px;
+    min-width: 110px;
+}
+
+.horizontal-list li.tool-item span i{
+    color: royalblue;
+}
+
+.horizontal-list li.skill-item:hover,
+.horizontal-list li.skill-item:hover > *,
+.horizontal-list li.connect-item:hover,
+.horizontal-list li.connect-item:hover > *{
     /*Borders*/
     border-color: goldenrod;
 
@@ -211,8 +254,6 @@ h2{
     /* Display */
     display: flex;
     justify-content: space-between;
-    /* Bullet points */
-    list-style-type: none;
     /* Spacing */
     padding: 15px;
     /* Border */
@@ -239,6 +280,86 @@ h2{
 .experience-position:not(:last-child){
     margin-bottom: 20px;
 }
+
+.project-card{
+    /*Display*/
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    /*Layout*/
+    padding: 15px;
+    border-top: 4px solid royalblue;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+    /* Sizing */
+    max-width: 400px;
+    width: 100%;
+    height: auto;
+    /* Colors */
+    background-color: royalblue;
+    color: white;
+    /* Font */
+    font-weight: bold;
+}
+
+.project-card *:not(:last-child){
+    /*Layout*/
+    margin-bottom: 5px;
+}
+
+.project-title-container,
+.project-dates-container{
+    /*Display*/
+    display: flex;
+    justify-content: center;
+}
+
+.project-image-container{
+    /*Display*/
+    display: flex;
+    justify-content: center;
+    /*Sizing*/
+    height: 200px;
+}
+
+.project-description-container{
+    /*Display*/
+    display: flex;
+    justify-content: center;
+    /*Sizing*/
+    overflow: auto;
+    height: 75px;
+}
+
+.project-tools-container{
+    /*Display*/
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    /*Sizing*/
+    height: auto;
+}
+
+.project-title-link{
+    /* Text */
+    text-decoration: none;
+    /* Color */
+    color: white;
+}
+
+
+.project-image{
+    /*Display*/
+    flex: 1;
+    /*Sizing*/
+    width: 100%;
+    height: 200px;
+}
+
+
 
 .form{    
     /* Display */

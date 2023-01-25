@@ -1,6 +1,36 @@
 //GLOBAL VARIABLES
 let messageId = 1;
 let activeLinkCounter = 0;
+//XMLHttpRequest Class
+class apiRequest {
+  //Private fields
+  #request = "";
+  #method = "";
+  #url = "";
+
+  //Constructor
+  constructor(method, url){
+    this.#method = method;
+    this.#url = url;
+  }
+
+  //Methods
+  /**
+   * @param {XMLHttpRequest} request
+   */
+  set setRequest(request){
+    //1. Creating a new XMLHttpRequest object.
+    this.#request = request;
+    //2. Opening a XMLHttRequest request
+    this.#request.open(`${this.#method}`, `${this.#url}`);
+  }
+
+  get getRequest(){
+    return this.#request;
+  }
+
+}
+
 
 function turnNavBarResponsive(e){
   //1. Getting the nav bar:
@@ -48,6 +78,7 @@ function showSkills() {
   for (let i = 0; i < skills.length; i++) {
     //5. Create a skill element
     const skill = document.createElement("li");
+    skill.classList.add("skill-item");
     //6. Create a <a> element
     const anchorTag = document.createElement("a");
     //7. Set the anchor element inner text to <i> fontawesome tag plus the current skills[i] element
@@ -56,6 +87,144 @@ function showSkills() {
     skill.appendChild(anchorTag);
     //9. Append the skill element to the skill list
     skillsList.appendChild(skill);
+  }
+}
+
+function handleProjectsData(e) {
+  let projectsRequest = e.target;
+  if (projectsRequest.readyState === 4 && projectsRequest.status === 200){
+    renderProjectsData(projectsRequest);
+  }
+  else{
+    console.error("Failed to load JSON data from the given URL");
+  }
+}
+
+function renderProjectsData(projectsRequest){
+  //VARIABLES
+  //Request variable
+  let projectsRequestJSON = JSON.parse(projectsRequest.responseText);
+  //Project's aux variables
+  let projectImages=["burger-city-restaurant.png", "dental-clinic.png", "js-animation.png", "personal-portfolio.png"];
+  let projectDates=["July 2020 - December 2020", "January 2021 - June 2021", "August 2022", "September 2022 - Present"];
+  let projectTools=[["HTML5", "CSS3", "JS", "Bootstrap", "ASP.NET"],["HTML5", "CSS3", "JS", "Bootstrap", "Laravel"], ["HTML5", "CSS3", "JS"], ["HTML5", "CSS3", "JS"]];
+
+  let arrayCounter = 0;
+  //1. Selecting the projects section by ID:
+  const projectSection = document.getElementById("projects");
+  //2. Query the projectSection (instead of the entire document) to find the <ul> element:
+  const projectList = projectSection.querySelector("ul");
+  //3 Iterate over my repositories array
+  for (repository of projectsRequestJSON){
+    //4. Create a new list item (li) element with the following structure
+    /*
+      <li class="project-card">
+        <div class="project-image-container">
+          <img></img>
+        </div>
+        <div class="project-title-container">
+          <span> </span>
+        </div>
+      </li>
+    */
+    //List Item
+    if(repository.name==="Burger-City-Restaurant" || repository.name==="Dental-Clinic-Helper" || repository.name==="js-animation" || repository.name==="intro-to-programming-dorado"){
+      //Setting up variables
+      //List item variables
+      let projectListItem = document.createElement("li");
+      //Project title variables
+      let projectTitleContainer = document.createElement("div");
+      let projectTitleLink = document.createElement("a");
+      let projectTitle = document.createElement("span");
+      //Project date variables
+      let projectDateContainer = document.createElement("div");
+      let projectDate = document.createElement("em");     
+      //Project image variables
+      let projectImageContainer = document.createElement("div");
+      let projectImage = document.createElement("img");
+      //Project description variables
+      let projectDescriptionContainer = document.createElement("div");
+      let projectDescription = document.createElement("span");
+      //Project tools variables
+      let projectToolsContainer = document.createElement("div");
+      let projectToolsList = document.createElement("ul");
+      
+      //Setting up project's list item
+      projectListItem.classList.add("project-card");
+
+
+      //Setting up project's title
+      projectTitleContainer.classList.add("project-title-container");
+      projectTitleLink.classList.add("project-title-link");
+      projectTitleLink.setAttribute("href", `${repository.html_url}`);
+      projectTitleLink.setAttribute("target", "_blank");
+      projectTitle.innerText = (repository.name.replace(/-/g, " ")).toUpperCase();
+
+      //Setting up project's date
+      projectDateContainer.classList.add("project-dates-container");
+      projectDate.classList.add("emphasis-fact");
+      projectDate.innerText = projectDates[arrayCounter];
+
+      //Setting up project's image
+      projectImageContainer.classList.add("project-image-container");
+      projectImage.classList.add("project-image")
+      projectImage.setAttribute("src", `../images/${projectImages[arrayCounter]}`);
+
+      //Setting up project's description
+      projectDescriptionContainer.classList.add("project-description-container");
+      projectDescription.classList.add("emphasis-fact");
+      projectDescription.innerText = repository.description;
+
+      //Setting up project's tools
+      projectToolsContainer.classList.add("project-tools-container");
+      projectToolsList.classList.add("horizontal-list");
+      let projectToolTitle = document.createElement("span");
+      projectToolTitle.innerText="Tools used:";
+      for (let i=0; i<projectTools[arrayCounter].length; i++){
+          //Creating a list item for each tool
+          let projectToolListItem = document.createElement("li");
+          projectToolListItem.classList.add("tool-item");
+          //Creating a span element
+          let projectTool = document.createElement("span");
+          //Creating a i element for the tool's icon
+          let projectToolIcon = document.createElement("i");
+
+          //Setting up list item elements
+          projectTool.innerText=" "+projectTools[arrayCounter][i];
+          projectToolIcon.classList.add(`fa-brands`, `fa-${projectTools[arrayCounter][i].toLowerCase()}`);
+
+          //Appending items
+          projectToolsList.appendChild(projectToolListItem);
+          projectToolListItem.appendChild(projectTool);
+          projectTool.prepend(projectToolIcon);
+        }
+      
+
+
+      //Appending elements to build the previously described structure:
+      //Appending list item to list
+      projectList.appendChild(projectListItem);
+      //Appending project title to list item
+      projectListItem.appendChild(projectTitleContainer);
+      projectTitleContainer.appendChild(projectTitleLink);
+      projectTitleLink.appendChild(projectTitle);
+      //Appending project date to list item
+      projectListItem.appendChild(projectDateContainer);
+      projectDateContainer.appendChild(projectDate);
+      //Appending project image to list item
+      projectListItem.appendChild(projectImageContainer);
+      projectImageContainer.appendChild(projectImage);
+      //Appending project description to list item
+      projectListItem.appendChild(projectDescriptionContainer);
+      projectDescriptionContainer.appendChild(projectDescription);
+      //Appending project tools to list item
+      projectListItem.appendChild(projectToolsContainer);
+      projectToolsContainer.appendChild(projectToolTitle);
+      projectToolsContainer.appendChild(projectToolsList);
+
+      //Increment the arrays' indexes.
+      arrayCounter++;
+    }
   }
 }
 
@@ -289,26 +458,41 @@ document.addEventListener("DOMContentLoaded", () => {
   //2. Showing skills section
   showSkills();
 
-  //3. Showing copyright footer
+  //3. Showing projects section
+  let method = "GET";
+  let url = "https://api.github.com/users/secch97/repos?sort=created&direction=asc";
+  //3.1 Creating the request object:
+  let apiRequestObject = new apiRequest(method, url);
+  //3.2 Setting the request object:
+  apiRequestObject.setRequest = new XMLHttpRequest();
+  //3.3 Getting the request object:
+  let projectsRequest = apiRequestObject.getRequest;
+  //3.4 Sending the request:
+  projectsRequest.send();
+  //3.5 Adding load event to request. Once loaded, run the handleProjectsData function:
+  projectsRequest.addEventListener("load", handleProjectsData);
+
+
+  //4. Showing copyright footer
   showCopyright();
 
-  //4. Getting navigation link elements
-  //4.1 Querying every navigation link:
+  //5. Getting navigation link elements
+  //5.1 Querying every navigation link:
   const navigationLinks = document.querySelectorAll("header .nav-container .nav a.nav-item");
-  //4.2 Setting up a click event listener for every navigation link:
+  //5.2 Setting up a click event listener for every navigation link:
   navigationLinks.forEach((link) => {
     link.addEventListener("click", setActive);
   });
 
-  //5. Handle message form
+  //6. Handle message form
   const messageForm = document.querySelector("#messageForm");
   messageForm.addEventListener("submit", handleMessageForm);
 
-  //6. Hide the "Messages Form" when the list of messages is empty.
-  //6.1 Set messages list visibility depending of number of messages:
+  //7. Hide the "Messages Form" when the list of messages is empty.
+  //7.1 Set messages list visibility depending of number of messages:
   setMessagesVisibility();
 
-  //7. Handle edit message form
+  //8. Handle edit message form
   const editMessageForm = document.querySelector("#editMessageForm");
   editMessageForm.addEventListener("submit", handleEditMessageForm);
 })
