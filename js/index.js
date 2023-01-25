@@ -254,7 +254,7 @@ function setActive(e) {
     }
   }
   else{
-    activeLinkCounter--;
+    activeLinkCounter=0;
     this.classList.add("active");
   }
 }
