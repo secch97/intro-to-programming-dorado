@@ -1,7 +1,7 @@
 //GLOBAL VARIABLES
 let messageId = 1;
 let activeLinkCounter = 0;
-//XMLHttpRequest Class
+//Fetch Request Class
 class apiRequest {
   //Private fields
   #request = "";
