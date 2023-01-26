@@ -2,7 +2,7 @@
 let messageId = 1;
 let activeLinkCounter = 0;
 //Fetch Request Class
-class apiRequest {
+class ApiRequest {
   //Private fields
   #request = "";
   #method = "";
@@ -458,7 +458,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let url = "https://api.github.com/users/secch97/repos?sort=created&direction=asc";
   let mode = "cors"
   //3.2 Creating the request object:
-  let apiRequestObject = new apiRequest(method, url, mode);
+  let apiRequestObject = new ApiRequest(method, url, mode);
   //3.3 Setting the request object:
   apiRequestObject.setRequest();
   //3.4 Getting the request object:
