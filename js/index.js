@@ -63,6 +63,103 @@ function showCopyright() {
   copyright.innerText = `© Saul Castillo | ${thisYear}`;
   //7. Append the copyright paragraph into the footerNav element.
   footerNav.appendChild(copyright);
+  //8. Appending social media links
+  /*
+    <address>
+      <ul class="horizontal-list">
+              <li class="connect-item">
+                  <a href="mailto:secch97@gmail.com" target="_blank">
+                      <i class="fa-solid fa-envelope"></i>
+                      Mail
+                  </a>
+              </li>
+              <li class="connect-item">
+                  <a href="https://github.com/secch97" target="_blank">
+                      <i class="fa-brands fa-github"></i>
+                      GitHub
+                  </a>
+              </li>
+              <li class="connect-item">
+                  <a href="https://twitter.com/MrRobot_97" target="_blank">
+                      <i class="fa-brands fa-twitter"></i>
+                      Twitter
+                  </a>
+              </li>
+      </ul>
+    </address>
+  */
+  //8.1 Creating and setting up HTML elements
+  //8.1.1 Creating the address element
+  const socialMediaListContainer = document.createElement("address");
+  //8.1.2 Creating the list element
+  const socialMediaList = document.createElement("ul");
+  //8.1.3 Setting up HTML elements
+  socialMediaList.classList.add("horizontal-list");
+  socialMediaListContainer.classList.add("footer-element")
+
+  //8.2 Setting up and getting a fetch request with the social media data:
+  
+  //8.2.1 Set up:
+
+  //8.2.1.1 Variables:
+  const method = "GET";
+  const url = "./js/socialMedia.json";
+  const mode = "cors"
+  //8.2.1.2: Creating new API Request object:
+  const apiRequestObject = new ApiRequest(method, url, mode);
+  //8.2.1.3 Setting the request object:
+  apiRequestObject.setRequest();
+
+  //8.2.2 Fetching data:
+
+  //8.2.2.1 Getting the fetched data:
+  const socialMediaData = apiRequestObject.getFetchPromise;
+  //8.2.2.2 Executing the promise with the fetched data: 
+  socialMediaData
+  .then((response) => {
+    //Hnadling error
+    if (!response.ok){
+      throw new Error("Network response was not OK");
+    }
+    //Returning response as JSON DATA
+    return response.json();
+  })
+  .then((data) => {
+    //8.3 Rendering JSON Data
+    for (socialMedia of data){
+      //8.3.1 Creating and setting up HTML elements
+
+      //8.3.1.1 Creating a list item element
+      const socialMediaListItem = document.createElement("li");
+      //8.3.1.2 Creating an anchor tag element
+      const socialMediaLink = document.createElement("a");
+      //8.3.1.3 Creating an <i> element
+      const socialMediaIcon = document.createElement("i");
+      //8.3.1.4 Setting up the list item element
+      socialMediaListItem.classList.add("connect-item");
+      //8.3.1.5 Setting up the anchor element
+      socialMediaLink.setAttribute("href", `${socialMedia.link}`);
+      socialMediaLink.setAttribute("target", "_blank");
+      //8.3.1.6 Setting up the <i> element
+      socialMediaIcon.classList.add(`fa-brands`, `${socialMedia.icon}`);
+
+      //8.3.2 Appending HTML elements
+      //8.3.2.1 Appending <i> element to anchor tag:
+      socialMediaLink.appendChild(socialMediaIcon);
+      //8.3.2.2 Appending <a> element to list item:
+      socialMediaListItem.appendChild(socialMediaLink);
+      //8.3.2.3 Appending <li> to list:
+      socialMediaList.appendChild(socialMediaListItem);
+    }
+  })
+  .catch((error) => {
+    console.error("There was a problem fetching the social media: " +error);
+  });
+
+  //8.3.2.4 Appending <ul> to address element
+  socialMediaListContainer.appendChild(socialMediaList);
+  //8.3.2.5 Appending <address> to footer element
+  footerNav.appendChild(socialMediaListContainer);
 }
 
 function showSkills() {

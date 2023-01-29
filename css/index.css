@@ -130,11 +130,11 @@ h2{
     list-style-type: none;
 }
 
-.horizontal-list li.skill-item,
-.horizontal-list li.connect-item {
+.horizontal-list li.skill-item {
     overflow: hidden;
-    /* Turning list into a horizontal list */
-    display: inline-block;
+    /* Display */
+    display: flex;
+    flex: 0 1 auto;
     /* Fonts */
     font-weight: bold;
     font-style: normal;
@@ -154,8 +154,9 @@ h2{
 
 .horizontal-list li.tool-item{
     overflow: hidden;
-    /* Turning list into a horizontal list */
-    display: inline-block;
+    /* Display */
+    display: flex;
+    flex: 0 1 auto;
     /* Fonts */
     font-weight: bold;
     font-style: normal;
@@ -172,10 +173,12 @@ h2{
     min-width: 110px;
 }
 
-.horizontal-list li.skill-item a,
-.horizontal-list li.connect-item a {
-    /* Displaying a tags as inline-blocks */
-    display: inline-block;
+.horizontal-list li.skill-item a {
+    /* Display */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 0 1 auto;
     /* Colors */
     color: white;
     /* Text */
@@ -188,9 +191,17 @@ h2{
     min-width: 110px;
 }
 
+.horizontal-list li.skill-item a i{
+    /*Margin*/
+    margin-right: 3px;
+}
+
 .horizontal-list li.tool-item span{
-    /* Displaying a tags as inline-blocks */
-    display: inline-block;
+    /* Display */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 0 1 auto;
     /* Colors */
     color: royalblue;
     /* Text */
@@ -205,12 +216,12 @@ h2{
 
 .horizontal-list li.tool-item span i{
     color: royalblue;
+    /*Margin*/
+    margin-right: 3px;
 }
 
 .horizontal-list li.skill-item:hover,
-.horizontal-list li.skill-item:hover > *,
-.horizontal-list li.connect-item:hover,
-.horizontal-list li.connect-item:hover > *{
+.horizontal-list li.skill-item:hover > * {
     /*Borders*/
     border-color: goldenrod;
 
@@ -794,7 +805,7 @@ input:-webkit-autofill:active  {
 .footerNav {
     /* Display */
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     /* Hiding the scroll bar when overflow happens on my footer navbar*/
     overflow: hidden;
     /* Making my footer navbar cover all the width of the page*/
@@ -803,12 +814,19 @@ input:-webkit-autofill:active  {
     background-color: white;
     /*Borders*/
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3);
+    /*Margin*/
+    margin-top: 25px;
 }
 
 /*
     CSS to generally style a footer element
 */
 .footerNav .footer-element {
+    /* Display */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 0 1 auto;
     /* Text */
     text-decoration: none;
     /* Fonts */
@@ -817,10 +835,67 @@ input:-webkit-autofill:active  {
     /* Colors */
     color: royalblue;
     /* Padding element */
-    padding: 0 20px;
+    padding: 0px;
 }
 
+.footerNav .footer-element .horizontal-list{
+    /*Display*/
+    display: flex;
+    justify-content: center;
+    flex: 1 1 auto;
+    flex-wrap: wrap;
+}
 
+.footerNav .footer-element .horizontal-list li.connect-item {
+    /* Display */
+    display: flex;
+    flex: 0 1 auto;
+    /* Overflow */
+    overflow: hidden;
+    /* Fonts */
+    font-weight: bold;
+    font-style: normal;
+    /* Borders */
+    border-top: 3px solid royalblue;
+    border-radius: 20px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+    /*Margin*/
+    margin: 0px 10px;
+    /* Color */
+    background-color: royalblue;
+    color: white;    
+    /* Width */
+ 
+}
+
+.footerNav .footer-element .horizontal-list li.connect-item:hover,
+.footerNav .footer-element .horizontal-list li.connect-item:hover > *{
+    /*Borders*/
+    border-color: goldenrod;
+    /*Colors*/
+    background-color: white;
+    color: royalblue;
+    /*Transform*/
+    transition: all 0.2s ease-in-out;
+    transform: scale(1.05);
+}
+
+.footerNav .footer-element .horizontal-list li.connect-item a{
+    /*Display*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 0 1 auto;
+    /*Colors*/
+    color: white;
+    /* Text */
+    text-decoration: none;
+    /*Padding*/
+    padding: 5px;
+    /*Width*/
+    width: 50px;
+    min-width: 50px;
+}
 
 /* 
 ==================================
@@ -952,7 +1027,7 @@ input:-webkit-autofill:active  {
 
     /* Once hamburguer menu is clicked */
     .nav.responsive-nav{
-        display:block;
+        flex-direction: column;
     }
 
     .nav.responsive-nav .nav-button-container,
@@ -964,19 +1039,25 @@ input:-webkit-autofill:active  {
     }
 
     #topNav.responsive-nav .nav-item-container{
-        display: block;     
+        display: flex;   
+        flex-direction: column;  
     }
 
 
     #topNav.responsive-nav .nav-item-container .nav-item{
         /*Display*/
-        display: block;        
+        display: flex;
+        flex-direction: column;   
+        /*Sizing*/
+        width: 100%;   
+        /*Animation*/
         animation: fade_in_show 0.5s
     }
 
      /* Navigation Bar */
      #topNav.responsive-nav .nav-item-container .nav-item span{
-        display: block;
+        display: flex;
+        flex-direction: column;
     }
 
     @keyframes fade_in_show {
@@ -990,12 +1071,6 @@ input:-webkit-autofill:active  {
              transform: scale(1)
         }
    }
-
-    .nav.responsive-nav .nav-logo-container,
-    .nav-responsive-nav .nav-logo-container .nav-logo{
-        display: block;
-        border-top: 4px solid royalblue;
-    }
 
     section#leaveMessage div.form form#messageForm div.flex-controls{
         /*Display*/
@@ -1023,7 +1098,15 @@ input:-webkit-autofill:active  {
     }
 }
 
+@media (max-width: 400px){
+    .footerNav{
+        /*Display*/
+        flex-direction: column;
+    }
+}
+
 @media (max-width: 295px){
+
     #topNav .nav-logo-container{
         /*Display*/
         display: none;
@@ -1034,10 +1117,22 @@ input:-webkit-autofill:active  {
         flex: 1 1 auto;
     }
 
+    .nav.nav.responsive-nav{
+        flex-direction: column-reverse;
+    }
+
     .nav.responsive-nav .nav-button-container,
     .nav.responsive-nav .nav-button-container .nav-item{
-        display: block;
-        position: static;
+        display: flex;
+        position:static;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 130px){
+     /* Navigation Bar */
+     #topNav.responsive-nav .nav-item-container .nav-item span{
+        display: none;
     }
 }
 
