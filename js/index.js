@@ -98,12 +98,31 @@ function renderProjectsData(data){
   //VARIABLES
   //Request variable
   let projectsData = data;
-  //Project's aux variables
-  let projectImages=["burger-city-restaurant.png", "dental-clinic.png", "js-animation.png", "personal-portfolio.png"];
-  let projectDates=["July 2020 - December 2020", "January 2021 - June 2021", "August 2022", "September 2022 - Present"];
-  let projectTools=[["HTML5", "CSS3", "JS", "Bootstrap", "ASP.NET"],["HTML5", "CSS3", "JS", "Bootstrap", "Laravel"], ["HTML5", "CSS3", "JS"], ["HTML5", "CSS3", "JS"]];
+  
+  //Project's data map
+    let projectDataMap = new Map([
+    ["Burger-City-Restaurant", {
+      image: "burger-city-restaurant.png",
+      dates: "July 2020 - December 2020",
+      tools: ["HTML5", "CSS3", "JS", "Bootstrap", "ASP.NET"]
+    }],
+    ["Dental-Clinic-Helper", {
+      image: "dental-clinic.png",
+      dates: "January 2021 - June 2021",
+      tools: ["HTML5", "CSS3", "JS", "Bootstrap", "Laravel"]
+    }],
+    ["js-animation", {
+      image: "js-animation.png",
+      dates: "August 2022",
+      tools: ["HTML5", "CSS3", "JS"]
+    }],
+    ["intro-to-programming-dorado", {
+      image: "personal-portfolio.png",
+      dates: "September 2022 - Present",
+      tools: ["HTML5", "CSS3", "JS"]
+    }]
+  ]);
 
-  let arrayCounter = 0;
   //1. Selecting the projects section by ID:
   const projectSection = document.getElementById("projects");
   //2. Query the projectSection (instead of the entire document) to find the <ul> element:
@@ -157,12 +176,12 @@ function renderProjectsData(data){
       //Setting up project's date
       projectDateContainer.classList.add("project-dates-container");
       projectDate.classList.add("emphasis-fact");
-      projectDate.innerText = projectDates[arrayCounter];
+      projectDate.innerText = projectDataMap.get(repository.name).dates;
 
       //Setting up project's image
       projectImageContainer.classList.add("project-image-container");
       projectImage.classList.add("project-image")
-      projectImage.setAttribute("src", `./images/${projectImages[arrayCounter]}`);
+      projectImage.setAttribute("src", `./images/${projectDataMap.get(repository.name).image}`);
 
       //Setting up project's description
       projectDescriptionContainer.classList.add("project-description-container");
@@ -174,7 +193,7 @@ function renderProjectsData(data){
       projectToolsList.classList.add("horizontal-list");
       let projectToolTitle = document.createElement("span");
       projectToolTitle.innerText="Tools used:";
-      for (let i=0; i<projectTools[arrayCounter].length; i++){
+      for (let i=0; i<projectDataMap.get(repository.name).tools.length; i++){
           //Creating a list item for each tool
           let projectToolListItem = document.createElement("li");
           projectToolListItem.classList.add("tool-item");
@@ -184,8 +203,8 @@ function renderProjectsData(data){
           let projectToolIcon = document.createElement("i");
 
           //Setting up list item elements
-          projectTool.innerText=" "+projectTools[arrayCounter][i];
-          projectToolIcon.classList.add(`fa-brands`, `fa-${projectTools[arrayCounter][i].toLowerCase()}`);
+          projectTool.innerText=" "+projectDataMap.get(repository.name).tools[i];
+          projectToolIcon.classList.add(`fa-brands`, `fa-${projectDataMap.get(repository.name).tools[i].toLowerCase()}`);
 
           //Appending items
           projectToolsList.appendChild(projectToolListItem);
@@ -216,8 +235,6 @@ function renderProjectsData(data){
       projectToolsContainer.appendChild(projectToolTitle);
       projectToolsContainer.appendChild(projectToolsList);
 
-      //Increment the arrays' indexes.
-      arrayCounter++;
     }
   }
 }
