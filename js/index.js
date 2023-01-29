@@ -1,32 +1,36 @@
 //GLOBAL VARIABLES
 let messageId = 1;
 let activeLinkCounter = 0;
-//XMLHttpRequest Class
-class apiRequest {
+//Fetch Request Class
+class ApiRequest {
   //Private fields
   #request = "";
   #method = "";
   #url = "";
+  #mode = "";
 
   //Constructor
-  constructor(method, url){
+  constructor(method, url, mode){
     this.#method = method;
     this.#url = url;
+    this.#mode = mode;
   }
 
   //Methods
-  /**
-   * @param {XMLHttpRequest} request
-   */
-  set setRequest(request){
-    //1. Creating a new XMLHttpRequest object.
-    this.#request = request;
-    //2. Opening a XMLHttRequest request
-    this.#request.open(`${this.#method}`, `${this.#url}`);
+  setRequest(){
+    //1. Creating a new request object.
+    this.#request = new Request(this.#url, {
+      method: this.#method,
+      mode: this.#mode
+    });
   }
 
-  get getRequest(){
+  get #getRequest(){
     return this.#request;
+  }
+
+  get getFetchPromise(){
+    return fetch(this.#getRequest);
   }
 
 }
@@ -90,20 +94,10 @@ function showSkills() {
   }
 }
 
-function handleProjectsData(e) {
-  let projectsRequest = e.target;
-  if (projectsRequest.readyState === 4 && projectsRequest.status === 200){
-    renderProjectsData(projectsRequest);
-  }
-  else{
-    console.error("Failed to load JSON data from the given URL");
-  }
-}
-
-function renderProjectsData(projectsRequest){
+function renderProjectsData(data){
   //VARIABLES
   //Request variable
-  let projectsRequestJSON = JSON.parse(projectsRequest.responseText);
+  let projectsData = data;
   //Project's aux variables
   let projectImages=["burger-city-restaurant.png", "dental-clinic.png", "js-animation.png", "personal-portfolio.png"];
   let projectDates=["July 2020 - December 2020", "January 2021 - June 2021", "August 2022", "September 2022 - Present"];
@@ -115,7 +109,7 @@ function renderProjectsData(projectsRequest){
   //2. Query the projectSection (instead of the entire document) to find the <ul> element:
   const projectList = projectSection.querySelector("ul");
   //3 Iterate over my repositories array
-  for (repository of projectsRequestJSON){
+  for (repository of projectsData){
     //4. Create a new list item (li) element with the following structure
     /*
       <li class="project-card">
@@ -168,7 +162,7 @@ function renderProjectsData(projectsRequest){
       //Setting up project's image
       projectImageContainer.classList.add("project-image-container");
       projectImage.classList.add("project-image")
-      projectImage.setAttribute("src", `../images/${projectImages[arrayCounter]}`);
+      projectImage.setAttribute("src", `./images/${projectImages[arrayCounter]}`);
 
       //Setting up project's description
       projectDescriptionContainer.classList.add("project-description-container");
@@ -260,7 +254,7 @@ function setActive(e) {
     }
   }
   else{
-    activeLinkCounter--;
+    activeLinkCounter=0;
     this.classList.add("active");
   }
 }
@@ -459,18 +453,34 @@ document.addEventListener("DOMContentLoaded", () => {
   showSkills();
 
   //3. Showing projects section
+  //3.1Setting up parameters
   let method = "GET";
   let url = "https://api.github.com/users/secch97/repos?sort=created&direction=asc";
-  //3.1 Creating the request object:
-  let apiRequestObject = new apiRequest(method, url);
-  //3.2 Setting the request object:
-  apiRequestObject.setRequest = new XMLHttpRequest();
-  //3.3 Getting the request object:
-  let projectsRequest = apiRequestObject.getRequest;
-  //3.4 Sending the request:
-  projectsRequest.send();
-  //3.5 Adding load event to request. Once loaded, run the handleProjectsData function:
-  projectsRequest.addEventListener("load", handleProjectsData);
+  let mode = "cors"
+  //3.2 Creating the request object:
+  let apiRequestObject = new ApiRequest(method, url, mode);
+  //3.3 Setting the request object:
+  apiRequestObject.setRequest();
+  //3.4 Getting the request object:
+  let projectsPromise = apiRequestObject.getFetchPromise;
+  //3.5 Executing the promise:
+  projectsPromise
+  .then((response) => {
+    //Hnadling error
+    if (!response.ok){
+      throw new Error("Network response was not OK");
+    }
+    //Returning response as JSON DATA
+    return response.json();
+  })
+  .then((data) => {
+    //Rendering JSON Data
+    renderProjectsData(data);
+  })
+  .catch((error) => {
+    console.error("There was a problem fetching the projects: " +error);
+  });
+ 
 
 
   //4. Showing copyright footer
