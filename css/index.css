@@ -292,7 +292,8 @@ h2{
     margin-bottom: 20px;
 }
 
-.project-card{
+.project-card,
+.education-card{
     /*Display*/
     display: flex;
     justify-content: flex-start;
@@ -316,19 +317,23 @@ h2{
     font-weight: bold;
 }
 
-.project-card *:not(:last-child){
+.project-card *:not(:last-child),
+.education-card *:not(:last-child){
     /*Layout*/
     margin-bottom: 5px;
 }
 
 .project-title-container,
-.project-dates-container{
+.project-dates-container,
+.education-title-container,
+.education-dates-container{
     /*Display*/
     display: flex;
     justify-content: center;
 }
 
-.project-image-container{
+.project-image-container,
+.education-image-container{
     /*Display*/
     display: flex;
     justify-content: center;
@@ -343,6 +348,15 @@ h2{
     /*Sizing*/
     overflow: auto;
     height: 75px;
+}
+
+.education-description-container{
+    /*Display*/
+    display: flex;
+    justify-content: center;
+    /*Sizing*/
+    overflow: auto;
+    height: 115px;
 }
 
 .project-tools-container{
@@ -362,7 +376,8 @@ h2{
 }
 
 
-.project-image{
+.project-image,
+.education-image{
     /*Display*/
     flex: 1;
     /*Sizing*/

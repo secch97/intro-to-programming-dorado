@@ -106,14 +106,14 @@ function showCopyright() {
   const url = "./js/socialMedia.json";
   const mode = "cors"
   //8.2.1.2: Creating new API Request object:
-  const apiRequestObject = new ApiRequest(method, url, mode);
+  const educationRequest = new ApiRequest(method, url, mode);
   //8.2.1.3 Setting the request object:
-  apiRequestObject.setRequest();
+  educationRequest.setRequest();
 
   //8.2.2 Fetching data:
 
   //8.2.2.1 Getting the fetched data:
-  const socialMediaData = apiRequestObject.getFetchPromise;
+  const socialMediaData = educationRequest.getFetchPromise;
   //8.2.2.2 Executing the promise with the fetched data: 
   socialMediaData
   .then((response) => {
@@ -191,13 +191,44 @@ function showSkills() {
   }
 }
 
+function showProjects(){
+  //1. Showing projects 
+  //1.1 Setting up parameters
+   let method = "GET";
+   let url = "https://api.github.com/users/secch97/repos?sort=created&direction=asc";
+   let mode = "cors"
+   //1.2 Creating the request object:
+   let educationRequest = new ApiRequest(method, url, mode);
+   //1.3 Setting the request object:
+   educationRequest.setRequest();
+   //1.4 Getting the request object:
+   let educationPromise = educationRequest.getFetchPromise;
+   //1.5 Executing the promise:
+   educationPromise
+   .then((response) => {
+     //Handling error
+     if (!response.ok){
+       throw new Error("Network response was not OK");
+     }
+     //Returning response as JSON DATA
+     return response.json();
+   })
+   .then((data) => {
+     //2. Rendering JSON Data
+     renderProjectsData(data);
+   })
+   .catch((error) => {
+     console.error("There was a problem fetching the projects: " +error);
+   });
+}
+
 function renderProjectsData(data){
   //VARIABLES
-  //Request variable
-  let projectsData = data;
+  //Promise variable
+  const projectsData = data;
   
   //Project's data map
-    let projectDataMap = new Map([
+  const projectDataMap = new Map([
     ["Burger-City-Restaurant", {
       image: "burger-city-restaurant.png",
       dates: "July 2020 - December 2020",
@@ -229,11 +260,28 @@ function renderProjectsData(data){
     //4. Create a new list item (li) element with the following structure
     /*
       <li class="project-card">
+        <div class="project-title-container">
+          <a class="project-title-link"> 
+            <span></span>
+          </a>
+        </div>
+        <div class="project-dates-container">
+          <em class="emphasis-fact"></em>
+        </div>
         <div class="project-image-container">
           <img></img>
         </div>
-        <div class="project-title-container">
-          <span> </span>
+        <div class="project-description-container">
+          <span class="emphasis-fact"></span>
+        </div>
+        <div class="project-tools-container">
+          <ul class="horizontal-list">
+            <li class="tool-item">
+              <span>
+                <i></i>
+              </span>
+            </li>
+          </ul>
         </div>
       </li>
     */
@@ -278,7 +326,7 @@ function renderProjectsData(data){
       //Setting up project's image
       projectImageContainer.classList.add("project-image-container");
       projectImage.classList.add("project-image")
-      projectImage.setAttribute("src", `./images/${projectDataMap.get(repository.name).image}`);
+      projectImage.setAttribute("src", `./Images/Projects/${projectDataMap.get(repository.name).image}`);
 
       //Setting up project's description
       projectDescriptionContainer.classList.add("project-description-container");
@@ -334,6 +382,156 @@ function renderProjectsData(data){
 
     }
   }
+}
+
+function showEducation(){
+  //1. Showing education 
+  //1.1 Setting up parameters
+  let method = "GET";
+  let url = "./js/education.json";
+  let mode = "cors"
+  //1.2 Creating the request object:
+  let educationRequest = new ApiRequest(method, url, mode);
+  //1.3 Setting the request object:
+  educationRequest.setRequest();
+  //1.4 Getting the request object:
+  let educationPromise = educationRequest.getFetchPromise;
+  //1.5 Executing the promise:
+  educationPromise
+  .then((response) => {
+    //Handling error
+    if (!response.ok){
+      throw new Error("Network response was not OK");
+    }
+    //Returning response as JSON DATA
+    return response.json();
+  })
+  .then((data) => {
+    //2. Rendering JSON Data
+    renderEducationData(data);
+  })
+  .catch((error) => {
+    console.error("There was a problem fetching the projects: " +error);
+  });
+}
+
+function renderEducationData(data){
+  //VARIABLES
+  //Promise variable
+  const educationData = data;
+
+  //1. Selecting the projects section by ID:
+  const educationSection = document.getElementById("education");
+  //2. Query the educationSection (instead of the entire document) to find the <ul> element:
+  const educationList = educationSection.querySelector("ul");
+  //3 Iterate over my education JSON:
+  for (education of educationData){
+    /*
+      The following HTML structure will be followed to render the education data:
+        <li class="education-card">
+          <div class="education-title-container">
+            <span></span>
+          </div>
+          <div class="education-dates-container">
+            <em class="emphasis-fact"></em>
+          </div>
+          <div class="education-image-container">
+            <a>
+              <img class="education-image"></img>
+            </a>
+          </div>
+          <div class="education-description-container">
+            <span class="emphasis-fact"></span>
+          </div>
+        </li>
+    */
+
+    //3.1 HTML Elements creation:
+    
+    //3.1.1 List item
+    let educationListItem = document.createElement("li");
+    
+    //3.1.2 Title container div
+    let educationTitleContainer = document.createElement("div");
+    //3.1.2.1 Title span
+    let educationTitle = document.createElement("span");
+
+    //3.1.3 Dates container div
+    let educationDatesContainer = document.createElement("div");
+    //3.1.3.1 Dates em 
+    let educationDates = document.createElement("em");
+
+    //3.1.4 Image container div
+    let educationImageContainer = document.createElement("div");
+    //3.1.4.1 Image link <a>
+    let educationImageLink = document.createElement("a");
+    //3.1.4.2 Image
+    let educationImage = document.createElement("img");
+
+    //3.1.5 Description container div
+    let educationDescriptionContainer = document.createElement("div");
+    //3.1.5.1 Description span
+    let educationDescription = document.createElement("span");
+
+    //3.2 HTML Elements set up:
+    
+    //3.2.1 List item
+    educationListItem.classList.add("education-card");
+
+    //3.2.2 Title container div
+    educationTitleContainer.classList.add("education-title-container");
+
+    //3.2.3 Dates container div
+    educationDatesContainer.classList.add("education-dates-container");
+    //3.2.3.1 Dates em
+    educationDates.classList.add("emphasis-fact");
+
+    //3.2.4 Image container div
+    educationImageContainer.classList.add("education-image-container");
+    //3.2.4.1 Image
+    educationImage.classList.add("education-image");
+
+    //3.2.5 Description container div
+    educationDescriptionContainer.classList.add("education-description-container");
+    //3.2.5.1 Description span
+    educationDescription.classList.add("emphasis-fact");
+
+    //3.3 JSON appendage:
+    
+    //3.3.1 Education title:
+    educationTitle.innerText = education.title;
+    //3.3.2 Education dates:
+    educationDates.innerText = education.date;
+    //3.3.3 Education image:
+    educationImageLink.setAttribute("href", `${education.link}`);
+    educationImageLink.setAttribute("target", "_blank");
+    educationImage.setAttribute("src", `${education.image}`);
+    //3.3.4 Education description:
+    educationDescription.innerText = education.description;
+
+    //3.4 HTML Elements appendage:
+
+    //3.4.1 List item to <ul>
+    educationList.appendChild(educationListItem);
+    //3.4.2 Education title container to <li>
+    educationListItem.appendChild(educationTitleContainer);
+    educationTitleContainer.appendChild(educationTitle);
+    //3.4.3 Education dates container to <li>
+    educationListItem.appendChild(educationDatesContainer);
+    educationDatesContainer.appendChild(educationDates);
+    //3.4.4 Education image container to <li>
+    educationListItem.appendChild(educationImageContainer);
+    educationImageContainer.appendChild(educationImageLink);
+    educationImageLink.appendChild(educationImage);
+    //3.4.5 Education description container to <li>
+    educationListItem.appendChild(educationDescriptionContainer);
+    educationDescriptionContainer.appendChild(educationDescription);    
+  }
+
+  //4 HTML Elements appendage:
+
+  //4.1 Unordered list to section
+  educationSection.appendChild(educationList);
 }
 
 function setActive(e) {
@@ -567,56 +765,31 @@ document.addEventListener("DOMContentLoaded", () => {
   showSkills();
 
   //3. Showing projects section
-  //3.1Setting up parameters
-  let method = "GET";
-  let url = "https://api.github.com/users/secch97/repos?sort=created&direction=asc";
-  let mode = "cors"
-  //3.2 Creating the request object:
-  let apiRequestObject = new ApiRequest(method, url, mode);
-  //3.3 Setting the request object:
-  apiRequestObject.setRequest();
-  //3.4 Getting the request object:
-  let projectsPromise = apiRequestObject.getFetchPromise;
-  //3.5 Executing the promise:
-  projectsPromise
-  .then((response) => {
-    //Hnadling error
-    if (!response.ok){
-      throw new Error("Network response was not OK");
-    }
-    //Returning response as JSON DATA
-    return response.json();
-  })
-  .then((data) => {
-    //Rendering JSON Data
-    renderProjectsData(data);
-  })
-  .catch((error) => {
-    console.error("There was a problem fetching the projects: " +error);
-  });
+  showProjects();
  
+  //4. Showing education section
+  showEducation();
 
-
-  //4. Showing copyright footer
+  //5. Showing copyright footer
   showCopyright();
 
-  //5. Getting navigation link elements
-  //5.1 Querying every navigation link:
+  //6. Getting navigation link elements
+  //6.1 Querying every navigation link:
   const navigationLinks = document.querySelectorAll("header .nav-container .nav a.nav-item");
-  //5.2 Setting up a click event listener for every navigation link:
+  //6.2 Setting up a click event listener for every navigation link:
   navigationLinks.forEach((link) => {
     link.addEventListener("click", setActive);
   });
 
-  //6. Handle message form
+  //7. Handle message form
   const messageForm = document.querySelector("#messageForm");
   messageForm.addEventListener("submit", handleMessageForm);
 
-  //7. Hide the "Messages Form" when the list of messages is empty.
-  //7.1 Set messages list visibility depending of number of messages:
+  //8. Hide the "Messages Form" when the list of messages is empty.
+  //8.1 Set messages list visibility depending of number of messages:
   setMessagesVisibility();
 
-  //8. Handle edit message form
+  //9. Handle edit message form
   const editMessageForm = document.querySelector("#editMessageForm");
   editMessageForm.addEventListener("submit", handleEditMessageForm);
 })
