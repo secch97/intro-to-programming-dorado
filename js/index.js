@@ -48,7 +48,7 @@ function turnNavBarResponsive(e){
 }
 
 
-function showCopyright() {
+function showFooter() {
   //1. Create a date object
   let today = new Date();
   //2. Retrieve the current year:
@@ -64,6 +64,36 @@ function showCopyright() {
   //7. Append the copyright paragraph into the footerNav element.
   footerNav.appendChild(copyright);
   //8. Appending social media links
+
+  //8.2 Setting up social media data
+  
+  //8.2.1 Variable set up:
+  const socialMediaData = [
+    {
+      icon: "fa-google",
+      link: "mailto:secch97@gmail.com"
+    },
+  
+    {
+      icon: "fa-github",
+      link: "https://github.com/secch97"
+    },
+  
+    {
+      icon: "fa-twitter",
+      link: "https://twitter.com/MrRobot_97"
+    }
+  ];
+
+  //8.3 Rendering HTML with socialMediaData:
+
+  //8.3.1 Retrieving social media container:
+  const socialMediaListContainer = renderSocialMedia(socialMediaData);
+  //8.3.2 Appending <address> element to navigation footer
+  footerNav.appendChild(socialMediaListContainer);
+}
+
+function renderSocialMedia(socialMediaData){
   /*
     <address>
       <ul class="horizontal-list">
@@ -88,78 +118,61 @@ function showCopyright() {
       </ul>
     </address>
   */
-  //8.1 Creating and setting up HTML elements
-  //8.1.1 Creating the address element
+  //1 Iterate over my social media data:
+
+  //1.1 HTML elements creation:
+
+  //1.1.1 Address element:
   const socialMediaListContainer = document.createElement("address");
-  //8.1.2 Creating the list element
+  //1.1.2 Unordered List element:
   const socialMediaList = document.createElement("ul");
-  //8.1.3 Setting up HTML elements
-  socialMediaList.classList.add("horizontal-list");
-  socialMediaListContainer.classList.add("footer-element")
 
-  //8.2 Setting up and getting a fetch request with the social media data:
+  //1.2 HTML elements set up:
   
-  //8.2.1 Set up:
+  //1.2.1 Address element:
+  socialMediaListContainer.classList.add("footer-element")
+  //1.2.2 Unordered list element:
+  socialMediaList.classList.add("horizontal-list");
 
-  //8.2.1.1 Variables:
-  const method = "GET";
-  const url = "./js/socialMedia.json";
-  const mode = "cors"
-  //8.2.1.2: Creating new API Request object:
-  const educationRequest = new ApiRequest(method, url, mode);
-  //8.2.1.3 Setting the request object:
-  educationRequest.setRequest();
+  //1.3 Social media data appendage:
 
-  //8.2.2 Fetching data:
+  for (socialMedia of socialMediaData){
+    //1.3.1 HTML elements creation:
 
-  //8.2.2.1 Getting the fetched data:
-  const socialMediaData = educationRequest.getFetchPromise;
-  //8.2.2.2 Executing the promise with the fetched data: 
-  socialMediaData
-  .then((response) => {
-    //Hnadling error
-    if (!response.ok){
-      throw new Error("Network response was not OK");
-    }
-    //Returning response as JSON DATA
-    return response.json();
-  })
-  .then((data) => {
-    //8.3 Rendering JSON Data
-    for (socialMedia of data){
-      //8.3.1 Creating and setting up HTML elements
+    //1.3.1.1 List item element:
+    const socialMediaListItem = document.createElement("li");
+    //1.3.1.2 Anchor tag element:
+    const socialMediaLink = document.createElement("a");
+    //1.3.1.3 <i> element:
+    const socialMediaIcon = document.createElement("i");
 
-      //8.3.1.1 Creating a list item element
-      const socialMediaListItem = document.createElement("li");
-      //8.3.1.2 Creating an anchor tag element
-      const socialMediaLink = document.createElement("a");
-      //8.3.1.3 Creating an <i> element
-      const socialMediaIcon = document.createElement("i");
-      //8.3.1.4 Setting up the list item element
-      socialMediaListItem.classList.add("connect-item");
-      //8.3.1.5 Setting up the anchor element
-      socialMediaLink.setAttribute("href", `${socialMedia.link}`);
-      socialMediaLink.setAttribute("target", "_blank");
-      //8.3.1.6 Setting up the <i> element
-      socialMediaIcon.classList.add(`fa-brands`, `${socialMedia.icon}`);
+    //1.3.2 HTML elements set up:
+    //1.3.2.1 List item element:
+    socialMediaListItem.classList.add("connect-item");
 
-      //8.3.2 Appending HTML elements
-      //8.3.2.1 Appending <i> element to anchor tag:
-      socialMediaLink.appendChild(socialMediaIcon);
-      //8.3.2.2 Appending <a> element to list item:
-      socialMediaListItem.appendChild(socialMediaLink);
-      //8.3.2.3 Appending <li> to list:
-      socialMediaList.appendChild(socialMediaListItem);
-    }
-  })
-  .catch((error) => {
-    console.error("There was a problem fetching the social media: " +error);
-  });
+    //1.3.3 Social media data appendage:
+    //1.3.3.1 Anchor element:
+    socialMediaLink.setAttribute("href", `${socialMedia.link}`);
+    socialMediaLink.setAttribute("target", "_blank");
+    //1.3.3.2 <i> element:
+    socialMediaIcon.classList.add(`fa-brands`, `${socialMedia.icon}`);
 
-  //8.3.2.4 Appending <ul> to address element
+    //1.3.4 HTML elements appendage
+    //1.3.4.1 Appending <li> to list:
+    socialMediaList.appendChild(socialMediaListItem);
+    //1.3.4.2 Appending <a> element to list item:
+    socialMediaListItem.appendChild(socialMediaLink);
+    //1.3.4.3 Appending <i> element to anchor tag:
+    socialMediaLink.appendChild(socialMediaIcon);
+
+  }
+
+  //1.4 Remaining HTML elements appendage:
+  //1.4.1 Appending <ul> element to address:
   socialMediaListContainer.appendChild(socialMediaList);
-  //8.3.2.5 Appending <address> to footer element
-  footerNav.appendChild(socialMediaListContainer);
+
+  //1.5 Return HTML element containing social media:
+  return socialMediaListContainer;
 }
 
 function showSkills() {
@@ -198,13 +211,13 @@ function showProjects(){
    let url = "https://api.github.com/users/secch97/repos?sort=created&direction=asc";
    let mode = "cors"
    //1.2 Creating the request object:
-   let educationRequest = new ApiRequest(method, url, mode);
+   let projectsRequest = new ApiRequest(method, url, mode);
    //1.3 Setting the request object:
-   educationRequest.setRequest();
+   projectsRequest.setRequest();
    //1.4 Getting the request object:
-   let educationPromise = educationRequest.getFetchPromise;
+   let projectsPromise = projectsRequest.getFetchPromise;
    //1.5 Executing the promise:
-   educationPromise
+  projectsPromise
    .then((response) => {
      //Handling error
      if (!response.ok){
@@ -326,7 +339,7 @@ function renderProjectsData(data){
       //Setting up project's image
       projectImageContainer.classList.add("project-image-container");
       projectImage.classList.add("project-image")
-      projectImage.setAttribute("src", `./Images/Projects/${projectDataMap.get(repository.name).image}`);
+      projectImage.setAttribute("src", `./images/projects/${projectDataMap.get(repository.name).image}`);
 
       //Setting up project's description
       projectDescriptionContainer.classList.add("project-description-container");
@@ -385,46 +398,33 @@ function renderProjectsData(data){
 }
 
 function showEducation(){
-  //1. Showing education 
-  //1.1 Setting up parameters
-  let method = "GET";
-  let url = "./js/education.json";
-  let mode = "cors"
-  //1.2 Creating the request object:
-  let educationRequest = new ApiRequest(method, url, mode);
-  //1.3 Setting the request object:
-  educationRequest.setRequest();
-  //1.4 Getting the request object:
-  let educationPromise = educationRequest.getFetchPromise;
-  //1.5 Executing the promise:
-  educationPromise
-  .then((response) => {
-    //Handling error
-    if (!response.ok){
-      throw new Error("Network response was not OK");
+  //1. Setting up education data:
+  //1.1 Variables:
+  const educationData = [
+    {
+      title: "Computer Science Engineer",
+      date: "January 2016 - May 2021",
+      image: "./images/education/College-Degree.png",
+      link: "./assets/documents/education/College-Degree.pdf",
+      description: "The Computer Science Engineer from Universidad Don Bosco is an ethical, critical and purposeful professional, with leadership who manages IT projects, creates innovative software and manages IT networks, applying international technical standards."
     }
-    //Returning response as JSON DATA
-    return response.json();
-  })
-  .then((data) => {
-    //2. Rendering JSON Data
-    renderEducationData(data);
-  })
-  .catch((error) => {
-    console.error("There was a problem fetching the projects: " +error);
-  });
+  ];
+  
+  //2. Rendering HTML with education data:
+  renderEducationData(educationData);
 }
 
 function renderEducationData(data){
-  //VARIABLES
-  //Promise variable
+  //1. Variables set up
   const educationData = data;
 
-  //1. Selecting the projects section by ID:
+  //2. HTML elements selection:
+  //2.1 Selecting the projects section by ID:
   const educationSection = document.getElementById("education");
-  //2. Query the educationSection (instead of the entire document) to find the <ul> element:
+  //2.2 Query the educationSection (instead of the entire document) to find the <ul> element:
   const educationList = educationSection.querySelector("ul");
-  //3 Iterate over my education JSON:
+
+  //3 Education data iteration:
   for (education of educationData){
     /*
       The following HTML structure will be followed to render the education data:
@@ -448,52 +448,52 @@ function renderEducationData(data){
 
     //3.1 HTML Elements creation:
     
-    //3.1.1 List item
+    //3.1.1 List item:
     let educationListItem = document.createElement("li");
     
-    //3.1.2 Title container div
+    //3.1.2 Title container div:
     let educationTitleContainer = document.createElement("div");
-    //3.1.2.1 Title span
+    //3.1.2.1 Title span:
     let educationTitle = document.createElement("span");
 
-    //3.1.3 Dates container div
+    //3.1.3 Dates container div:
     let educationDatesContainer = document.createElement("div");
-    //3.1.3.1 Dates em 
+    //3.1.3.1 Dates em: 
     let educationDates = document.createElement("em");
 
-    //3.1.4 Image container div
+    //3.1.4 Image container div:
     let educationImageContainer = document.createElement("div");
-    //3.1.4.1 Image link <a>
+    //3.1.4.1 Image link <a>:
     let educationImageLink = document.createElement("a");
-    //3.1.4.2 Image
+    //3.1.4.2 Image:
     let educationImage = document.createElement("img");
 
-    //3.1.5 Description container div
+    //3.1.5 Description container div:
     let educationDescriptionContainer = document.createElement("div");
-    //3.1.5.1 Description span
+    //3.1.5.1 Description span:
     let educationDescription = document.createElement("span");
 
     //3.2 HTML Elements set up:
     
-    //3.2.1 List item
+    //3.2.1 List item:
     educationListItem.classList.add("education-card");
 
-    //3.2.2 Title container div
+    //3.2.2 Title container div:
     educationTitleContainer.classList.add("education-title-container");
 
-    //3.2.3 Dates container div
+    //3.2.3 Dates container div:
     educationDatesContainer.classList.add("education-dates-container");
-    //3.2.3.1 Dates em
+    //3.2.3.1 Dates em:
     educationDates.classList.add("emphasis-fact");
 
-    //3.2.4 Image container div
+    //3.2.4 Image container div:
     educationImageContainer.classList.add("education-image-container");
-    //3.2.4.1 Image
+    //3.2.4.1 Image:
     educationImage.classList.add("education-image");
 
-    //3.2.5 Description container div
+    //3.2.5 Description container div:
     educationDescriptionContainer.classList.add("education-description-container");
-    //3.2.5.1 Description span
+    //3.2.5.1 Description span:
     educationDescription.classList.add("emphasis-fact");
 
     //3.3 JSON appendage:
@@ -511,19 +511,19 @@ function renderEducationData(data){
 
     //3.4 HTML Elements appendage:
 
-    //3.4.1 List item to <ul>
+    //3.4.1 List item to <ul>:
     educationList.appendChild(educationListItem);
-    //3.4.2 Education title container to <li>
+    //3.4.2 Education title container to <li>:
     educationListItem.appendChild(educationTitleContainer);
     educationTitleContainer.appendChild(educationTitle);
-    //3.4.3 Education dates container to <li>
+    //3.4.3 Education dates container to <li>:
     educationListItem.appendChild(educationDatesContainer);
     educationDatesContainer.appendChild(educationDates);
-    //3.4.4 Education image container to <li>
+    //3.4.4 Education image container to <li>:
     educationListItem.appendChild(educationImageContainer);
     educationImageContainer.appendChild(educationImageLink);
     educationImageLink.appendChild(educationImage);
-    //3.4.5 Education description container to <li>
+    //3.4.5 Education description container to <li>:
     educationListItem.appendChild(educationDescriptionContainer);
     educationDescriptionContainer.appendChild(educationDescription);    
   }
@@ -770,8 +770,8 @@ document.addEventListener("DOMContentLoaded", () => {
   //4. Showing education section
   showEducation();
 
-  //5. Showing copyright footer
-  showCopyright();
+  //5. Showing footer
+  showFooter();
 
   //6. Getting navigation link elements
   //6.1 Querying every navigation link:
