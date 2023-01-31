@@ -53,7 +53,7 @@ html {
 body {
     /* Font */
     font-family: 'Montserrat', sans-serif;
-    font-size: 15px;
+    font-size: 17px;
     /* Top margin */
     margin: 7vh 0 0;
     /* Min height to display on my html body */
@@ -151,7 +151,7 @@ h2{
     background-color: royalblue;
     color: white;    
     /* Width */
-    min-width: 110px;
+    min-width: 120px;
 }
 
 .horizontal-list li.tool-item{
@@ -172,7 +172,7 @@ h2{
     background-color: white;
     color: royalblue;    
     /* Width */
-    min-width: 110px;
+    min-width: 120px;
 }
 
 .horizontal-list li.skill-item a {
@@ -189,8 +189,8 @@ h2{
     /* Padding */
     padding: 5px;
     /* Width */
-    width: 110px;
-    min-width: 110px;
+    width: 120px;
+    min-width: 120px;
 }
 
 .horizontal-list li.skill-item a i{
@@ -212,8 +212,8 @@ h2{
     /* Padding */
     padding: 5px;
     /* Width */
-    width: 110px;
-    min-width: 110px;
+    width: 120px;
+    min-width: 120px;
 }
 
 .horizontal-list li.tool-item span i{
@@ -344,7 +344,7 @@ h2{
     justify-content: center;
     /*Sizing*/
     overflow: auto;
-    height: 75px;
+    height: 85px;
 }
 
 .education-description-container{
@@ -353,7 +353,7 @@ h2{
     justify-content: center;
     /*Sizing*/
     overflow: auto;
-    height: 115px;
+    height: 150px;
 }
 
 .project-tools-container{
@@ -810,7 +810,7 @@ input:-webkit-autofill:active  {
     /*Layout*/
     padding: 0 10vw;
     margin-top: 5vh;
-    margin-bottom: 100px;
+    margin-bottom: 75px;
     /*Animation*/
     transition: .5s;
 }
@@ -1153,7 +1153,7 @@ footer{
     }
 }
 
-@media (max-width: 870px){
+@media (max-width: 985px){
     section#techExperience ul.experience li.experience-position{
         /*Display*/
         flex-direction: column;

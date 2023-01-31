@@ -340,6 +340,7 @@ function renderProjectsData(data){
       projectImageContainer.classList.add("project-image-container");
       projectImage.classList.add("project-image")
       projectImage.setAttribute("src", `./images/projects/${projectDataMap.get(repository.name).image}`);
+      projectImage.setAttribute("alt", "Project's screenshot");
 
       //Setting up project's description
       projectDescriptionContainer.classList.add("project-description-container");
@@ -506,6 +507,7 @@ function renderEducationData(data){
     educationImageLink.setAttribute("href", `${education.link}`);
     educationImageLink.setAttribute("target", "_blank");
     educationImage.setAttribute("src", `${education.image}`);
+    educationImage.setAttribute("alt", "Degree or certificate image");
     //3.3.4 Education description:
     educationDescription.innerText = education.description;
 
