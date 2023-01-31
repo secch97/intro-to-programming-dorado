@@ -45,6 +45,7 @@ body{
     max-width: 100%;
     overflow-x: hidden;
 }
+
 html {
     scroll-padding-top: 40px;
 }
@@ -61,6 +62,7 @@ body {
     /*Display*/
     display: flex;
     flex-direction: column;
+    align-items: center;
     /*Background Color*/
     background-color: whitesmoke;
 }
@@ -236,11 +238,6 @@ h2{
 .hidden {
     /* Display */
     display:none;
-}
-
-.welcome-header{
-    /*Layout*/
-    text-align: center;
 }
 
 .line-white-space{
@@ -693,6 +690,7 @@ input:-webkit-autofill:active  {
     /*Display*/
     display: flex;
     justify-content: center;
+    z-index: 1;
 }
 
 .nav {
@@ -793,6 +791,134 @@ input:-webkit-autofill:active  {
     /* Animation */
     transition: ease-in-out 0.2s;
 }
+
+/*
+=================================
+        WELCOME HEADER CSS
+=================================
+*/
+
+.welcome-header-container{
+    /*Display*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    /*Sizing*/
+    width: 90%;
+    height: 45vh;
+    /*Layout*/
+    padding: 0 10vw;
+    margin-top: 5vh;
+    margin-bottom: 100px;
+    /*Animation*/
+    transition: .5s;
+}
+
+.welcome-header-content{
+    display:flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.header-content{
+    /*Font*/
+    font-size: 2.5rem;
+    font-weight: 300;
+    /*Layout*/
+    margin-bottom: 40px
+}
+
+.header-content .header-content-brand{
+    /*Display*/
+    display: flex;
+    flex-direction: column;
+    /*Font*/
+    text-transform: capitalize;
+    font-size: 4.5rem;
+    font-weight: bold;
+    /*Colors*/
+    color: royalblue;
+    /*Animation*/
+    transition: .5s;
+}
+
+.welcome-header-content .header-content-item{
+    cursor: pointer;
+    /* Display */
+    display: flex;
+    flex: 0 1 auto;
+    justify-content: center;
+    /* Fonts */
+    text-decoration: none;
+    text-transform: capitalize;
+    font-weight: bold;
+    font-style: normal;
+    /* Layout */
+    margin-right: 20px;
+    border-top: 3px solid royalblue;
+    border-radius: 20px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+    padding: 10px 30px;
+    /*Sizing*/
+    width: 200px;
+    min-width: 200px;
+    /* Color */
+    background-color: royalblue;
+    color: white;    
+}
+
+.welcome-header-content .header-content-item:hover  {
+    /*Borders*/
+    border-color: goldenrod;
+    /*Colors*/
+    background-color: white;
+    color: royalblue;
+    /*Transform*/
+    transition: all 0.2s ease-in-out;
+    transform: scale(1.05);
+}
+
+.welcome-header-img-container{
+    /*Display*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    position: relative;
+}
+
+.welcome-header-img{
+    position: absolute;
+    top: 60%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 500px;
+    object-fit: cover;
+}
+
+.circle{
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: royalblue;
+    margin-left: 20px;
+    position: relative;
+    user-select: none;
+    transition: .5s;
+}
+
+.circle::before{
+    content: '';
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    bottom: 40px;
+    right: 40px;
+    border: 10px solid #fff;
+    border-radius: 50%;
+}
 /* 
 ==================================
 =           MESSAGES CSS         =
@@ -811,6 +937,10 @@ input:-webkit-autofill:active  {
 /*
     CSS to create a footer navigation bar for my website
 */
+footer{
+    width: 100%;
+}
+
 .footerNav-container{
     /*Display*/
     display: flex;
@@ -879,8 +1009,6 @@ input:-webkit-autofill:active  {
     /* Color */
     background-color: royalblue;
     color: white;    
-    /* Width */
- 
 }
 
 .footerNav .footer-element .horizontal-list li.connect-item:hover,
@@ -993,9 +1121,31 @@ input:-webkit-autofill:active  {
 =          MEDIA QUERIES         =
 ==================================
 */
+/* PCS */
+@media (max-width: 1410px){
+    .welcome-header-container .header-content .header-content-brand{
+        /*Fonts*/
+        font-size: 4rem;
+        transition: .5s;
+    }
+
+    .circle{
+        /*Sizing*/
+        width: 300px;
+        height: 300px;
+        transition: .5s;
+    }
+
+    .welcome-header-img{
+        /*Sizing*/
+        width: 350px;
+        height: 350px;
+        transition: .5s;
+    }
+}
 
 /* TABLETS */
-/* MAXIMUM TABLET WIDTH OF 1024PX*/
+/* MAXIMUM TABLET WIDTH OF 1150PX*/
 @media (max-width: 1150px){
     /* Navigation Bar */
     .nav-container .nav .nav-item-container .nav-item span{
@@ -1007,6 +1157,51 @@ input:-webkit-autofill:active  {
     section#techExperience ul.experience li.experience-position{
         /*Display*/
         flex-direction: column;
+    }
+}
+
+@media (max-width: 700px){
+    .welcome-header-container{
+        /*Display*/
+        flex-direction: column-reverse;
+        align-items: center;
+        /*Sizing*/
+        height: auto;
+        margin-bottom: 0px;
+        /*Layout*/
+        padding: 10px 10vw;
+        transition: .5s;
+    }
+
+    .welcome-header-content{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .welcome-header-img-container{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .header-content{
+        /*Font*/
+        text-align: center;
+    }
+
+    .circle{
+         /*Sizing*/
+         width: 250px;
+         height: 250px;
+         transition: .5s;
+    }
+
+    .welcome-header-img{
+        /*Sizing*/
+        width: 300px;
+        height: 300px;
+        transition: .5s;
     }
 }
 
