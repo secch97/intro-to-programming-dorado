@@ -244,6 +244,10 @@ h2{
     white-space: pre-line;
 }
 
+.important-fact-link{
+    text-decoration: none;
+}
+
 .important-fact{
     color:#153084;
     font-weight: bold;
