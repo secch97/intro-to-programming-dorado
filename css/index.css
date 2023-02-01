@@ -1,6 +1,6 @@
 /* 
 ==================================
-=           FONT FACES           =
+=   SETTING UP BORDER BOX MODEL  =
 ==================================
 */
 *,
@@ -9,6 +9,11 @@
     box-sizing: border-box;
 }
 
+/* 
+==================================
+=           FONT FACES           =
+==================================
+*/
 @font-face {
     font-family: 'Montserrat';
     font-weight: bold;
@@ -35,9 +40,10 @@
     src: url('../fonts/Montserrat-LightItalic.woff2') format('woff2'),
     url('../fonts/Montserrat-LightItalic.woff') format('woff');
 }
+
 /* 
 ==================================
-=           ELEMENTS CSS         =
+=      HTML ELEMENTS CSS         =
 ==================================
 */
 html,
@@ -51,54 +57,300 @@ html {
 }
 
 body {
-    /* Font */
-    font-family: 'Montserrat', sans-serif;
-    font-size: 17px;
-    /* Top margin */
-    margin: 7vh 0 0;
-    /* Min height to display on my html body */
-    min-height: 100vh;
-    /* Fonts */
     /*Display*/
     display: flex;
     flex-direction: column;
     align-items: center;
-    /*Background Color*/
+    /* Spacing */
+    margin: 7vh 0 0;
+    /* Sizing */
+    min-height: 100vh;
+    /* Fonts */
+    font-family: 'Montserrat', sans-serif;
+    font-size: 17px;
+    /* Color */
     background-color: whitesmoke;
 }
 
-/* CSS for the section elements of my HTML page */
 section {
-    /* Justifying text on sections */
-    text-align: justify;
-    /* Spacing */
+    /*Spacing*/
     padding: 0.4em;
     margin: 0.4em;
     /*Sizing*/
     max-width: 1200px;
     width: 90vw;
+    /* Fonts */
+    text-align: justify;
 }
 
-/* CSS for the main element of my HTML page */
 main {
     flex: 1;
 }
 
 h1,
 h2{
-    /* Color */
-    color: #333;
     /* Fonts */
     font-size: 1.7em;
     font-weight: bold;
+    /* Color */
+    color: #333;
 }
 
 /* 
 ==================================
 =          CLASSES CSS           =
 ==================================
+=////////////////////////////////=
+==================================
 */
-/* CSS for container divs for page content*/
+
+/*
+==================================
+=      TOP NAVIGATION BAR        =
+==================================
+*/
+.top-navigation-bar-container {
+    /*Display*/
+    display: flex;
+    justify-content: center;
+    z-index: 1;
+}
+
+.top-navigation-bar {
+    /* Display */
+    display: flex;
+    justify-content: space-between;
+    flex:auto;
+    /* Spacing */
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+    /* Sizing */
+    width: 100%;
+    height: auto;
+    /* Position */
+    position: fixed;
+    top: 0;
+    /* Colors */
+    background-color: royalblue;
+    /* Hiding the scroll bar when overflow happens on my navbar*/
+    overflow: hidden;
+}
+
+.nav-logo-container{
+    /*Display*/
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 0 1 auto;
+}
+
+.nav-item-container{
+    /*Display*/
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+}
+
+.nav-button-container{
+    /*Display*/
+    display: none;
+}
+/*
+==================================
+=   TOP NAVIGATION <a> TAGS      =
+==================================
+*/
+#top-navigation-bar a.nav-logo{
+    /*Spacing*/
+    padding: 0px 20px;
+    border-top: 4px solid royalblue;
+}
+
+#top-navigation-bar a.nav-logo img{
+    /*Sizing*/
+    width: 165px;
+    height: auto;
+}
+
+#top-navigation-bar a.nav-item {
+    /* Display */
+    flex: 1;
+    /* Spacing */
+    padding: 12px 20px;
+    border-top: 4px solid royalblue;
+    /* Fonts */
+    text-align: center;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: bold;
+    /* Colors */
+    color: white;    
+}
+
+#top-navigation-bar a.active {
+    /* Spacing */
+    border-top: 4px solid darkgoldenrod;
+    /* Fonts */
+    font-weight: bold;
+    /* Colors */
+    background-color: white;
+    color: darkgoldenrod;
+}
+
+#top-navigation-bar a.nav-item:hover {
+    /* Spacing */
+    border-top: 4px solid darkgoldenrod;
+    /* Colors */
+    background-color: white;
+    color: royalblue;
+    /* Animation */
+    transition: ease-in-out 0.2s;
+}
+/*
+==================================
+=       WELCOME HEADER CSS       =
+==================================
+*/
+.welcome-header-container{
+    /*Display*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    /*Spacing*/
+    padding: 0 10vw;
+    margin-top: 5vh;
+    margin-bottom: 75px;
+    /*Sizing*/
+    width: 90%;
+    height: 45vh;
+    /*Animation*/
+    transition: .5s;
+}
+
+.welcome-header-content{
+    /* Display */
+    display:flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.header-content{
+    /*Spacing*/
+    margin-bottom: 40px;
+    /*Font*/
+    font-size: 2.5rem;
+    font-weight: 300;
+}
+
+.header-content .header-content-brand{
+    /*Display*/
+    display: flex;
+    flex-direction: column;
+    /*Font*/
+    text-transform: capitalize;
+    font-size: 4.5rem;
+    font-weight: bold;
+    /*Colors*/
+    color: royalblue;
+    /*Animation*/
+    transition: .5s;
+}
+
+.welcome-header-content .header-content-item{
+    /* Display */
+    display: flex;
+    flex: 0 1 auto;
+    justify-content: center;
+    /* Spacing */
+    border-top: 3px solid royalblue;
+    border-radius: 20px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+    padding: 10px 30px;
+    /*Sizing*/
+    width: 200px;
+    min-width: 200px;
+    /* Fonts */
+    text-decoration: none;
+    text-transform: capitalize;
+    font-weight: bold;
+    font-style: normal;
+    /* Color */
+    background-color: royalblue;
+    color: white;    
+    /* Cursor */
+    cursor: pointer;
+}
+
+.welcome-header-content .header-content-item:hover  {
+    /*Spacing*/
+    border-color: goldenrod;
+    /*Colors*/
+    background-color: white;
+    color: royalblue;
+    /*Transform*/
+    transition: all 0.2s ease-in-out;
+    transform: scale(1.05);
+}
+
+.welcome-header-img-container{
+    /* Display */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    /* Position */
+    position: relative;
+}
+
+.welcome-header-img{
+    /*Position*/
+    position: absolute;
+    top: 60%;
+    left: 60%;
+    /*Sizing*/
+    width: 500px;
+    height: 500px;
+    object-fit: cover;
+    /*Transform*/
+    transform: translate(-50%, -50%);
+}
+
+.circle{
+    /*Spacing*/
+    border-radius: 50%;
+    margin-left: 20px;
+    /*Sizing*/
+    width: 400px;
+    height: 400px;
+    /*Position*/
+    position: relative;
+    /*Color*/
+    background: royalblue;
+    /*User select*/
+    user-select: none;
+    /*Animation*/
+    transition: .5s;
+}
+
+.circle::before{
+    /*Spacing*/
+    border: 10px solid #fff;
+    border-radius: 50%;
+    /* Position */
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    bottom: 40px;
+    right: 40px;
+    /*Content*/
+    content: '';
+}
+/*
+==================================
+=          SECTIONS CSS          =
+==================================
+*/
 .section-container {
     /*Display*/
     display: flex;
@@ -106,73 +358,69 @@ h2{
     flex-direction: column;
 }
 
-.inner-container{
-    width: 100%;
-    height: auto;
-}
-
 .heading-two{
-    /* Layout */
+    /* Spacing */
     text-align: center;
     /*Text Decoration*/
     text-decoration: underline 3px solid royalblue;
 }
-
-/* 
-   CSS for the unordered list with the class "horizontal-list"
-   in order to turn it into a horizontal list 
+/*
+==================================
+=     HORIZONTAL LIST CSS        =
+==================================
 */
 .horizontal-list{
     /*Display*/
     display:flex;
     justify-content: center;
     flex-wrap: wrap;
-    /*Layout*/
+    /*Spacing*/
     padding: 0;
+    /* List style */
     list-style-type: none;
 }
 
 .horizontal-list li.skill-item {
-    overflow: hidden;
     /* Display */
     display: flex;
     flex: 0 1 auto;
-    /* Fonts */
-    font-weight: bold;
-    font-style: normal;
-    /* Borders */
+    /* Spacing */
     border-top: 3px solid royalblue;
     border-radius: 20px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
-    /* Margins between list items*/
     margin-right: 10px;
     margin-bottom: 10px;
-    /* Color */
-    background-color: royalblue;
-    color: white;    
-    /* Width */
+    /*Sizing*/
     min-width: 120px;
-}
-
-.horizontal-list li.tool-item{
-    overflow: hidden;
-    /* Display */
-    display: flex;
-    flex: 0 1 auto;
     /* Fonts */
     font-weight: bold;
     font-style: normal;
-    /* Borders */
+    /* Color */
+    background-color: royalblue;
+    color: white;    
+    /* Overflow */
+    overflow: hidden;
+}
+
+.horizontal-list li.tool-item{
+    /* Display */
+    display: flex;
+    flex: 0 1 auto;
+    /* Spacing */
     border-radius: 20px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
-    /* Margins between list items*/
     margin-right: 10px;
     margin-bottom: 10px;
+    /*Sizing*/
+    min-width: 120px;
+    /* Fonts */
+    font-weight: bold;
+    font-style: normal;
     /* Color */
     background-color: white;
     color: royalblue;    
-    /* Width */
-    min-width: 120px;
+    /* Overflow */
+    overflow: hidden;
 }
 
 .horizontal-list li.skill-item a {
@@ -181,20 +429,20 @@ h2{
     justify-content: center;
     align-items: center;
     flex: 0 1 auto;
-    /* Colors */
-    color: white;
-    /* Text */
-    text-decoration: none;
-    text-align: center;
-    /* Padding */
+    /* Spacing */
     padding: 5px;
-    /* Width */
+    /* Sizing */
     width: 120px;
     min-width: 120px;
+    /* Fonts */
+    text-decoration: none;
+    text-align: center;
+    /* Colors */
+    color: white;
 }
 
 .horizontal-list li.skill-item a i{
-    /*Margin*/
+    /*Spacing*/
     margin-right: 3px;
 }
 
@@ -204,29 +452,29 @@ h2{
     justify-content: center;
     align-items: center;
     flex: 0 1 auto;
-    /* Colors */
-    color: royalblue;
-    /* Text */
-    text-decoration: none;
-    text-align: center;
-    /* Padding */
+    /* Spacing */
     padding: 5px;
-    /* Width */
+    /* Sizing */
     width: 120px;
     min-width: 120px;
+    /* Fonts */
+    text-decoration: none;
+    text-align: center;    
+    /* Colors */
+    color: royalblue;
 }
 
 .horizontal-list li.tool-item span i{
-    color: royalblue;
-    /*Margin*/
+    /*Spacing*/
     margin-right: 3px;
+    /* Color */    
+    color: royalblue;
 }
 
 .horizontal-list li.skill-item:hover,
 .horizontal-list li.skill-item:hover > * {
-    /*Borders*/
+    /*Spacing*/
     border-color: goldenrod;
-
     /*Colors*/
     background-color: white;
     color: royalblue;
@@ -235,30 +483,37 @@ h2{
     transform: scale(1.05);
 }
 
-.hidden {
-    /* Display */
-    display:none;
-}
-
-.line-white-space{
-    white-space: pre-line;
-}
+/*
+==================================
+=           TEXT CSS             =
+==================================
+*/
 
 .important-fact-link{
+    /* Font */
     text-decoration: none;
 }
 
 .important-fact{
-    color:#153084;
+    /* Font */
     font-weight: bold;
+    /* Colors */
+    color:#153084;
 }
 
 .emphasis-fact{
     /* Font */
     font-weight: 300;
 }
+
+/*
+==================================
+=      TECH EXPERIENCE CSS       =
+==================================
+*/
+
 .experience-list{
-    /*Sizing*/
+    /*Spacing*/
     padding-left: 0px;
 }
 
@@ -268,31 +523,36 @@ h2{
     justify-content: space-between;
     /* Spacing */
     padding: 15px;
-    /* Border */
     border-top: 4px solid royalblue;
     border-radius: 10px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+    /* Font */
+    font-weight: bold;
     /* Colors */
     background-color: royalblue;
     color: white;
-    /* Font */
-    font-weight: bold;
 }
 
 .experience-position:hover{
+    /* Spacing */
+    border-top: 4px solid darkgoldenrod;
     /* Colors */
     background-color: white;
     color: royalblue;
-    /* Border */
-    border-top: 4px solid darkgoldenrod;
     /* Animation */
     transition: ease-in-out 0.2s;
 }
 
 .experience-position:not(:last-child){
+    /* Spacing */
     margin-bottom: 20px;
 }
 
+/*
+==================================
+=    PROJECTS & EDUCATION CSS    =
+==================================
+*/
 .project-card,
 .education-card{
     /*Display*/
@@ -300,7 +560,7 @@ h2{
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
-    /*Layout*/
+    /*Spacing*/
     padding: 15px;
     border-top: 4px solid royalblue;
     border-radius: 10px;
@@ -320,7 +580,7 @@ h2{
 
 .project-card *:not(:last-child),
 .education-card *:not(:last-child){
-    /*Layout*/
+    /*Spacing*/
     margin-bottom: 5px;
 }
 
@@ -347,8 +607,9 @@ h2{
     display: flex;
     justify-content: center;
     /*Sizing*/
-    overflow: auto;
     height: 85px;
+    /*Overflow*/
+    overflow: auto;
 }
 
 .education-description-container{
@@ -356,8 +617,9 @@ h2{
     display: flex;
     justify-content: center;
     /*Sizing*/
-    overflow: auto;
     height: 150px;
+    /*Overflow*/
+    overflow: auto;
 }
 
 .project-tools-container{
@@ -370,12 +632,11 @@ h2{
 }
 
 .project-title-link{
-    /* Text */
+    /* Font */
     text-decoration: none;
     /* Color */
     color: white;
 }
-
 
 .project-image,
 .education-image{
@@ -385,16 +646,25 @@ h2{
     width: 100%;
     height: 200px;
 }
+/*
+==================================
+=           FORMS CSS            =
+==================================
+*/
 
-
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active  {
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+    -webkit-text-fill-color: royalblue !important;
+}
 
 .form-container{    
     /* Display */
     display: flex;
     justify-content: center;
-    /* Centering form */
-    text-align: center;
-    /*Sizing*/
+    /*Spacing*/
     margin-top: 25px;
     margin-bottom: 10px;
 }
@@ -407,38 +677,36 @@ h2{
 }
 
 form {    
-    /* Sizing */
-    width: 700px;
     /* Display */
     display: flex;
     justify-content: center;
     flex-direction: column;
     flex: initial;
-    /* Margin */
-    margin: 0 auto;
-    /*Text align*/
-    text-align: left;
-    /* Borders */
+    /* Spacing */
     border-radius: 10px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+    margin: 0 auto;
+    /* Sizing */
+    width: 700px;
+    /*Font*/
+    text-align: left;
     /* Colors */
     background-color: royalblue;
     color: white;
 }
 
-form#edit-message-form{    
+form#edit-message-form{  
+    /* Spacing */  
+    margin-bottom: auto;
+    /* Sizing */
     width: 100%;
     max-width: 100%;
-    margin-bottom: auto;
 }
 
 .flex-controls{
+    /*Display*/
     display: flex;
     justify-content: space-between;
-}
-
-.form-label{
-    display: block;
 }
 
 .flex-control{
@@ -446,104 +714,90 @@ form#edit-message-form{
     display: flex;
     flex-direction: column;
     flex: 1;
-    /* Padding */
+    /* Spacing */
     padding: 5px;
-    /* Margin */
     margin: 5px;
-    /* Width*/
+    /* Sizing */
     width: 100%;
-}
-
-/* Change the white to any color ;) */
-input:-webkit-autofill,
-input:-webkit-autofill:hover, 
-input:-webkit-autofill:focus, 
-input:-webkit-autofill:active  {
-    -webkit-box-shadow: 0 0 0 30px white inset !important;
-    -webkit-text-fill-color: royalblue !important;
-
 }
 
 .form-input{
     /* Appearance */
     appearance: none;
-    /* Dimensions */
+    /* Spacing */
+    border:3px solid white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+    /* Sizing */
     width: 100%;
     /* Font */
     font-family: inherit;
     font-weight:normal;
-    /* Borders */
-    border:3px solid white;
-    border-radius: 10px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
-    /*Text decoration*/
     text-decoration: none;
     /*Color*/
     color: royalblue;
 }
 
 .form-input:focus{
+    /* Spacing */
+    border: 3px solid goldenrod;
     /* Remove default black border when focused*/
     outline: 0px;
-    /* Borders */
-    border: 3px solid goldenrod;
 }
-
 
 .form-textarea{
     /* Appearance */
     appearance: none;
-    /* Dimensions */
+    /* Spacing */
+    border:3px solid white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+    /* Sizing */
     width: 100%;
     height: 100px;
-    /* Resize property*/
     resize: none;
     /* Font */
     font-family: inherit;
     font-weight:normal;
+    text-decoration: none;
     /* Color */
     color: royalblue;
-    /* Borders */
-    border:3px solid white;
-    border-radius: 10px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
-    /*Text decoration*/
-    text-decoration: none;
 }
 
 .form-textarea:focus{
-    outline: 0px;
-    /* Borders */
+    /* Sizing */
     border: 3px solid goldenrod;
+    /* Remove default black border when focused */
+    outline: 0px;
 }
 
 .form-button{
-    /*Display*/
-    display: block;
     /* Appearance */
     appearance: none;
-    /* Width */
-    width: 110px;
-    /* Margin */
-    margin: 5px auto;
-    /* Font */
-    font-family: inherit;
-    font-weight: bold;
-    /* Borders */
+    /*Display*/
+    display: block;
+    /* Spacing */
     border:3px solid white;
     border-radius: 10px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+    margin: 5px auto;
+    /* Sizing */
+    width: 110px;
+    /* Font */
+    font-family: inherit;
+    font-weight: bold;    
     /* Colors */
     background-color: white;
     color: royalblue;
 }
 
 .form-button#editSubmit{
+    /*Sizing*/
     width: 150px;
 }
 
 .form-button:hover{
-    /* Borders */
+    /* Spacing */
     border-top:3px solid goldenrod;
     border-radius: 10px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
@@ -556,31 +810,30 @@ input:-webkit-autofill:active  {
 }
 
 .close-button{
-    /*Display*/
-    display: block;
     /* Appearance */
     appearance: none;
-    /* Width */
-    width: 110px;
-    /* Margin */
+    /*Display*/
+    display: block;
+    /* Spacing */
+    border:3px solid royalblue;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
     margin-top: 25px;
     margin-bottom: 0px;
     margin-left: auto;
     margin-right: auto;
+    /* Sizing */
+    width: 110px;
     /* Font */
     font-family: inherit;
-    font-weight: bold;
-    /* Borders */
-    border:3px solid royalblue;
-    border-radius: 10px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+    font-weight: bold;    
     /* Colors */
     background-color: royalblue;
     color: white;
 }
 
 .close-button:hover{
-    /* Borders */
+    /* Spacing */
     border-top:3px solid goldenrod;
     border-bottom: 3px solid white;
     border-left: 3px solid white;
@@ -595,23 +848,39 @@ input:-webkit-autofill:active  {
     transform: scale(1.05);
 }
 
+
+
+/*
+==================================
+=          MESSAGES CSS          =
+==================================
+*/
+
+.line-white-space{
+    white-space: pre-line;
+}
+
+#messages #list-of-messages {
+    list-style-type: none;
+    /*Padding*/
+    padding-left: 0px;
+}
+
 .comment{
     /*Display*/
     display: flex;
     flex-direction:column;
     /* Spacing */
     padding: 15px;
-    /* Margin */
     margin: 20px;
-    /* Border */
     border-top: 4px solid royalblue;
     border-radius: 10px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+    /* Font */
+    font-weight: bold;
     /* Colors */
     background-color: royalblue;
     color: white;
-    /* Font */
-    font-weight: bold;
 }
 
 .flex-header{
@@ -621,14 +890,16 @@ input:-webkit-autofill:active  {
 }
 
 .comment-anchor{
+    /*Display*/
     flex: none;
-    /*Text decoration*/
+    /*Font*/
     text-decoration: none;
     /* Color */
     color: white;
 }
 
 .comment-span{
+    /*Display*/
     flex: none;
     /*Font*/
     font-weight: normal;
@@ -649,26 +920,24 @@ input:-webkit-autofill:active  {
 .comment-button{
     /* Appearance */
     appearance: none;
-    /* Width */
-    width: 110px;
-    /*Padding*/
+    /*Spacing*/
     padding: 5px;
-    /*Margin*/
-    margin: 5px 5px 5px 0px;
-    /* Font */
-    font-family: inherit;
-    font-weight: bold;
-    /* Borders */
     border:3px solid white;
     border-radius: 10px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+    margin: 5px 5px 5px 0px;
+    /* Sizing */
+    width: 110px;
+    /* Font */
+    font-family: inherit;
+    font-weight: bold;
     /* Colors */
     background-color: white;
     color: royalblue;
 }
 
 .comment-button:hover{
-    /* Borders */
+    /* Spacing */
     border-top:3px solid goldenrod;
     border-radius: 10px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
@@ -680,266 +949,12 @@ input:-webkit-autofill:active  {
     transform: scale(1.05);
 }
 
-
-
-/* 
-==================================
-=           TOPNAV CSS           =
-==================================
-*/
-/*
-    CSS to create a top fixed navigation bar for my website
-*/
-.top-navigation-bar-container {
-    /*Display*/
-    display: flex;
-    justify-content: center;
-    z-index: 1;
-}
-
-.top-navigation-bar {
-    flex:auto;
-    /* Display */
-    display: flex;
-    justify-content: space-between;
-    /* Hiding the scroll bar when overflow happens on my navbar*/
-    overflow: hidden;
-    /* Fixing the position of my navbar to make it visible no matter the position of my page */
-    position: fixed;
-    /* Making my navbar cover all the width of the page*/
-    width: 100%;
-    height: auto;
-    /* Putting no space between the beginning of the page and the navbar */
-    top: 0;
-    /* Using royalblue color as the background color of my navbar */
-    background-color: royalblue;
-    /* Border */
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
-}
-
-.nav-logo-container{
-    /*Display*/
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex: 0 1 auto;
-}
-
-.nav-item-container{
-    /*Display*/
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    /*Flex item*/
-    flex: 1;
-}
-
-.nav-button-container{
-    /*Display*/
-    display: none;
-}
-
-/*
-    CSS to style each link on my navbar
-*/
-#top-navigation-bar a.nav-item {
-    /*Display*/
-    flex: 1;
-    /* Set a white color for the fonts */
-    color: white;
-    /* Center the text on each link, set a 17px size and set decoration to none */
-    text-align: center;
-    text-decoration: none;
-    font-size: 17px;
-    font-weight: bold;
-    /* Padding each link */
-    padding: 12px 20px;
-    /* Border */
-    border-top: 4px solid royalblue;
-}
-
-#top-navigation-bar a.nav-logo{
-    /*Padding*/
-    padding: 0px 20px;
-    border-top: 4px solid royalblue;
-}
-
-#top-navigation-bar a.nav-logo img{
-    /*Sizing*/
-    width: 165px;
-    height: auto;
-}
-
-/*
-    CSS to highlight active links on my navbar
-*/
-#top-navigation-bar a.active {
-    /* Fonts */
-    font-weight: bold;
-    /* Colors */
-    background-color: white;
-    color: darkgoldenrod;
-    /* Border */
-    border-top: 4px solid darkgoldenrod;
-}
-
-/*
-    CSS to style each time the mouse hovers over a link
-*/
-#top-navigation-bar a.nav-item:hover {
-    /* Colors */
-    background-color: white;
-    color: royalblue;
-    /* Border */
-    border-top: 4px solid darkgoldenrod;
-    /* Animation */
-    transition: ease-in-out 0.2s;
-}
-
-/*
-=================================
-        WELCOME HEADER CSS
-=================================
-*/
-
-.welcome-header-container{
-    /*Display*/
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 50px;
-    /*Sizing*/
-    width: 90%;
-    height: 45vh;
-    /*Layout*/
-    padding: 0 10vw;
-    margin-top: 5vh;
-    margin-bottom: 75px;
-    /*Animation*/
-    transition: .5s;
-}
-
-.welcome-header-content{
-    display:flex;
-    flex-direction: column;
-    flex: 1;
-}
-
-.header-content{
-    /*Font*/
-    font-size: 2.5rem;
-    font-weight: 300;
-    /*Layout*/
-    margin-bottom: 40px
-}
-
-.header-content .header-content-brand{
-    /*Display*/
-    display: flex;
-    flex-direction: column;
-    /*Font*/
-    text-transform: capitalize;
-    font-size: 4.5rem;
-    font-weight: bold;
-    /*Colors*/
-    color: royalblue;
-    /*Animation*/
-    transition: .5s;
-}
-
-.welcome-header-content .header-content-item{
-    cursor: pointer;
-    /* Display */
-    display: flex;
-    flex: 0 1 auto;
-    justify-content: center;
-    /* Fonts */
-    text-decoration: none;
-    text-transform: capitalize;
-    font-weight: bold;
-    font-style: normal;
-    /* Layout */
-    border-top: 3px solid royalblue;
-    border-radius: 20px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
-    padding: 10px 30px;
-    /*Sizing*/
-    width: 200px;
-    min-width: 200px;
-    /* Color */
-    background-color: royalblue;
-    color: white;    
-}
-
-.welcome-header-content .header-content-item:hover  {
-    /*Borders*/
-    border-color: goldenrod;
-    /*Colors*/
-    background-color: white;
-    color: royalblue;
-    /*Transform*/
-    transition: all 0.2s ease-in-out;
-    transform: scale(1.05);
-}
-
-.welcome-header-img-container{
-    /*Display*/
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex: 1;
-    position: relative;
-}
-
-.welcome-header-img{
-    position: absolute;
-    top: 60%;
-    left: 60%;
-    transform: translate(-50%, -50%);
-    width: 500px;
-    height: 500px;
-    object-fit: cover;
-}
-
-.circle{
-    width: 400px;
-    height: 400px;
-    border-radius: 50%;
-    background: royalblue;
-    margin-left: 20px;
-    position: relative;
-    user-select: none;
-    transition: .5s;
-}
-
-.circle::before{
-    content: '';
-    position: absolute;
-    top: 40px;
-    left: 40px;
-    bottom: 40px;
-    right: 40px;
-    border: 10px solid #fff;
-    border-radius: 50%;
-}
-/* 
-==================================
-=           MESSAGES CSS         =
-==================================
-*/
-#messages #list-of-messages {
-    list-style-type: none;
-    /*Padding*/
-    padding-left: 0px;
-}
 /* 
 ==================================
 =           FOOTER CSS           =
 ==================================
 */
-/*
-    CSS to create a footer navigation bar for my website
-*/
+
 footer{
     width: 100%;
 }
@@ -951,19 +966,18 @@ footer{
 }
 
 .footer-navigation-bar {
+    /*Overflow*/
+    overflow: hidden;
     /* Display */
     display: flex;
     justify-content: space-around;
-    /* Hiding the scroll bar when overflow happens on my footer navbar*/
-    overflow: hidden;
-    /* Making my footer navbar cover all the width of the page*/
-    width: 100%;
-    /* Using royalblue color as the background color of my navbar */
-    background-color: white;
-    /*Borders*/
+    /* Spacing */
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3);
-    /*Margin*/
     margin-top: 25px;
+    /* Sizing */
+    width: 100%;
+    /* Color */
+    background-color: white;
 }
 
 /*
@@ -975,15 +989,14 @@ footer{
     justify-content: center;
     align-items: center;
     flex: 0 1 auto;
-    /* Text */
-    text-decoration: none;
+    /* Spacing */
+    padding: 0px;
     /* Fonts */
+    text-decoration: none;
     font-size: 17px;
     font-weight: bold;
     /* Colors */
     color: royalblue;
-    /* Padding element */
-    padding: 0px;
 }
 
 .footer-navigation-bar .footer-element .horizontal-list{
@@ -995,20 +1008,19 @@ footer{
 }
 
 .footer-navigation-bar .footer-element .horizontal-list li.connect-item {
+    /* Overflow */
+    overflow: hidden;
     /* Display */
     display: flex;
     flex: 0 1 auto;
-    /* Overflow */
-    overflow: hidden;
-    /* Fonts */
-    font-weight: bold;
-    font-style: normal;
-    /* Borders */
+    /* Spacing */
     border-top: 3px solid royalblue;
     border-radius: 20px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
-    /*Margin*/
     margin: 0px 10px;
+    /* Fonts */
+    font-weight: bold;
+    font-style: normal;
     /* Color */
     background-color: royalblue;
     color: white;    
@@ -1016,7 +1028,7 @@ footer{
 
 .footer-navigation-bar .footer-element .horizontal-list li.connect-item:hover,
 .footer-navigation-bar .footer-element .horizontal-list li.connect-item:hover > *{
-    /*Borders*/
+    /*Spacing*/
     border-color: goldenrod;
     /*Colors*/
     background-color: white;
@@ -1032,15 +1044,15 @@ footer{
     justify-content: center;
     align-items: center;
     flex: 0 1 auto;
-    /*Colors*/
-    color: white;
-    /* Text */
-    text-decoration: none;
-    /*Padding*/
+    /*Spacing*/
     padding: 5px;
-    /*Width*/
+    /*Sizing*/
     width: 50px;
     min-width: 50px;
+    /* Fonts */
+    text-decoration: none;
+    /*Colors*/
+    color: white;
 }
 
 /* 
@@ -1048,11 +1060,16 @@ footer{
 =           MODAL CSS            =
 ==================================
 */
+.hidden {
+    /* Display */
+    display:none;
+}
+
 .modal-container{
     /* Visibility */
     visibility: hidden;   
     opacity: 0; 
-    /*Displays*/
+    /*Display*/
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1065,7 +1082,7 @@ footer{
     /*Spacing*/
     padding: 0px;
     margin: 0px;
-    /* Dimensions */
+    /* Sizing */
     max-width: 100%;
     width: 100%;
     height: 100%;
@@ -1083,7 +1100,7 @@ footer{
     align-items: center;
     /*Overflow*/
     overflow:auto;
-    /* Dimensions */
+    /* Sizing */
     width: 50%;
     height: 70%;
     max-height: 435px;
@@ -1092,11 +1109,10 @@ footer{
     /*Position*/
     bottom: 0;
     left: 0;
-    /* Border */
+    /* Spacing */
+    padding: 30px 50px;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-    /* Padding */
-    padding: 30px 50px;
     /* Colors */
     background-color: whitesmoke;
 }
@@ -1106,9 +1122,8 @@ footer{
     width: 100%;
 }
 
-
 .modal h1{
-    /* Margins */
+    /* Spacing */
     margin-top: 2px;
     margin-bottom: 0px
 }
@@ -1118,7 +1133,6 @@ footer{
     visibility: visible;
     opacity: 1;
 }
-
 /* 
 ==================================
 =          MEDIA QUERIES         =
@@ -1136,6 +1150,7 @@ footer{
         /*Sizing*/
         width: 300px;
         height: 300px;
+        /*Animation*/
         transition: .5s;
     }
 
@@ -1143,6 +1158,7 @@ footer{
         /*Sizing*/
         width: 350px;
         height: 350px;
+        /*Animation*/
         transition: .5s;
     }
 }
@@ -1152,6 +1168,7 @@ footer{
 @media (max-width: 1150px){
     /* Navigation Bar */
     .top-navigation-bar-container .top-navigation-bar .nav-item-container .nav-item span{
+        /*Display*/
         display: none;
     }
 }
@@ -1170,19 +1187,22 @@ footer{
         align-items: center;
         /*Sizing*/
         height: auto;
-        margin-bottom: 0px;
-        /*Layout*/
+        /*Spacing*/
         padding: 10px 10vw;
+        margin-bottom: 0px;
+        /*Animation*/
         transition: .5s;
     }
 
     .welcome-header-content{
+        /*Display*/
         flex-direction: column;
         justify-content: center;
         align-items: center;
     }
 
     .welcome-header-img-container{
+        /*Display*/
         flex-direction: column;
         align-items: center;
         justify-content: center;
@@ -1197,6 +1217,7 @@ footer{
          /*Sizing*/
          width: 250px;
          height: 250px;
+         /*Animation*/
          transition: .5s;
     }
 
@@ -1204,11 +1225,10 @@ footer{
         /*Sizing*/
         width: 300px;
         height: 300px;
+        /*Animation*/
         transition: .5s;
     }
 }
-
-
 
 /* Smartphones */
 /* MAXIMUM WIDTH OF SMARTPHONES OF 540PX*/
@@ -1220,6 +1240,7 @@ footer{
     }
 
     #top-navigation-bar .nav-logo-container{
+        /*Display*/
         flex: 1;
     }
 
@@ -1234,28 +1255,30 @@ footer{
         display: flex;
         justify-content: space-between;
         align-items: center;
-        /*Flex item*/
         flex: 0 1 auto;
     }
 
     /* Once hamburguer menu is clicked */
     .top-navigation-bar.responsive-nav{
+        /*Display*/
         flex-direction: column;
     }
 
     .top-navigation-bar.responsive-nav .nav-button-container,
     .top-navigation-bar.responsive-nav .nav-button-container .nav-item{
+        /*Display*/
         display: block;
         position: absolute;
+        /*Position*/
         right: 0px;
         top: 0px;
     }
 
     #top-navigation-bar.responsive-nav .nav-item-container{
+        /*Display*/
         display: flex;   
         flex-direction: column;  
     }
-
 
     #top-navigation-bar.responsive-nav .nav-item-container .nav-item{
         /*Display*/
@@ -1267,8 +1290,8 @@ footer{
         animation: fade_in_show 0.5s
     }
 
-     /* Navigation Bar */
      #top-navigation-bar.responsive-nav .nav-item-container .nav-item span{
+        /*Display*/
         display: flex;
         flex-direction: column;
     }
@@ -1291,7 +1314,7 @@ footer{
     }
 
     section#leave-message div.form-container form#message-form  div.flex-controls div.flex-control{
-        /*Sizing*/
+        /*Spacing*/
         margin: auto;
     }
 
@@ -1306,7 +1329,7 @@ footer{
     }
 
     section#modal-container div.modal div.form-container.edit-form form#edit-message-form div.flex-controls div.flex-control{
-        /*Sizing*/
+        /*Spacing*/
         margin: auto;
     }
 }
@@ -1326,27 +1349,28 @@ footer{
     }
 
     .nav-button-container{
-        /*Flex item*/
+        /*Display*/
         flex: 1 1 auto;
     }
 
     .top-navigation-bar.responsive-nav{
+        /*Display*/
         flex-direction: column-reverse;
     }
 
     .top-navigation-bar.responsive-nav .nav-button-container,
     .top-navigation-bar.responsive-nav .nav-button-container .nav-item{
+        /*Display*/
         display: flex;
-        position:static;
         justify-content: center;
+        /*Position*/
     }
 }
 
 @media (max-width: 130px){
      /* Navigation Bar */
      #top-navigation-bar.responsive-nav .nav-item-container .nav-item span{
+        /*Display*/
         display: none;
     }
 }
-
-

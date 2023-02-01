@@ -10,43 +10,39 @@ class ApiRequest {
   #mode = "";
 
   //Constructor
-  constructor(method, url, mode){
+  constructor(method, url, mode) {
     this.#method = method;
     this.#url = url;
     this.#mode = mode;
   }
 
   //Methods
-  setRequest(){
+  setRequest() {
     //1. Creating a new request object.
     this.#request = new Request(this.#url, {
       method: this.#method,
-      mode: this.#mode
+      mode: this.#mode,
     });
   }
 
-  get #getRequest(){
+  get #getRequest() {
     return this.#request;
   }
 
-  get getFetchPromise(){
+  get getFetchPromise() {
     return fetch(this.#getRequest);
   }
-
 }
 
-
-function turnNavBarResponsive(e){
+function turnNavBarResponsive(e) {
   //1. Getting the nav bar:
   const navBar = document.querySelector(".top-navigation-bar");
-  if(navBar.className === "top-navigation-bar"){
+  if (navBar.className === "top-navigation-bar") {
     navBar.classList.add("responsive-nav");
-  }
-  else{
+  } else {
     navBar.classList.remove("responsive-nav");
   }
 }
-
 
 function showFooter() {
   //1. Create a date object
@@ -66,23 +62,23 @@ function showFooter() {
   //8. Appending social media links
 
   //8.2 Setting up social media data
-  
+
   //8.2.1 Variable set up:
   const socialMediaData = [
     {
       icon: "fa-google",
-      link: "mailto:secch97@gmail.com"
+      link: "mailto:secch97@gmail.com",
     },
-  
+
     {
       icon: "fa-github",
-      link: "https://github.com/secch97"
+      link: "https://github.com/secch97",
     },
-  
+
     {
       icon: "fa-twitter",
-      link: "https://twitter.com/MrRobot_97"
-    }
+      link: "https://twitter.com/MrRobot_97",
+    },
   ];
 
   //8.3 Rendering HTML with socialMediaData:
@@ -93,7 +89,7 @@ function showFooter() {
   footerNav.appendChild(socialMediaListContainer);
 }
 
-function renderSocialMedia(socialMediaData){
+function renderSocialMedia(socialMediaData) {
   /*
     <address>
       <ul class="horizontal-list">
@@ -128,15 +124,15 @@ function renderSocialMedia(socialMediaData){
   const socialMediaList = document.createElement("ul");
 
   //1.2 HTML elements set up:
-  
+
   //1.2.1 Address element:
-  socialMediaListContainer.classList.add("footer-element")
+  socialMediaListContainer.classList.add("footer-element");
   //1.2.2 Unordered list element:
   socialMediaList.classList.add("horizontal-list");
 
   //1.3 Social media data appendage:
 
-  for (socialMedia of socialMediaData){
+  for (socialMedia of socialMediaData) {
     //1.3.1 HTML elements creation:
 
     //1.3.1.1 List item element:
@@ -164,7 +160,6 @@ function renderSocialMedia(socialMediaData){
     socialMediaListItem.appendChild(socialMediaLink);
     //1.3.4.3 Appending <i> element to anchor tag:
     socialMediaLink.appendChild(socialMediaIcon);
-
   }
 
   //1.4 Remaining HTML elements appendage:
@@ -182,7 +177,7 @@ function showSkills() {
     "fa-brands fa-html5",
     "fa-brands fa-css3",
     "fa-brands fa-js",
-    "fa-brands fa-github"
+    "fa-brands fa-github",
   ];
   //2. Select skills section by id
   const skillsSection = document.querySelector("section#skills");
@@ -204,64 +199,77 @@ function showSkills() {
   }
 }
 
-function showProjects(){
-  //1. Showing projects 
+function showProjects() {
+  //1. Showing projects
   //1.1 Setting up parameters
-   let method = "GET";
-   let url = "https://api.github.com/users/secch97/repos?sort=created&direction=asc";
-   let mode = "cors"
-   //1.2 Creating the request object:
-   let projectsRequest = new ApiRequest(method, url, mode);
-   //1.3 Setting the request object:
-   projectsRequest.setRequest();
-   //1.4 Getting the request object:
-   let projectsPromise = projectsRequest.getFetchPromise;
-   //1.5 Executing the promise:
+  let method = "GET";
+  let url =
+    "https://api.github.com/users/secch97/repos?sort=created&direction=asc";
+  let mode = "cors";
+  //1.2 Creating the request object:
+  let projectsRequest = new ApiRequest(method, url, mode);
+  //1.3 Setting the request object:
+  projectsRequest.setRequest();
+  //1.4 Getting the request object:
+  let projectsPromise = projectsRequest.getFetchPromise;
+  //1.5 Executing the promise:
   projectsPromise
-   .then((response) => {
-     //Handling error
-     if (!response.ok){
-       throw new Error("Network response was not OK");
-     }
-     //Returning response as JSON DATA
-     return response.json();
-   })
-   .then((data) => {
-     //2. Rendering JSON Data
-     renderProjectsData(data);
-   })
-   .catch((error) => {
-     console.error("There was a problem fetching the projects: " +error);
-   });
+    .then((response) => {
+      //Handling error
+      if (!response.ok) {
+        throw new Error("Network response was not OK");
+      }
+      //Returning response as JSON DATA
+      return response.json();
+    })
+    .then((data) => {
+      //2. Rendering JSON Data
+      renderProjectsData(data);
+    })
+    .catch((error) => {
+      console.error("There was a problem fetching the projects: " + error);
+    });
 }
 
-function renderProjectsData(data){
+function renderProjectsData(data) {
   //VARIABLES
   //Promise variable
   const projectsData = data;
-  
+
   //Project's data map
   const projectDataMap = new Map([
-    ["Burger-City-Restaurant", {
-      image: "burger-city-restaurant.png",
-      dates: "July 2020 - December 2020",
-      tools: ["HTML5", "CSS3", "JS", "Bootstrap", "ASP.NET"]
-    }],
-    ["Dental-Clinic-Helper", {
-      image: "dental-clinic.png",
-      dates: "January 2021 - June 2021",
-      tools: ["HTML5", "CSS3", "JS", "Bootstrap", "Laravel"]
-    }],
-    ["js-animation", {
-      image: "js-animation.png",
-      dates: "August 2022",
-      tools: ["HTML5", "CSS3", "JS"]
-    }],
-    ["intro-to-programming-dorado", {
-      image: "personal-portfolio.png",
-      dates: "September 2022 - Present",
-      tools: ["HTML5", "CSS3", "JS"]
-    }]
+    [
+      "Burger-City-Restaurant",
+      {
+        image: "burger-city-restaurant.png",
+        dates: "July 2020 - December 2020",
+        tools: ["HTML5", "CSS3", "JS", "Bootstrap", "ASP.NET"],
+      },
+    ],
+    [
+      "Dental-Clinic-Helper",
+      {
+        image: "dental-clinic.png",
+        dates: "January 2021 - June 2021",
+        tools: ["HTML5", "CSS3", "JS", "Bootstrap", "Laravel"],
+      },
+    ],
+    [
+      "js-animation",
+      {
+        image: "js-animation.png",
+        dates: "August 2022",
+        tools: ["HTML5", "CSS3", "JS"],
+      },
+    ],
+    [
+      "intro-to-programming-dorado",
+      {
+        image: "personal-portfolio.png",
+        dates: "September 2022 - Present",
+        tools: ["HTML5", "CSS3", "JS"],
+      },
+    ],
   ]);
 
   //1. Selecting the projects section by ID:
@@ -269,7 +277,7 @@ function renderProjectsData(data){
   //2. Query the projectSection (instead of the entire document) to find the <ul> element:
   const projectList = projectSection.querySelector("ul");
   //3 Iterate over my repositories array
-  for (repository of projectsData){
+  for (repository of projectsData) {
     //4. Create a new list item (li) element with the following structure
     /*
       <li class="project-card">
@@ -299,7 +307,12 @@ function renderProjectsData(data){
       </li>
     */
     //List Item
-    if(repository.name==="Burger-City-Restaurant" || repository.name==="Dental-Clinic-Helper" || repository.name==="js-animation" || repository.name==="intro-to-programming-dorado"){
+    if (
+      repository.name === "Burger-City-Restaurant" ||
+      repository.name === "Dental-Clinic-Helper" ||
+      repository.name === "js-animation" ||
+      repository.name === "intro-to-programming-dorado"
+    ) {
       //Setting up variables
       //List item variables
       let projectListItem = document.createElement("li");
@@ -309,7 +322,7 @@ function renderProjectsData(data){
       let projectTitle = document.createElement("span");
       //Project date variables
       let projectDateContainer = document.createElement("div");
-      let projectDate = document.createElement("em");     
+      let projectDate = document.createElement("em");
       //Project image variables
       let projectImageContainer = document.createElement("div");
       let projectImage = document.createElement("img");
@@ -319,17 +332,16 @@ function renderProjectsData(data){
       //Project tools variables
       let projectToolsContainer = document.createElement("div");
       let projectToolsList = document.createElement("ul");
-      
+
       //Setting up project's list item
       projectListItem.classList.add("project-card");
-
 
       //Setting up project's title
       projectTitleContainer.classList.add("project-title-container");
       projectTitleLink.classList.add("project-title-link");
       projectTitleLink.setAttribute("href", `${repository.html_url}`);
       projectTitleLink.setAttribute("target", "_blank");
-      projectTitle.innerText = (repository.name.replace(/-/g, " ")).toUpperCase();
+      projectTitle.innerText = repository.name.replace(/-/g, " ").toUpperCase();
 
       //Setting up project's date
       projectDateContainer.classList.add("project-dates-container");
@@ -338,12 +350,17 @@ function renderProjectsData(data){
 
       //Setting up project's image
       projectImageContainer.classList.add("project-image-container");
-      projectImage.classList.add("project-image")
-      projectImage.setAttribute("src", `./images/projects/${projectDataMap.get(repository.name).image}`);
+      projectImage.classList.add("project-image");
+      projectImage.setAttribute(
+        "src",
+        `./images/projects/${projectDataMap.get(repository.name).image}`
+      );
       projectImage.setAttribute("alt", "Project's screenshot");
 
       //Setting up project's description
-      projectDescriptionContainer.classList.add("project-description-container");
+      projectDescriptionContainer.classList.add(
+        "project-description-container"
+      );
       projectDescription.classList.add("emphasis-fact");
       projectDescription.innerText = repository.description;
 
@@ -351,27 +368,33 @@ function renderProjectsData(data){
       projectToolsContainer.classList.add("project-tools-container");
       projectToolsList.classList.add("horizontal-list");
       let projectToolTitle = document.createElement("span");
-      projectToolTitle.innerText="Tools used:";
-      for (let i=0; i<projectDataMap.get(repository.name).tools.length; i++){
-          //Creating a list item for each tool
-          let projectToolListItem = document.createElement("li");
-          projectToolListItem.classList.add("tool-item");
-          //Creating a span element
-          let projectTool = document.createElement("span");
-          //Creating a i element for the tool's icon
-          let projectToolIcon = document.createElement("i");
+      projectToolTitle.innerText = "Tools used:";
+      for (
+        let i = 0;
+        i < projectDataMap.get(repository.name).tools.length;
+        i++
+      ) {
+        //Creating a list item for each tool
+        let projectToolListItem = document.createElement("li");
+        projectToolListItem.classList.add("tool-item");
+        //Creating a span element
+        let projectTool = document.createElement("span");
+        //Creating a i element for the tool's icon
+        let projectToolIcon = document.createElement("i");
 
-          //Setting up list item elements
-          projectTool.innerText=" "+projectDataMap.get(repository.name).tools[i];
-          projectToolIcon.classList.add(`fa-brands`, `fa-${projectDataMap.get(repository.name).tools[i].toLowerCase()}`);
+        //Setting up list item elements
+        projectTool.innerText =
+          " " + projectDataMap.get(repository.name).tools[i];
+        projectToolIcon.classList.add(
+          `fa-brands`,
+          `fa-${projectDataMap.get(repository.name).tools[i].toLowerCase()}`
+        );
 
-          //Appending items
-          projectToolsList.appendChild(projectToolListItem);
-          projectToolListItem.appendChild(projectTool);
-          projectTool.prepend(projectToolIcon);
-        }
-      
-
+        //Appending items
+        projectToolsList.appendChild(projectToolListItem);
+        projectToolListItem.appendChild(projectTool);
+        projectTool.prepend(projectToolIcon);
+      }
 
       //Appending elements to build the previously described structure:
       //Appending list item to list
@@ -393,12 +416,11 @@ function renderProjectsData(data){
       projectListItem.appendChild(projectToolsContainer);
       projectToolsContainer.appendChild(projectToolTitle);
       projectToolsContainer.appendChild(projectToolsList);
-
     }
   }
 }
 
-function showEducation(){
+function showEducation() {
   //1. Setting up education data:
   //1.1 Variables:
   const educationData = [
@@ -407,15 +429,16 @@ function showEducation(){
       date: "January 2016 - May 2021",
       image: "./images/education/College-Degree.png",
       link: "./assets/documents/education/College-Degree.pdf",
-      description: "The Computer Science Engineer from Universidad Don Bosco is an ethical, critical and purposeful professional, with leadership who manages IT projects, creates innovative software and manages IT networks, applying international technical standards."
-    }
+      description:
+        "The Computer Science Engineer from Universidad Don Bosco is an ethical, critical and purposeful professional, with leadership who manages IT projects, creates innovative software and manages IT networks, applying international technical standards.",
+    },
   ];
-  
+
   //2. Rendering HTML with education data:
   renderEducationData(educationData);
 }
 
-function renderEducationData(data){
+function renderEducationData(data) {
   //1. Variables set up
   const educationData = data;
 
@@ -426,7 +449,7 @@ function renderEducationData(data){
   const educationList = educationSection.querySelector("ul");
 
   //3 Education data iteration:
-  for (education of educationData){
+  for (education of educationData) {
     /*
       The following HTML structure will be followed to render the education data:
         <li class="education-card">
@@ -448,10 +471,10 @@ function renderEducationData(data){
     */
 
     //3.1 HTML Elements creation:
-    
+
     //3.1.1 List item:
     let educationListItem = document.createElement("li");
-    
+
     //3.1.2 Title container div:
     let educationTitleContainer = document.createElement("div");
     //3.1.2.1 Title span:
@@ -459,7 +482,7 @@ function renderEducationData(data){
 
     //3.1.3 Dates container div:
     let educationDatesContainer = document.createElement("div");
-    //3.1.3.1 Dates em: 
+    //3.1.3.1 Dates em:
     let educationDates = document.createElement("em");
 
     //3.1.4 Image container div:
@@ -475,7 +498,7 @@ function renderEducationData(data){
     let educationDescription = document.createElement("span");
 
     //3.2 HTML Elements set up:
-    
+
     //3.2.1 List item:
     educationListItem.classList.add("education-card");
 
@@ -493,12 +516,14 @@ function renderEducationData(data){
     educationImage.classList.add("education-image");
 
     //3.2.5 Description container div:
-    educationDescriptionContainer.classList.add("education-description-container");
+    educationDescriptionContainer.classList.add(
+      "education-description-container"
+    );
     //3.2.5.1 Description span:
     educationDescription.classList.add("emphasis-fact");
 
     //3.3 JSON appendage:
-    
+
     //3.3.1 Education title:
     educationTitle.innerText = education.title;
     //3.3.2 Education dates:
@@ -527,7 +552,7 @@ function renderEducationData(data){
     educationImageLink.appendChild(educationImage);
     //3.4.5 Education description container to <li>:
     educationListItem.appendChild(educationDescriptionContainer);
-    educationDescriptionContainer.appendChild(educationDescription);    
+    educationDescriptionContainer.appendChild(educationDescription);
   }
 
   //4 HTML Elements appendage:
@@ -543,7 +568,11 @@ function setActive(e) {
   do {
     //Responsive menu code
     //If a link in the responsive menu is clicked, then close the responsive menu.
-    if(this.className==="nav-item" && this.parentElement.parentElement.className==="top-navigation-bar responsive-nav"){
+    if (
+      this.className === "nav-item" &&
+      this.parentElement.parentElement.className ===
+        "top-navigation-bar responsive-nav"
+    ) {
       //Get the responsive nav bar.
       const responsiveNavBar = this.parentElement.parentElement;
       //Hide menu opened by responsive nav bar
@@ -552,51 +581,48 @@ function setActive(e) {
       const hamburguerMenu = document.querySelector(".nav-item.hamburguer");
       sibling.classList.remove("active");
       hamburguerMenu.classList.remove("active");
-    }
-    else{
+    } else {
       sibling.classList.remove("active");
     }
   } while ((sibling = sibling.nextElementSibling));
-  if(this.className==="nav-item hamburguer"){
+  if (this.className === "nav-item hamburguer") {
     activeLinkCounter++;
-    if(activeLinkCounter<2){
+    if (activeLinkCounter < 2) {
       this.classList.add("active");
-    }
-    else{
+    } else {
       this.classList.remove("active");
-      activeLinkCounter=0;
+      activeLinkCounter = 0;
     }
-  }
-  else{
-    activeLinkCounter=0;
+  } else {
+    activeLinkCounter = 0;
     this.classList.add("active");
   }
 }
 
-function removeMessage(e){
-    //Find the button's parent element using DOM:
-    const entry = (e.target.parentElement).parentElement.parentElement;
-    //Remove the entry element from the DOM:
-    entry.remove();
-    //Set the messages section visibility:
-    setMessagesVisibility();
+function removeMessage(e) {
+  //Find the button's parent element using DOM:
+  const entry = e.target.parentElement.parentElement.parentElement;
+  //Remove the entry element from the DOM:
+  entry.remove();
+  //Set the messages section visibility:
+  setMessagesVisibility();
 }
 
-function showModal(e){
-   //Get the modal container
-   const modalContainer = document.querySelector(".modal-container");
-   //Close the modal container
-   modalContainer.classList.add("show"); 
+function showModal(e) {
+  //Get the modal container
+  const modalContainer = document.querySelector(".modal-container");
+  //Close the modal container
+  modalContainer.classList.add("show");
 }
 
-function closeModal(e){
+function closeModal(e) {
   //Get the modal container
   const modalContainer = document.querySelector(".modal-container");
   //Close the modal container
   modalContainer.classList.remove("show");
 }
 
-function editMessage(e){
+function editMessage(e) {
   //Getting the message elements:
   const messageId = e.target.getAttribute("data-message-id");
   const name = e.target.getAttribute("data-name");
@@ -626,7 +652,7 @@ function editMessage(e){
   editSubmitButton.setAttribute("data-message-id", messageId);
 }
 
-function getMessageDate(){
+function getMessageDate() {
   //Get message date:
   const messageDate = new Date();
   console.log(messageDate);
@@ -636,11 +662,11 @@ function getMessageDate(){
   const messageDateHour = messageDate.getHours();
   const messageDateMinute = messageDate.getMinutes();
   const messageDateSecond = messageDate.getSeconds();
-  const messageDateString = `${messageDateYear}/${messageDateMonth}/${messageDateDay} - ${messageDateHour}:${messageDateMinute}:${messageDateSecond}`
+  const messageDateString = `${messageDateYear}/${messageDateMonth}/${messageDateDay} - ${messageDateHour}:${messageDateMinute}:${messageDateSecond}`;
   return messageDateString;
 }
 
-function handleMessageForm(e){
+function handleMessageForm(e) {
   //Prevent default
   e.preventDefault();
   //Retrieve form's controls values
@@ -654,7 +680,7 @@ function handleMessageForm(e){
   //Selecting the message list inside the message section
   const messageList = messageSection.querySelector("ul");
   //Create a new list item
-  const newMessage = document.createElement("li"); 
+  const newMessage = document.createElement("li");
   //Create a message div
   const messageDiv = document.createElement("div");
   messageDiv.classList.add("comment");
@@ -700,38 +726,52 @@ function handleMessageForm(e){
   setMessagesVisibility();
 }
 
-function handleEditMessageForm(e){
+function handleEditMessageForm(e) {
   //Prevent default
   e.preventDefault();
   //Retrieve edit form's control values
   const messageId = e.target["edit-submit"].getAttribute("data-message-id");
   const editName = e.target["edit-name"].value;
   const editEmail = e.target["edit-email"].value;
-  const editMessage = e.target["edit-message"].value.trim();  
-  console.log(`New message: ${messageId} + ${editName} + ${editEmail} + ${editMessage}`);
+  const editMessage = e.target["edit-message"].value.trim();
+  console.log(
+    `New message: ${messageId} + ${editName} + ${editEmail} + ${editMessage}`
+  );
   //Get the List Item element with messageId equals to edit form messageId
   const messageSection = document.querySelector("#messages");
   const messageList = messageSection.querySelector("ul");
-  const messages = (messageList.children);
-  for(let listItem of messages){
+  const messages = messageList.children;
+  for (let listItem of messages) {
     console.log(listItem);
-    if(listItem.firstElementChild.children[0].value === messageId){
-      listItem.firstElementChild.children[1].children[0].setAttribute("href", `mailto:${editEmail}`);
-      listItem.firstElementChild.children[1].children[0].innerText=editName;
-      listItem.firstElementChild.children[1].children[1].innerText=getMessageDate();
-      listItem.firstElementChild.children[2].innerText=editMessage;
-      listItem.firstElementChild.children[3].children[0].setAttribute("data-name", editName);
-      listItem.firstElementChild.children[3].children[0].setAttribute("data-email", editEmail);
-      listItem.firstElementChild.children[3].children[0].setAttribute("data-message", editMessage);
+    if (listItem.firstElementChild.children[0].value === messageId) {
+      listItem.firstElementChild.children[1].children[0].setAttribute(
+        "href",
+        `mailto:${editEmail}`
+      );
+      listItem.firstElementChild.children[1].children[0].innerText = editName;
+      listItem.firstElementChild.children[1].children[1].innerText =
+        getMessageDate();
+      listItem.firstElementChild.children[2].innerText = editMessage;
+      listItem.firstElementChild.children[3].children[0].setAttribute(
+        "data-name",
+        editName
+      );
+      listItem.firstElementChild.children[3].children[0].setAttribute(
+        "data-email",
+        editEmail
+      );
+      listItem.firstElementChild.children[3].children[0].setAttribute(
+        "data-message",
+        editMessage
+      );
       e.target.reset();
       closeModal();
       break;
     }
   }
-
 }
 
-function checkNumberOfMessages(){
+function checkNumberOfMessages() {
   //Selecting the messages section
   const messageSection = document.querySelector("#messages");
   //Selecting the message list inside the message section
@@ -742,22 +782,20 @@ function checkNumberOfMessages(){
   return messageCount;
 }
 
-function setMessagesVisibility(){
+function setMessagesVisibility() {
   //Selecting the messages section
   const messageSection = document.querySelector("#messages");
   //Getting the number of messages available
-  const messageCount = checkNumberOfMessages();  
+  const messageCount = checkNumberOfMessages();
   //Setting the visibility of the message section depending of the number of messages:
-  if (messageCount === 0){
+  if (messageCount === 0) {
     messageSection.classList.add("hidden");
-  }
-  else{
+  } else {
     messageSection.classList.remove("hidden");
   }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-
   //1. Responsive Nav Bar:
   //1.1 Adding click event on hamburguer icon (responsive menu)
   const responsiveMenu = document.querySelector(".nav-item.hamburguer");
@@ -768,7 +806,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   //3. Showing projects section
   showProjects();
- 
+
   //4. Showing education section
   showEducation();
 
@@ -777,7 +815,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   //6. Getting navigation link elements
   //6.1 Querying every navigation link:
-  const navigationLinks = document.querySelectorAll(".top-navigation-bar-container .top-navigation-bar a.nav-item");
+  const navigationLinks = document.querySelectorAll(
+    ".top-navigation-bar-container .top-navigation-bar a.nav-item"
+  );
   //6.2 Setting up a click event listener for every navigation link:
   navigationLinks.forEach((link) => {
     link.addEventListener("click", setActive);
@@ -794,5 +834,4 @@ document.addEventListener("DOMContentLoaded", () => {
   //9. Handle edit message form
   const editMessageForm = document.querySelector("#edit-message-form");
   editMessageForm.addEventListener("submit", handleEditMessageForm);
-})
-
+});
