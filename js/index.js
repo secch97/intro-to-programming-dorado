@@ -52,7 +52,7 @@ function showFooter() {
   //3. Selecting footerNav from my DOM:
   const footerNav = document.querySelector(".footer-navigation-bar");
   //4. Create a new paragraph element:
-  const copyright = document.createElement("p");
+  const copyright = document.createElement("span");
   //5. Add a class to the new paragraph element
   copyright.classList.add("footer-element");
   //6. Write my name and current year to the copyright paragraph element:
@@ -67,17 +67,20 @@ function showFooter() {
   const socialMediaData = [
     {
       icon: "fa-google",
-      link: "mailto:secch97@gmail.com",
+      name: "E-mail",
+      link: "mailto:secch97@gmail.com"
     },
 
     {
       icon: "fa-github",
-      link: "https://github.com/secch97",
+      name: "GitHub",
+      link: "https://github.com/secch97"
     },
 
     {
       icon: "fa-twitter",
-      link: "https://twitter.com/MrRobot_97",
+      name: "Twitter",
+      link: "https://twitter.com/MrRobot_97"
     },
   ];
 
@@ -150,6 +153,7 @@ function renderSocialMedia(socialMediaData) {
     //1.3.3.1 Anchor element:
     socialMediaLink.setAttribute("href", `${socialMedia.link}`);
     socialMediaLink.setAttribute("target", "_blank");
+    socialMediaLink.innerText=socialMedia.name;
     //1.3.3.2 <i> element:
     socialMediaIcon.classList.add(`fa-brands`, `${socialMedia.icon}`);
 
@@ -159,7 +163,7 @@ function renderSocialMedia(socialMediaData) {
     //1.3.4.2 Appending <a> element to list item:
     socialMediaListItem.appendChild(socialMediaLink);
     //1.3.4.3 Appending <i> element to anchor tag:
-    socialMediaLink.appendChild(socialMediaIcon);
+    socialMediaLink.prepend(socialMediaIcon);
   }
 
   //1.4 Remaining HTML elements appendage:
@@ -244,6 +248,7 @@ function renderProjectsData(data) {
         image: "burger-city-restaurant.png",
         dates: "July 2020 - December 2020",
         tools: ["HTML5", "CSS3", "JS", "Bootstrap", "ASP.NET"],
+        alt: "Burger City Restaurant webpage screenshot"
       },
     ],
     [
@@ -252,6 +257,7 @@ function renderProjectsData(data) {
         image: "dental-clinic.png",
         dates: "January 2021 - June 2021",
         tools: ["HTML5", "CSS3", "JS", "Bootstrap", "Laravel"],
+        alt: "Dental Clinic Helper webpage screenshot"
       },
     ],
     [
@@ -260,6 +266,7 @@ function renderProjectsData(data) {
         image: "js-animation.png",
         dates: "August 2022",
         tools: ["HTML5", "CSS3", "JS"],
+        alt: "Javascript animation project simulating Plants vs Zombies game screenshot"
       },
     ],
     [
@@ -268,6 +275,7 @@ function renderProjectsData(data) {
         image: "personal-portfolio.png",
         dates: "September 2022 - Present",
         tools: ["HTML5", "CSS3", "JS"],
+        alt: "Code the Dream's Intro to Programming project screenshot"
       },
     ],
   ]);
@@ -355,7 +363,7 @@ function renderProjectsData(data) {
         "src",
         `./images/projects/${projectDataMap.get(repository.name).image}`
       );
-      projectImage.setAttribute("alt", "Project's screenshot");
+      projectImage.setAttribute("alt", `${projectDataMap.get(repository.name).alt}`);
 
       //Setting up project's description
       projectDescriptionContainer.classList.add(
@@ -431,6 +439,7 @@ function showEducation() {
       link: "./assets/documents/education/College-Degree.pdf",
       description:
         "The Computer Science Engineer from Universidad Don Bosco is an ethical, critical and purposeful professional, with leadership who manages IT projects, creates innovative software and manages IT networks, applying international technical standards.",
+      alt: "Universidad Don Bosco college degree in Computer Engineering"
     },
   ];
 
@@ -532,7 +541,7 @@ function renderEducationData(data) {
     educationImageLink.setAttribute("href", `${education.link}`);
     educationImageLink.setAttribute("target", "_blank");
     educationImage.setAttribute("src", `${education.image}`);
-    educationImage.setAttribute("alt", "Degree or certificate image");
+    educationImage.setAttribute("alt", `${education.alt}`);
     //3.3.4 Education description:
     educationDescription.innerText = education.description;
 

@@ -80,7 +80,7 @@ section {
     max-width: 1200px;
     width: 90vw;
     /* Fonts */
-    text-align: justify;
+    text-align:left;
 }
 
 main {
@@ -364,6 +364,11 @@ h2{
     /*Text Decoration*/
     text-decoration: underline 3px solid royalblue;
 }
+
+section#about p:not(:last-child){
+    /*Spacing*/
+    margin-bottom: 30px;
+}
 /*
 ==================================
 =     HORIZONTAL LIST CSS        =
@@ -608,6 +613,8 @@ h2{
     justify-content: center;
     /*Sizing*/
     height: 85px;
+    /*Font*/
+    text-align: justify;
     /*Overflow*/
     overflow: auto;
 }
@@ -618,6 +625,8 @@ h2{
     justify-content: center;
     /*Sizing*/
     height: 150px;
+    /*Font*/
+    text-align: justify;
     /*Overflow*/
     overflow: auto;
 }
@@ -1045,14 +1054,19 @@ footer{
     align-items: center;
     flex: 0 1 auto;
     /*Spacing*/
-    padding: 5px;
+    padding: 10px;
     /*Sizing*/
-    width: 50px;
-    min-width: 50px;
+    width: auto;
+    min-width: auto;
     /* Fonts */
     text-decoration: none;
     /*Colors*/
     color: white;
+}
+
+.footer-navigation-bar .footer-element .horizontal-list li.connect-item a i{
+    /*Spacing*/
+    margin-right: 3px;
 }
 
 /* 
@@ -1231,8 +1245,22 @@ footer{
 }
 
 /* Smartphones */
-/* MAXIMUM WIDTH OF SMARTPHONES OF 540PX*/
-@media (max-width: 540px){
+/* MAXIMUM WIDTH OF SMARTPHONES OF 585PX*/
+@media (max-width: 585px){
+    .welcome-header-container .header-content{
+        /*Fonts*/
+        font-size: 2rem;
+        transition: .5s;
+    }
+
+    .welcome-header-container .header-content .header-content-brand{
+        /*Fonts*/
+        font-size: 3.5rem;
+        transition: .5s;
+    }
+}
+
+@media (max-width: 545px){
     .top-navigation-bar{
         /*Display*/
         justify-content: center;
@@ -1332,12 +1360,58 @@ footer{
         /*Spacing*/
         margin: auto;
     }
-}
 
-@media (max-width: 400px){
     .footer-navigation-bar{
         /*Display*/
         flex-direction: column;
+    }
+
+    .footer-navigation-bar .footer-element .horizontal-list li.connect-item {
+        margin: 0px 3px 10px;
+    }
+}
+
+@media (max-width: 512px){
+    .welcome-header-container .header-content{
+        /*Fonts*/
+        font-size: 1.5rem;
+        transition: .5s;
+    }
+
+    .welcome-header-container .header-content .header-content-brand{
+        /*Fonts*/
+        font-size: 2.5rem;
+        transition: .5s;
+    }
+}
+
+@media (max-width: 385px){
+    .welcome-header-container{
+        /*Spacing*/
+        padding: 0px 10vw;
+        /*Animation*/
+        transition: .5s;
+    }
+
+    .welcome-header-container .header-content .header-content-brand{
+        /*Fonts*/
+        font-size: 2rem;
+        transition: .5s;
+    }
+    .circle{
+         /*Sizing*/
+         width: 200px;
+         height: 200px;
+         /*Animation*/
+         transition: .5s;
+    }
+
+    .welcome-header-img{
+        /*Sizing*/
+        width: 200px;
+        height: 200px;
+        /*Animation*/
+        transition: .5s;
     }
 }
 
