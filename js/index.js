@@ -637,7 +637,6 @@ function editMessage(e) {
   const name = e.target.getAttribute("data-name");
   const email = e.target.getAttribute("data-email");
   const message = e.target.getAttribute("data-message").trim();
-  console.log(`${messageId} + ${name} + ${email} + ${message} `);
   //Getting the modal elements
   const modalContainer = document.querySelector(".modal-container");
   const editMessageForm = modalContainer.querySelector("#edit-message-form");
@@ -664,7 +663,6 @@ function editMessage(e) {
 function getMessageDate() {
   //Get message date:
   const messageDate = new Date();
-  console.log(messageDate);
   const messageDateYear = messageDate.getFullYear();
   const messageDateMonth = messageDate.getMonth() + 1;
   const messageDateDay = messageDate.getDate();
@@ -743,15 +741,11 @@ function handleEditMessageForm(e) {
   const editName = e.target["edit-name"].value;
   const editEmail = e.target["edit-email"].value;
   const editMessage = e.target["edit-message"].value.trim();
-  console.log(
-    `New message: ${messageId} + ${editName} + ${editEmail} + ${editMessage}`
-  );
   //Get the List Item element with messageId equals to edit form messageId
   const messageSection = document.querySelector("#messages");
   const messageList = messageSection.querySelector("ul");
   const messages = messageList.children;
   for (let listItem of messages) {
-    console.log(listItem);
     if (listItem.firstElementChild.children[0].value === messageId) {
       listItem.firstElementChild.children[1].children[0].setAttribute(
         "href",

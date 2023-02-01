@@ -1194,6 +1194,19 @@ footer{
     }
 }
 
+@media (min-width: 700px) and (max-height: 600px){
+  .welcome-header-container{
+    margin-top: 20vh;
+  }
+}
+
+@media (min-width: 700px) and (max-height: 405px){
+    .welcome-header-container{
+      margin-top: 35vh;
+    }
+  }
+
+
 @media (max-width: 700px){
     .welcome-header-container{
         /*Display*/
@@ -1413,6 +1426,12 @@ footer{
         /*Animation*/
         transition: .5s;
     }
+}
+
+@media (max-width: 385px) and (max-height: 400px){
+        .welcome-header-container{
+          margin-top: 20vh;
+        }
 }
 
 @media (max-width: 295px){
