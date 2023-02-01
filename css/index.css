@@ -99,7 +99,7 @@ h2{
 ==================================
 */
 /* CSS for container divs for page content*/
-.container {
+.section-container {
     /*Display*/
     display: flex;
     align-items: center;
@@ -111,7 +111,7 @@ h2{
     height: auto;
 }
 
-.header{
+.heading-two{
     /* Layout */
     text-align: center;
     /*Text Decoration*/
@@ -257,7 +257,7 @@ h2{
     /* Font */
     font-weight: 300;
 }
-.experience{
+.experience-list{
     /*Sizing*/
     padding-left: 0px;
 }
@@ -388,7 +388,7 @@ h2{
 
 
 
-.form{    
+.form-container{    
     /* Display */
     display: flex;
     justify-content: center;
@@ -399,7 +399,7 @@ h2{
     margin-bottom: 10px;
 }
 
-.form.edit{
+.form-container.edit-form{
     /*Display*/
     display: flex;
     align-items: center;
@@ -426,7 +426,7 @@ form {
     color: white;
 }
 
-form#editMessageForm{    
+form#edit-message-form{    
     width: 100%;
     max-width: 100%;
     margin-bottom: auto;
@@ -690,14 +690,14 @@ input:-webkit-autofill:active  {
 /*
     CSS to create a top fixed navigation bar for my website
 */
-.nav-container {
+.top-navigation-bar-container {
     /*Display*/
     display: flex;
     justify-content: center;
     z-index: 1;
 }
 
-.nav {
+.top-navigation-bar {
     flex:auto;
     /* Display */
     display: flex;
@@ -742,7 +742,7 @@ input:-webkit-autofill:active  {
 /*
     CSS to style each link on my navbar
 */
-#topNav a.nav-item {
+#top-navigation-bar a.nav-item {
     /*Display*/
     flex: 1;
     /* Set a white color for the fonts */
@@ -758,13 +758,13 @@ input:-webkit-autofill:active  {
     border-top: 4px solid royalblue;
 }
 
-#topNav a.nav-logo{
+#top-navigation-bar a.nav-logo{
     /*Padding*/
     padding: 0px 20px;
     border-top: 4px solid royalblue;
 }
 
-#topNav a.nav-logo img{
+#top-navigation-bar a.nav-logo img{
     /*Sizing*/
     width: 165px;
     height: auto;
@@ -773,7 +773,7 @@ input:-webkit-autofill:active  {
 /*
     CSS to highlight active links on my navbar
 */
-#topNav a.active {
+#top-navigation-bar a.active {
     /* Fonts */
     font-weight: bold;
     /* Colors */
@@ -786,7 +786,7 @@ input:-webkit-autofill:active  {
 /*
     CSS to style each time the mouse hovers over a link
 */
-#topNav a.nav-item:hover {
+#top-navigation-bar a.nav-item:hover {
     /* Colors */
     background-color: white;
     color: royalblue;
@@ -928,7 +928,7 @@ input:-webkit-autofill:active  {
 =           MESSAGES CSS         =
 ==================================
 */
-#messages #listOfMessages {
+#messages #list-of-messages {
     list-style-type: none;
     /*Padding*/
     padding-left: 0px;
@@ -945,13 +945,13 @@ footer{
     width: 100%;
 }
 
-.footerNav-container{
+.footer-navigation-bar-container{
     /*Display*/
     display: flex;
     justify-content: center;
 }
 
-.footerNav {
+.footer-navigation-bar {
     /* Display */
     display: flex;
     justify-content: space-around;
@@ -970,7 +970,7 @@ footer{
 /*
     CSS to generally style a footer element
 */
-.footerNav .footer-element {
+.footer-navigation-bar .footer-element {
     /* Display */
     display: flex;
     justify-content: center;
@@ -987,7 +987,7 @@ footer{
     padding: 0px;
 }
 
-.footerNav .footer-element .horizontal-list{
+.footer-navigation-bar .footer-element .horizontal-list{
     /*Display*/
     display: flex;
     justify-content: center;
@@ -995,7 +995,7 @@ footer{
     flex-wrap: wrap;
 }
 
-.footerNav .footer-element .horizontal-list li.connect-item {
+.footer-navigation-bar .footer-element .horizontal-list li.connect-item {
     /* Display */
     display: flex;
     flex: 0 1 auto;
@@ -1015,8 +1015,8 @@ footer{
     color: white;    
 }
 
-.footerNav .footer-element .horizontal-list li.connect-item:hover,
-.footerNav .footer-element .horizontal-list li.connect-item:hover > *{
+.footer-navigation-bar .footer-element .horizontal-list li.connect-item:hover,
+.footer-navigation-bar .footer-element .horizontal-list li.connect-item:hover > *{
     /*Borders*/
     border-color: goldenrod;
     /*Colors*/
@@ -1027,7 +1027,7 @@ footer{
     transform: scale(1.05);
 }
 
-.footerNav .footer-element .horizontal-list li.connect-item a{
+.footer-navigation-bar .footer-element .horizontal-list li.connect-item a{
     /*Display*/
     display: flex;
     justify-content: center;
@@ -1102,7 +1102,7 @@ footer{
     background-color: whitesmoke;
 }
 
-.modal .form{
+.modal .form-container{
     /*Sizing*/
     width: 100%;
 }
@@ -1152,13 +1152,13 @@ footer{
 /* MAXIMUM TABLET WIDTH OF 1150PX*/
 @media (max-width: 1150px){
     /* Navigation Bar */
-    .nav-container .nav .nav-item-container .nav-item span{
+    .top-navigation-bar-container .top-navigation-bar .nav-item-container .nav-item span{
         display: none;
     }
 }
 
 @media (max-width: 985px){
-    section#techExperience ul.experience li.experience-position{
+    section#tech-experience ul.experience-list li.experience-position{
         /*Display*/
         flex-direction: column;
     }
@@ -1214,17 +1214,17 @@ footer{
 /* Smartphones */
 /* MAXIMUM WIDTH OF SMARTPHONES OF 540PX*/
 @media (max-width: 540px){
-    .nav{
+    .top-navigation-bar{
         /*Display*/
         justify-content: center;
         flex: 1;
     }
 
-    #topNav .nav-logo-container{
+    #top-navigation-bar .nav-logo-container{
         flex: 1;
     }
 
-    #topNav .nav-item-container{
+    #top-navigation-bar .nav-item-container{
         /*Display*/
         display: none;
         flex: 1;
@@ -1240,25 +1240,25 @@ footer{
     }
 
     /* Once hamburguer menu is clicked */
-    .nav.responsive-nav{
+    .top-navigation-bar.responsive-nav{
         flex-direction: column;
     }
 
-    .nav.responsive-nav .nav-button-container,
-    .nav.responsive-nav .nav-button-container .nav-item{
+    .top-navigation-bar.responsive-nav .nav-button-container,
+    .top-navigation-bar.responsive-nav .nav-button-container .nav-item{
         display: block;
         position: absolute;
         right: 0px;
         top: 0px;
     }
 
-    #topNav.responsive-nav .nav-item-container{
+    #top-navigation-bar.responsive-nav .nav-item-container{
         display: flex;   
         flex-direction: column;  
     }
 
 
-    #topNav.responsive-nav .nav-item-container .nav-item{
+    #top-navigation-bar.responsive-nav .nav-item-container .nav-item{
         /*Display*/
         display: flex;
         flex-direction: column;   
@@ -1269,7 +1269,7 @@ footer{
     }
 
      /* Navigation Bar */
-     #topNav.responsive-nav .nav-item-container .nav-item span{
+     #top-navigation-bar.responsive-nav .nav-item-container .nav-item span{
         display: flex;
         flex-direction: column;
     }
@@ -1286,34 +1286,34 @@ footer{
         }
    }
 
-    section#leaveMessage div.form form#messageForm div.flex-controls{
+    section#leave-message div.form-container form#message-form div.flex-controls{
         /*Display*/
         flex-direction: column;
     }
 
-    section#leaveMessage div.form form#messageForm div.flex-controls div.flex-control{
+    section#leave-message div.form-container form#message-form  div.flex-controls div.flex-control{
         /*Sizing*/
         margin: auto;
     }
 
-    section#messages ul#listOfMessages li div.comment div.flex-header{
+    section#messages ul#list-of-messages li div.comment div.flex-header{
         /*Display*/
         flex-direction: column;
     }
 
-    section#modal-container div.modal div.form.edit form#editMessageForm div.flex-controls{
+    section#modal-container div.modal div.form-container.edit-form form#edit-message-form div.flex-controls{
         /*Display*/
         flex-direction: column;
     }
 
-    section#modal-container div.modal div.form.edit form#editMessageForm div.flex-controls div.flex-control{
+    section#modal-container div.modal div.form-container.edit-form form#edit-message-form div.flex-controls div.flex-control{
         /*Sizing*/
         margin: auto;
     }
 }
 
 @media (max-width: 400px){
-    .footerNav{
+    .footer-navigation-bar{
         /*Display*/
         flex-direction: column;
     }
@@ -1321,7 +1321,7 @@ footer{
 
 @media (max-width: 295px){
 
-    #topNav .nav-logo-container{
+    #top-navigation-bar .nav-logo-container{
         /*Display*/
         display: none;
     }
@@ -1331,12 +1331,12 @@ footer{
         flex: 1 1 auto;
     }
 
-    .nav.nav.responsive-nav{
+    .top-navigation-bar.responsive-nav{
         flex-direction: column-reverse;
     }
 
-    .nav.responsive-nav .nav-button-container,
-    .nav.responsive-nav .nav-button-container .nav-item{
+    .top-navigation-bar.responsive-nav .nav-button-container,
+    .top-navigation-bar.responsive-nav .nav-button-container .nav-item{
         display: flex;
         position:static;
         justify-content: center;
@@ -1345,7 +1345,7 @@ footer{
 
 @media (max-width: 130px){
      /* Navigation Bar */
-     #topNav.responsive-nav .nav-item-container .nav-item span{
+     #top-navigation-bar.responsive-nav .nav-item-container .nav-item span{
         display: none;
     }
 }

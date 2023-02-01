@@ -4,71 +4,83 @@
 
 <head>
     <title>Saul Castillo - Personal Portfolio</title>
-    <!--=================================================================== 
-    =                             META TAGS                           = 
-    =================================================================== 
-    =/////////////////////////////////////////////////////////////////= 
-    =================================================================== -->
+    <!--
+    ============================= 
+    =         META TAGS         = 
+    =============================
+    =///////////////////////////= 
+    ============================= 
+    -->
     <meta charset="UTF-8">
     <meta name="description" content="Personal Portfolio">
     <meta name="keywords" content="HTML, CSS & JavaScript">
     <meta name="author" content="Saul Castillo Chamagua">
     <meta name="viewport" content="width=device-width, initial-scale=1.0,  maximum-scale=1.0">
 
-    <!--=================================================================== 
-    =                            CSS ASSETS                           = 
-    =================================================================== 
-    =/////////////////////////////////////////////////////////////////= 
-    =================================================================== -->
+    <!--
+    ============================= 
+    =         CSS ASSETS        = 
+    =============================
+    =///////////////////////////= 
+    ============================= 
+    -->
 
-    <!--=================================================================== 
-    =                        SELF MADE ASSETS                         = 
-    =================================================================== -->
+    <!--
+    ============================= 
+    =     SELF-MADE ASSETS      = 
+    ============================= 
+    -->
     <link rel="stylesheet" href="./css/index.css">
     <link rel="icon" type="image/x-icon" href="./images/icon.ico">
 
-
-    <!--=================================================================== 
-    =                        EXTERNAL ASSETS                          = 
-    =================================================================== -->
-    <!-- 1. FONT-AWESOME -->
+    <!--
+    ============================= 
+    =      EXTERNAL ASSETS      = 
+    ============================= 
+    -->
+    <!-- FONT-AWESOME -->
     <link rel="stylesheet" href="./assets/fontawesome/css/fontawesome.css">
     <link rel="stylesheet" href="./assets/fontawesome/css/solid.css">
     <link rel="stylesheet" href="./assets/fontawesome/css/brands.css">
-    <!--2 GOOGLE FONT -->
+    <!-- GOOGLE FONT -->
     <link rel="preload" href="./fonts/Montserrat-Regular.woff2" as="font" type="font/woff2">
     <link rel="preload" href="./fonts/Montserrat-Bold.woff2" as="font" type="font/woff2">
     <link rel="preload" href="./fonts/Montserrat-LightItalic.woff2" as="font" type="font/woff2">
 </head>
 
 <body>
-    <div class="nav-container">
-        <nav id="topNav" class="nav">
+    <!--
+    ============================= 
+    =     TOP NAVIGATION BAR    = 
+    =============================
+    -->
+    <div class="top-navigation-bar-container">
+        <nav id="top-navigation-bar" class="top-navigation-bar">
             <div class="nav-logo-container">
                 <a class="nav-logo" href="/"><img src="./images/logo.jpg" alt="Personal portfolio website's logo"></a>
             </div>
             <div class="nav-item-container">
-                <a id="aboutMeLink" class="nav-item" title="About Me" href="#about">
+                <a id="about-me-link" class="nav-item" title="About Me" href="#about">
                     <i class="fa-solid fa-address-card"></i>
                     <span>About Me</span>
                 </a>
-                <a id="techExperienceLink" class="nav-item" title="Experience" href="#techExperience">
+                <a id="tech-experience-link" class="nav-item" title="Experience" href="#tech-experience">
                     <i class="fa-solid fa-clipboard-list"></i>
                     <span>Experience</span>                      
                 </a>
-                <a id="skillsLink" class="nav-item" title="Skills" href="#skills">
+                <a id="skills-link" class="nav-item" title="Skills" href="#skills">
                     <i class="fa-solid fa-brain"></i>
                     <span>Skills</span>  
                 </a>
-                <a id="projectsLink" class="nav-item" title="Projects" href="#projects">
+                <a id="projects-link" class="nav-item" title="Projects" href="#projects">
                     <i class="fa-solid fa-code-branch"></i>
                     <span>Projects</span>
                 </a>
-                <a id="connectLink" class="nav-item" title="Education" href="#education">
+                <a id="education-link" class="nav-item" title="Education" href="#education">
                     <i class="fa-solid fa-award"></i>
                     <span>Education</span>
                 </a>
-                <a id="messageLink" class="nav-item" title="Message" href="#leaveMessage">
+                <a id="message-link" class="nav-item" title="Message" href="#leave-message">
                     <i class="fa-solid fa-message"></i>
                     <span>Message</span> 
                 </a>
@@ -78,13 +90,19 @@
             </div>  
         </nav>
     </div>
+
+    <!--
+    ============================= 
+    =      WELCOME HEADER       = 
+    =============================
+    -->
     <header class="welcome-header-container" id="welcome-header-container">
         <div class="welcome-header-content">
             <h1 class="header-content">
                 Hello! &#128075; I am 
                 <span class="header-content-brand">Saul Castillo</span> 
             </h1>
-            <a href="#leaveMessage" class="header-content-item">Get in touch</a>
+            <a href="#leave-message" class="header-content-item">Get in touch</a>
         </div>
         <div class="welcome-header-img-container">
             <div class="circle">
@@ -92,42 +110,50 @@
             <img src="./images/profile-picture.png" class="welcome-header-img" alt="Profile picture of Saul Castillo">
         </div>
     </header>
-
+    <!--
+    ============================= 
+    =        MAIN CONTENT       = 
+    =============================
+    -->
     <main>
-        <div class="container">
-            <!-- ============================-->
-            <!-- =     SECTION: ABOUT       =-->
-            <!-- ============================-->  
+        <div class="section-container">
+            <!-- 
+            ============================
+            =     SECTION: ABOUT       =
+            ============================
+            -->  
             <section id="about">
-                <h2 class="header">About Me:</h2>
+                <h2 class="heading-two">About Me:</h2>
                 <p>
                     I'm a person really passionate about computers
                     since an early age and an in-training Web Developer. I graduated from <span class="important-fact">Universidad Don Bosco</span> in El
-                    Salvador,
-                    Central America,
-                    with a <span class="important-fact">Bachelor of Engineering in Computer Engineering</span> on 2021. I have experience in IT and
-                    knowledge in the development of desktop applications and database modeling and design.
+                    Salvador, Central America, with a <span class="important-fact">Bachelor of Engineering in Computer Engineering</span> on 2021. 
+                    I have experience in IT and knowledge in the development of desktop applications and database modeling and design.
                 </p>
                 <p>
                     Currently, since I immigrated to the United States of America, I am in the process of switching
                     my career towards web development because it is an area that makes use of creativity, teamwork
                     and problem solving, things that I am very passionate about. For this reason, I am currently
                     enrolled
-                    in <a class="important-fact-link" href="https://codethedream.org/" target="_blank"><span class="important-fact">Code The Dream</span></a>, a free intensive training in software development to people from
-                    diverse low-income backgrounds. Code The Dream offers a pathway to careers in technology for people who might not otherwise 
-                    have the opportunity to pursue tech jobs.  
+                    in <a class="important-fact-link" href="https://codethedream.org/" target="_blank"><span class="important-fact">Code The Dream</span></a>, a 
+                    free intensive training in software development to people from diverse low-income backgrounds. Code The Dream offers a pathway to careers 
+                    in technology for people who might not otherwise have the opportunity to pursue tech jobs.  
                 </p>
                 <p>
-                    My ultimate goal is to become a <span class="important-fact">Front End Web Developer</span> that is capable of making intuitive, attractive, responsive and, above all, accessible web
-                    designs; and at the same time help, with my knowledge, people who are starting their path in the world of programming.
+                    My ultimate goal is to become a <span class="important-fact">Front End Web Developer</span> that is capable of making intuitive, attractive, 
+                    responsive and, above all, accessible web designs; and at the same time help, with my knowledge, people who are starting their path in the 
+                    world of programming.
                 </p>
             </section>
-            <!-- ============================-->
-            <!-- =    SECTION: TECH EXP     =-->
-            <!-- ============================-->  
-            <section id="techExperience">
-                <h2 class="header">Tech Experience:</h2>
-                <ul class="experience">
+
+            <!-- 
+            ============================
+            =    SECTION: TECH EXP     =
+            ============================
+            -->  
+            <section id="tech-experience">
+                <h2 class="heading-two">Tech Experience:</h2>
+                <ul class="experience-list">
                     <li class="experience-position">
                         <span>
                             Database Modeling and Design Tutor — Universidad Don Bosco | El Salvador 
@@ -162,104 +188,121 @@
                     </li>
                 </ul>
             </section>
-            <!-- ============================-->
-            <!-- =     SECTION: SKILLS      =-->
-            <!-- ============================-->  
+
+            <!-- 
+            ============================
+            =     SECTION: SKILLS      =
+            ============================
+            -->  
             <section id="skills">
-                <h2 class="header">Skills:</h2>
+                <h2 class="heading-two">Skills:</h2>
                 <ul class="horizontal-list">
                 </ul>
             </section>
-            <!-- ============================-->
-            <!-- =     SECTION: PROJECTS    =-->
-            <!-- ============================-->  
+
+            <!-- 
+            ============================
+            =     SECTION: PROJECTS    =
+            ============================
+            -->  
             <section id="projects">
-                <h2 class="header">Projects:</h2>
+                <h2 class="heading-two">Projects:</h2>
                 <ul class="horizontal-list">
                 </ul>
             </section>
-            <!-- ============================-->
-            <!-- =     SECTION: EDUCATION     =-->
-            <!-- ============================-->            
+
+            <!-- 
+            ============================
+            =     SECTION: EDUCATION   =
+            ============================
+            -->            
             <section id="education">
-                <h2 class="header">Education:</h2>
+                <h2 class="heading-two">Education:</h2>
                 <ul class="horizontal-list">
                 </ul>
             </section>
-            <!-- ============================-->
-            <!-- =    SECTION: LEAVE MSG    =-->
-            <!-- ============================-->
-            <section id="leaveMessage">
-                <h2 class="header">Leave a Message:</h2>               
-                <div class="form">
-                    <form id="messageForm" name="messageForm">
+
+            <!-- 
+            ============================
+            =    SECTION: LEAVE MSG    =
+            ============================
+            -->
+            <section id="leave-message">
+                <h2 class="heading-two">Leave a Message:</h2>               
+                <div class="form-container">
+                    <form id="message-form" name="message-form">
                         <div class="flex-controls">
                             <div class="flex-control">
                                 <label for="name" class="form-label">Name: </label>
-                                <input type="text" class="form-input" id="name" name="name" required>
+                                <input id="name" name="name" class="form-input" type="text" required>
                             </div>
                             <div class="flex-control">
                                 <label for="email" class="form-label">Email: </label>
-                                <input type="email" class="form-input" id="email" name="email" required>
+                                <input id="email" name="email" class="form-input" type="email" required>
                             </div>
                         </div>
                         <div class="flex-controls">
                             <div class="flex-control">
                                 <label for="message" class="form-label">Message: </label>
-                                <textarea id="message" class="form-textarea" name="message" required>
+                                <textarea id="message" name="message" class="form-textarea" required>
                                 </textarea>
                             </div>
                         </div>
                         <div class="flex-controls">
                             <div class="flex-control">
-                                <button type="submit" class="form-button" id="submit">Submit</button>
+                                <button id="submit" class="form-button" type="submit">Submit</button>
                             </div>
                         </div>
                 </form>
             </div>
             </section> 
-            <!-- ============================-->
-            <!-- =    SECTION: MESSAGES     =-->
-            <!-- ============================--> 
-            <section id="messages">
-                <h2 class="header">Messages: </h2>
-                <ul id="listOfMessages">
 
+            <!-- 
+            ============================
+            =    SECTION: MESSAGES     =
+            ============================
+            --> 
+            <section id="messages">
+                <h2 class="heading-two">Messages: </h2>
+                <ul id="list-of-messages">
                 </ul>
             </section>
-            <!-- ============================-->
-            <!-- =    SECTION: EDIT MODAL   =-->
-            <!-- ============================--> 
-            <section class="modal-container" id="modal-container">
+
+            <!-- 
+            ============================
+            =    SECTION: EDIT MODAL   =
+            ============================
+            --> 
+            <section id="modal-container" class="modal-container">
                 <div class="modal">
-                    <h1 class="header">Update message:</h1>
-                    <div class="form edit">
-                        <form id="editMessageForm" name="editMessageForm">
+                    <h1 class="heading-two">Update message:</h1>
+                    <div class="form-container edit-form">
+                        <form id="edit-message-form" name="edit-message-form">
                             <div class="flex-controls">
                                 <div class="flex-control">
-                                    <label for="editName" class="form-label">Name: </label>
-                                    <input type="text" class="form-input" id="editName" name="editName" required>
+                                    <label for="edit-name" class="form-label">Name: </label>
+                                    <input id="edit-name" name="edit-name" class="form-input" type="text" required>
                                 </div>
                                 <div class="flex-control">
-                                    <label for="editEmail" class="form-label">Email: </label>
-                                    <input type="email" class="form-input" id="editEmail" name="editEmail" required>
+                                    <label for="edit-email" class="form-label">Email: </label>
+                                    <input id="edit-email" name="edit-email" class="form-input" type="email" required>
                                 </div>
                             </div>
                             <div class="flex-controls">
                                 <div class="flex-control">
-                                    <label for="editMessage" class="form-label">Message: </label>
-                                    <textarea class="form-textarea" id="editMessage" name="editMessage" required>
+                                    <label for="edit-message" class="form-label">Message: </label>
+                                    <textarea id="edit-message" name="edit-message" class="form-textarea" required>
             
                                     </textarea>
                                 </div>
                             </div>
                             <div class="flex-controls">
                                 <div class="flex-control">
-                                    <button type="submit" class="form-button" id="editSubmit">Update message</button>
+                                    <button id="edit-submit" class="form-button" type="submit">Update message</button>
                                 </div>
                             </div>
                         </form>
-                        <button id="closeButton" class="close-button">Close</button>
+                        <button id="close-button" class="close-button">Close</button>
                     </div>
                 </div>
             </section>
@@ -267,20 +310,24 @@
     </main>
 
     <footer>
-        <div class="footerNav-container">
-            <nav id="footerNav" class="footerNav">
+        <div class="footer-navigation-bar-container">
+            <nav id="footer-navigation-bar" class="footer-navigation-bar">
                 
             </nav>
         </div>
-        <!--=================================================================== 
-            =                            JS ASSETS                            = 
-            =================================================================== 
-            =/////////////////////////////////////////////////////////////////= 
-            =================================================================== -->
+        <!-- 
+        ============================
+        =         JS ASSETS        =
+        ============================ 
+        =//////////////////////////= 
+        ============================ 
+        -->
 
-        <!--=================================================================== 
-            =                          SELF MADE JS                           = 
-            =================================================================== -->
+        <!-- 
+        ============================
+        =   SELF-MADE JS ASSETS    =
+        ============================ 
+        -->
         <script type="text/javascript" src="./js/index.js"></script>
     </footer>
 </body>

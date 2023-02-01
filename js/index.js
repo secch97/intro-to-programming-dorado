@@ -38,8 +38,8 @@ class ApiRequest {
 
 function turnNavBarResponsive(e){
   //1. Getting the nav bar:
-  const navBar = document.querySelector(".nav");
-  if(navBar.className === "nav"){
+  const navBar = document.querySelector(".top-navigation-bar");
+  if(navBar.className === "top-navigation-bar"){
     navBar.classList.add("responsive-nav");
   }
   else{
@@ -54,7 +54,7 @@ function showFooter() {
   //2. Retrieve the current year:
   let thisYear = today.getFullYear();
   //3. Selecting footerNav from my DOM:
-  const footerNav = document.querySelector(".footerNav");
+  const footerNav = document.querySelector(".footer-navigation-bar");
   //4. Create a new paragraph element:
   const copyright = document.createElement("p");
   //5. Add a class to the new paragraph element
@@ -543,7 +543,7 @@ function setActive(e) {
   do {
     //Responsive menu code
     //If a link in the responsive menu is clicked, then close the responsive menu.
-    if(this.className==="nav-item" && this.parentElement.parentElement.className==="nav responsive-nav"){
+    if(this.className==="nav-item" && this.parentElement.parentElement.className==="top-navigation-bar responsive-nav"){
       //Get the responsive nav bar.
       const responsiveNavBar = this.parentElement.parentElement;
       //Hide menu opened by responsive nav bar
@@ -598,23 +598,23 @@ function closeModal(e){
 
 function editMessage(e){
   //Getting the message elements:
-  const messageId = e.target.getAttribute("data-messageId");
+  const messageId = e.target.getAttribute("data-message-id");
   const name = e.target.getAttribute("data-name");
   const email = e.target.getAttribute("data-email");
   const message = e.target.getAttribute("data-message").trim();
   console.log(`${messageId} + ${name} + ${email} + ${message} `);
   //Getting the modal elements
   const modalContainer = document.querySelector(".modal-container");
-  const editMessageForm = modalContainer.querySelector("#editMessageForm");
-  const closeButton = modalContainer.querySelector("#closeButton");
+  const editMessageForm = modalContainer.querySelector("#edit-message-form");
+  const closeButton = modalContainer.querySelector("#close-button");
   //Show the edit modal
   showModal();
   //Reset the edit modal form elements
   editMessageForm.reset();
   //Get the edit form modal HTML elements
-  const editName = editMessageForm.querySelector("#editName");
-  const editEmail = editMessageForm.querySelector("#editEmail");
-  const editMessage = editMessageForm.querySelector("#editMessage");
+  const editName = editMessageForm.querySelector("#edit-name");
+  const editEmail = editMessageForm.querySelector("#edit-email");
+  const editMessage = editMessageForm.querySelector("#edit-message");
   //Set the values of the edit form modal to the to-edit message values
   editName.value = name;
   editEmail.value = email;
@@ -622,8 +622,8 @@ function editMessage(e){
   //Add event listener to close button
   closeButton.addEventListener("click", closeModal);
   //Assign message id to editSubmit button
-  const editSubmitButton = editMessageForm.querySelector("#editSubmit");
-  editSubmitButton.setAttribute("data-messageId", messageId);
+  const editSubmitButton = editMessageForm.querySelector("#edit-submit");
+  editSubmitButton.setAttribute("data-message-id", messageId);
 }
 
 function getMessageDate(){
@@ -677,7 +677,7 @@ function handleMessageForm(e){
   editButton.innerText = "Edit";
   editButton.setAttribute("type", "button");
   editButton.setAttribute("id", "editButton");
-  editButton.setAttribute("data-messageId", messageId);
+  editButton.setAttribute("data-message-id", messageId);
   editButton.setAttribute("data-name", name);
   editButton.setAttribute("data-email", email);
   editButton.setAttribute("data-message", message.trim());
@@ -704,10 +704,10 @@ function handleEditMessageForm(e){
   //Prevent default
   e.preventDefault();
   //Retrieve edit form's control values
-  const messageId = e.target.editSubmit.getAttribute("data-messageId");
-  const editName = e.target.editName.value;
-  const editEmail = e.target.editEmail.value;
-  const editMessage = e.target.editMessage.value.trim();  
+  const messageId = e.target["edit-submit"].getAttribute("data-message-id");
+  const editName = e.target["edit-name"].value;
+  const editEmail = e.target["edit-email"].value;
+  const editMessage = e.target["edit-message"].value.trim();  
   console.log(`New message: ${messageId} + ${editName} + ${editEmail} + ${editMessage}`);
   //Get the List Item element with messageId equals to edit form messageId
   const messageSection = document.querySelector("#messages");
@@ -777,14 +777,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   //6. Getting navigation link elements
   //6.1 Querying every navigation link:
-  const navigationLinks = document.querySelectorAll("header .nav-container .nav a.nav-item");
+  const navigationLinks = document.querySelectorAll(".top-navigation-bar-container .top-navigation-bar a.nav-item");
   //6.2 Setting up a click event listener for every navigation link:
   navigationLinks.forEach((link) => {
     link.addEventListener("click", setActive);
   });
 
   //7. Handle message form
-  const messageForm = document.querySelector("#messageForm");
+  const messageForm = document.querySelector("#message-form ");
   messageForm.addEventListener("submit", handleMessageForm);
 
   //8. Hide the "Messages Form" when the list of messages is empty.
@@ -792,7 +792,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setMessagesVisibility();
 
   //9. Handle edit message form
-  const editMessageForm = document.querySelector("#editMessageForm");
+  const editMessageForm = document.querySelector("#edit-message-form");
   editMessageForm.addEventListener("submit", handleEditMessageForm);
 })
 
