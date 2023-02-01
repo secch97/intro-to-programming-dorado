@@ -859,7 +859,6 @@ input:-webkit-autofill:active  {
     font-weight: bold;
     font-style: normal;
     /* Layout */
-    margin-right: 20px;
     border-top: 3px solid royalblue;
     border-radius: 20px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
