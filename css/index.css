@@ -592,6 +592,7 @@ section#about p:not(:last-child){
 
 .project-title-container,
 .project-dates-container,
+.education-institution-container,
 .education-title-container,
 .education-dates-container{
     /*Display*/
@@ -983,6 +984,7 @@ footer{
     justify-content: space-around;
     /* Spacing */
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3);
+    padding-top: 10px;
     margin-top: 25px;
     /* Sizing */
     width: 100%;
