@@ -433,6 +433,7 @@ function showEducation() {
   //1.1 Variables:
   const educationData = [
     {
+      institution: "Universidad Don Bosco",
       title: "Computer Science Engineer",
       date: "January 2016 - May 2021",
       image: "./images/education/College-Degree.png",
@@ -441,6 +442,15 @@ function showEducation() {
         "The Computer Science Engineer from Universidad Don Bosco is an ethical, critical and purposeful professional, with leadership who manages IT projects, creates innovative software and manages IT networks, applying international technical standards.",
       alt: "Universidad Don Bosco college degree in Computer Engineering"
     },
+    {
+      institution: "Code The Dream",
+      title: "Intro to Web Development Certificate",
+      date: "August 2022 - January 2023",
+      image: "./images/education/Code-the-Dream--Intro-to-Programming.png",
+      link: "./assets/documents/education/Code-the-Dream--Intro-to-Programming.pdf",
+      description: "The Intro to Web Development class builds a strong foundation for applicants wishing to become software developers. The curriculum topics covered are: JavaScript, HTML, CSS, GIT, Debugging, AJAX & API Fetch.",
+      alt: "Code The Dream Intro to Web Development certificate"
+    }
   ];
 
   //2. Rendering HTML with education data:
@@ -484,26 +494,31 @@ function renderEducationData(data) {
     //3.1.1 List item:
     let educationListItem = document.createElement("li");
 
-    //3.1.2 Title container div:
+    //3.1.2 Institution container div:
+    let educationInstitutionContainer = document.createElement("div");
+    //3.1.2.1 Institution span:
+    let educationInstitution = document.createElement("span");
+
+    //3.1.3 Title container div:
     let educationTitleContainer = document.createElement("div");
-    //3.1.2.1 Title span:
+    //3.1.3.1 Title span:
     let educationTitle = document.createElement("span");
 
-    //3.1.3 Dates container div:
+    //3.1.4 Dates container div:
     let educationDatesContainer = document.createElement("div");
-    //3.1.3.1 Dates em:
+    //3.1.4.1 Dates em:
     let educationDates = document.createElement("em");
 
-    //3.1.4 Image container div:
+    //3.1.5 Image container div:
     let educationImageContainer = document.createElement("div");
-    //3.1.4.1 Image link <a>:
+    //3.1.5.1 Image link <a>:
     let educationImageLink = document.createElement("a");
-    //3.1.4.2 Image:
+    //3.1.5.2 Image:
     let educationImage = document.createElement("img");
 
-    //3.1.5 Description container div:
+    //3.1.6 Description container div:
     let educationDescriptionContainer = document.createElement("div");
-    //3.1.5.1 Description span:
+    //3.1.6.1 Description span:
     let educationDescription = document.createElement("span");
 
     //3.2 HTML Elements set up:
@@ -511,55 +526,62 @@ function renderEducationData(data) {
     //3.2.1 List item:
     educationListItem.classList.add("education-card");
 
-    //3.2.2 Title container div:
+    //3.2.2 Institution container div:
+    educationInstitutionContainer.classList.add("education-institution-container");
+
+    //3.2.3 Title container div:
     educationTitleContainer.classList.add("education-title-container");
 
-    //3.2.3 Dates container div:
+    //3.2.4 Dates container div:
     educationDatesContainer.classList.add("education-dates-container");
-    //3.2.3.1 Dates em:
+    //3.2.4.1 Dates em:
     educationDates.classList.add("emphasis-fact");
 
-    //3.2.4 Image container div:
+    //3.2.5 Image container div:
     educationImageContainer.classList.add("education-image-container");
-    //3.2.4.1 Image:
+    //3.2.5.1 Image:
     educationImage.classList.add("education-image");
 
-    //3.2.5 Description container div:
+    //3.2.6 Description container div:
     educationDescriptionContainer.classList.add(
       "education-description-container"
     );
-    //3.2.5.1 Description span:
+    //3.2.6.1 Description span:
     educationDescription.classList.add("emphasis-fact");
 
     //3.3 JSON appendage:
-
-    //3.3.1 Education title:
+    //3.3.1 Education institution:
+    educationInstitution.innerText = education.institution;
+    //3.3.2 Education title:
     educationTitle.innerText = education.title;
-    //3.3.2 Education dates:
+    //3.3.3 Education dates:
     educationDates.innerText = education.date;
-    //3.3.3 Education image:
+    //3.3.4 Education image:
     educationImageLink.setAttribute("href", `${education.link}`);
     educationImageLink.setAttribute("target", "_blank");
     educationImage.setAttribute("src", `${education.image}`);
     educationImage.setAttribute("alt", `${education.alt}`);
-    //3.3.4 Education description:
+    //3.3.5 Education description:
     educationDescription.innerText = education.description;
 
     //3.4 HTML Elements appendage:
 
     //3.4.1 List item to <ul>:
     educationList.appendChild(educationListItem);
-    //3.4.2 Education title container to <li>:
+    //3.4.2 Education institution container to <li>:
+    educationListItem.appendChild(educationInstitutionContainer);
+    educationInstitutionContainer.appendChild(educationInstitution);
+    //3.4.3 Education title container to <li>:
     educationListItem.appendChild(educationTitleContainer);
     educationTitleContainer.appendChild(educationTitle);
-    //3.4.3 Education dates container to <li>:
+    //3.4.4 Education dates container to <li>:
     educationListItem.appendChild(educationDatesContainer);
     educationDatesContainer.appendChild(educationDates);
-    //3.4.4 Education image container to <li>:
+    //3.4.5 Education image container to <li>:
     educationListItem.appendChild(educationImageContainer);
     educationImageContainer.appendChild(educationImageLink);
     educationImageLink.appendChild(educationImage);
-    //3.4.5 Education description container to <li>:
+    //3.4.6 Education description container to <li>:
     educationListItem.appendChild(educationDescriptionContainer);
     educationDescriptionContainer.appendChild(educationDescription);
   }
