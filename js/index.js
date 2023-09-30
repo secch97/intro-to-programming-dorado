@@ -243,6 +243,20 @@ function renderProjectsData(data) {
   //VARIABLES
   //Promise variable
   const projectsData = data;
+  const collaboratedProjects = [
+    {
+      name: "MentorUp",
+      description: "8 Week collaborative project for CTD's Practicum Class. MentorUp is a mentor session scheduler app for Code the Dream classes.",
+      html_url: "https://github.com/Code-the-Dream-School/dd-prac-team2-front"
+    },
+    {
+      name: "Talckatoo",
+      description: "Talckatoo is a real-time chat application. It features a powered by AI backend that manages all the responses and facilitates seamless communication between users.",
+      html_url: "https://github.com/Talckatoo/talckatoo_client"
+    }
+  ];
+  projectsData.push(...collaboratedProjects);
+  console.log(projectsData);
 
   //Project's data map
   const projectDataMap = new Map([
@@ -274,7 +288,7 @@ function renderProjectsData(data) {
       },
     ],
     [
-      "intro-to-programming-dorado",
+      "personal-portfolio",
       {
         image: "personal-portfolio.png",
         dates: "September 2022 - Present",
@@ -282,6 +296,40 @@ function renderProjectsData(data) {
         alt: "Code the Dream's Intro to Programming project screenshot"
       },
     ],
+    [
+      "mister-gif-app",
+      {
+        image: "mister-gif.png",
+        dates: "February 2023 - April 2023",
+        tools: ["HTML5", "CSS3", "JS", "React"],
+        alt: "React.js personal project"
+      }
+    ],
+    [
+      "react-todo",
+      {
+        image: "react-todo.png",
+        dates: "March 2023 - July 2023",
+        tools: ["HTML5", "CSS3", "JS", "React"],
+        alt: "Code the Dream's React class project screenshot"
+      }
+    ],
+    [
+      "MentorUp",
+      {
+        image: "mentor-up.png",
+        dates: "July 2023 - September 2023",
+        tools: ["HTML5", "CSS3", "JS", "React", "Node-JS", "MongoDB"]
+      }
+    ],
+    [
+      "Talckatoo",
+      {
+        image: "talckatoo.png",
+        dates: "May 2023 - Present",
+        tools: ["HTML5", "CSS3", "JS", "React", "Node-JS", "MongoDB"]
+      }
+    ]
   ]);
 
   //1. Selecting the projects section by ID:
@@ -323,7 +371,11 @@ function renderProjectsData(data) {
       repository.name === "Burger-City-Restaurant" ||
       repository.name === "Dental-Clinic-Helper" ||
       repository.name === "js-animation" ||
-      repository.name === "intro-to-programming-dorado"
+      repository.name === "personal-portfolio" ||
+      repository.name === "mister-gif-app" ||
+      repository.name === "react-todo" ||
+      repository.name === "MentorUp" ||
+      repository.name === "Talckatoo"
     ) {
       //Setting up variables
       //List item variables
