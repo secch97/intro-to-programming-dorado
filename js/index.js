@@ -506,6 +506,24 @@ function showEducation() {
       link: "./assets/documents/education/Code-the-Dream--Intro-to-Programming.pdf",
       description: "The Intro to Web Development class builds a strong foundation for applicants wishing to become software developers. The curriculum topics covered are: JavaScript, HTML, CSS, GIT, Debugging, AJAX & API Fetch.",
       alt: "Code The Dream Intro to Web Development certificate"
+    },
+    {
+      institution: "Code The Dream",
+      title: "Front End Development Certificate",
+      date: "March 2023 - July 2023",
+      image: "./images/education/Code-the-Dream--React.png",
+      link: "./assets/documents/education/Code-the-Dream--React.pdf",
+      description: "The React Front End class covers project setup, React fundamentals, React router and class components, React maintenance and testing, handling and pagination in React, and deployment.",
+      alt: "Code The Dream Front End Development certificate"
+    },
+    {
+      institution: "DevTalles",
+      title: "Typescript: The complete guide",
+      date: "September 2023",
+      image: "./images/education/DevTalles--Typescript.png",
+      link: "./assets/documents/education/DevTalles--Typescript.pdf",
+      description: "This Typescript course teaches a solid foundation of Typescript. The student finishes with a strong confidence of knowing how to use TS in web projects",
+      alt: "DevTalles Typescript certificate"
     }
   ];
 
