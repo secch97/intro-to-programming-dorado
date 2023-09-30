@@ -390,6 +390,8 @@ section#about p:not(:last-child){
     /* Display */
     display: flex;
     flex: 0 1 auto;
+    justify-content: center;
+    align-items: center;
     /* Spacing */
     border-top: 3px solid royalblue;
     border-radius: 20px;
@@ -481,12 +483,10 @@ section#about p:not(:last-child){
 .horizontal-list li.skill-item:hover > * {
     /*Spacing*/
     border-color: goldenrod;
-    /*Colors*/
-    background-color: white;
-    color: royalblue;
     /*Transform*/
     transition: all 0.2s ease-in-out;
     transform: scale(1.05);
+    cursor: pointer;
 }
 
 /*

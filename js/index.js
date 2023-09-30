@@ -176,11 +176,15 @@ function renderSocialMedia(socialMediaData) {
 
 function showSkills() {
   //1. Create a skills array
-  const skills = ["HTML", "CSS", "Javascript", "GitHub"];
+  const skills = ["HTML", "CSS", "Tailwind", "Javascript","Typescript", "React.js", "MUI", "GitHub"];
   const skillsIcons = [
     "fa-brands fa-html5",
     "fa-brands fa-css3",
+    "./images/tailwind-icon.png",
     "fa-brands fa-js",
+    "./images/ts-icon.png",
+    "fa-brands fa-react",
+    "./images/mui-icon.png",
     "fa-brands fa-github",
   ];
   //2. Select skills section by id
@@ -195,7 +199,7 @@ function showSkills() {
     //6. Create a <a> element
     const anchorTag = document.createElement("a");
     //7. Set the anchor element inner text to <i> fontawesome tag plus the current skills[i] element
-    anchorTag.innerHTML = `<i class="${skillsIcons[i]}"></i> ${skills[i]}`;
+    anchorTag.innerHTML = skillsIcons[i].slice(0,2) === "fa" ? `<i class="${skillsIcons[i]}"></i> ${skills[i]}` : `<img src=${skillsIcons[i]} style='width:16px;height:17px;margin-right:1px'></img> ${skills[i]}`;
     //8. Append the anchor tag to the skill <li> element
     skill.appendChild(anchorTag);
     //9. Append the skill element to the skill list
